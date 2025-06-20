@@ -804,20 +804,24 @@
                 message: document.getElementById('message').value
             };
 
+            console.log('Sending form data:', formData);
+
             // Send email using EmailJS
             emailjs.send('service_k66uxhk', 'template_9cfypfs', formData)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
-                    document.getElementById('venueSuccess').style.display = 'block';
-                    document.getElementById('venueForm').style.display = 'none';
-                    
-                    setTimeout(() => {
-                        closeModal('venueModal');
-                        document.getElementById('venueForm').style.display = 'block';
-                    }, 3000);
+                    if (response.status === 200) {
+                        document.getElementById('venueSuccess').style.display = 'block';
+                        document.getElementById('venueForm').style.display = 'none';
+                        
+                        setTimeout(() => {
+                            closeModal('venueModal');
+                            document.getElementById('venueForm').style.display = 'block';
+                        }, 3000);
+                    }
                 }, function(error) {
-                    console.log('FAILED...', error);
-                    alert('Failed to send message. Please try again or contact us directly at ponsphaera@gmail.com');
+                    console.log('DETAILED ERROR:', error);
+                    alert('Failed to send message. Error details logged to console. Please try again or contact us directly at ponsphaera@gmail.com');
                 });
         }
 
