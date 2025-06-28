@@ -200,8 +200,6 @@
             opacity: 1;
         }
 
-        /* Hero content - no animation, always visible */
-        /* Other animated sections */
         .animate-scale {
             transform: scale(0.8);
             opacity: 0;
@@ -742,7 +740,7 @@
     <main>
         <section id="home" class="hero">
             <div class="container">
-                <div class="hero-content">
+                <div class="hero-content animate-on-scroll">
                     <h1>PonSphaera</h1>
                     <p>Miami's premier sober morning club bringing health, wellness, and community to venues across the city</p>
                     <div class="cta-buttons">
@@ -821,7 +819,15 @@
                         <p>Free Kratom with the purchase of a ticket</p>
                         <p><strong>Location:</strong> Euphoria kava bar - in ocean drive south beach📍</p>
                         <p><strong>Price:</strong> $10</p>
-                        <a href="https://www.sweatpals.com/event/ponsphaeras-morning-club-independence-day-weekend-afterparty-edition" target="_blank" class="btn btn-secondary">Get Tickets</a>
+                        
+                        <!-- Sweatpals widget begin -->
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(10px);">
+                            <script src="https://www.sweatpals.com/static/embed/event/checkout/script.js?enableAutoEmbed=false&eventAlias=ponsphaeras-morning-club-independence-day-weekend-afterparty-edition&colorHex=4dd0e1&fontFamily=SF Pro Display&shortLocalInstance=2025-07-05&priceTierId=26dcf1b2-624c-4f69-ae68-233f4b198e00"></script>
+                            <iframe style="width: 100%; height: 60px; border: 0; border-radius: 10px;" src="https://www.sweatpals.com/embed/ponsphaeras-morning-club-independence-day-weekend-afterparty-edition/buy-ticket?shortLocalInstance=2025-07-05&priceTierId=26dcf1b2-624c-4f69-ae68-233f4b198e00&size=lg&colorHex=4dd0e1&fontFamily=SF Pro Display&loader=false"></iframe>
+                        </div>
+                        <!-- Sweatpals widget end -->
+                        
+                        <a href="https://www.sweatpals.com/event/ponsphaeras-morning-club-independence-day-weekend-afterparty-edition" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">More Details</a>
                     </div>
                     <div class="event-card animate-slide-up">
                         <div class="event-date">THU, JUL 24</div>
