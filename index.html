@@ -13,13 +13,25 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4dd0e1 0%, #81c784 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #4dd0e1, #81c784);
+            z-index: 1001;
+            transition: width 0.3s ease;
         }
 
         /* Side decorative images */
@@ -58,7 +70,9 @@
             left: 20px;
             width: 100px;
             height: 80px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80"><rect fill="%23ff6b6b" width="100" height="80" rx="10"/><circle fill="white" cx="30" cy="25" r="8"/><circle fill="white" cx="70" cy="25" r="8"/><rect fill="white" x="20" y="45" width="60" height="4" rx="2"/><rect fill="white" x="30" y="55" width="40" height="4" rx="2"/></svg>') center/cover;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
 
         .left .floating-image:nth-child(2) {
@@ -66,7 +80,9 @@
             left: 10px;
             width: 80px;
             height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100"><rect fill="%234facfe" width="80" height="100" rx="10"/><circle fill="white" cx="40" cy="30" r="12"/><rect fill="white" x="20" y="50" width="40" height="30" rx="5"/><circle fill="white" cx="25" cy="85" r="3"/><circle fill="white" cx="40" cy="85" r="3"/><circle fill="white" cx="55" cy="85" r="3"/></svg>') center/cover;
+            background: linear-gradient(45deg, #00CED1, #20B2AA);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 206, 209, 0.3);
         }
 
         .left .floating-image:nth-child(3) {
@@ -74,7 +90,9 @@
             left: 30px;
             width: 90px;
             height: 90px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90"><circle fill="%23667eea" cx="45" cy="45" r="45"/><path fill="white" d="M25 45 L40 60 L65 30" stroke="white" stroke-width="3" fill="none"/></svg>') center/cover;
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
         }
 
         .left .floating-image:nth-child(4) {
@@ -82,7 +100,9 @@
             left: 15px;
             width: 85px;
             height: 75px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85 75"><rect fill="%23f093fb" width="85" height="75" rx="10"/><circle fill="white" cx="42.5" cy="25" r="8"/><rect fill="white" x="25" y="40" width="35" height="20" rx="3"/><rect fill="white" x="30" y="45" width="25" height="3"/><rect fill="white" x="30" y="50" width="20" height="3"/></svg>') center/cover;
+            background: linear-gradient(45deg, #32CD32, #98FB98);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(50, 205, 50, 0.3);
         }
 
         .left .floating-image:nth-child(5) {
@@ -90,7 +110,9 @@
             left: 25px;
             width: 70px;
             height: 70px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70"><circle fill="%2300f2fe" cx="35" cy="35" r="35"/><path fill="white" d="M20 35 Q35 15 50 35 Q35 55 20 35" /></svg>') center/cover;
+            background: linear-gradient(45deg, #FF6347, #FFA07A);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(255, 99, 71, 0.3);
         }
 
         /* Right side images */
@@ -99,7 +121,9 @@
             right: 15px;
             width: 95px;
             height: 85px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 85"><rect fill="%23764ba2" width="95" height="85" rx="10"/><rect fill="white" x="15" y="15" width="65" height="4" rx="2"/><rect fill="white" x="15" y="25" width="50" height="4" rx="2"/><rect fill="white" x="15" y="35" width="60" height="4" rx="2"/><circle fill="white" cx="75" cy="65" r="8"/></svg>') center/cover;
+            background: linear-gradient(45deg, #9370DB, #BA55D3);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(147, 112, 219, 0.3);
         }
 
         .right .floating-image:nth-child(2) {
@@ -107,7 +131,9 @@
             right: 25px;
             width: 80px;
             height: 80px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><circle fill="%23ff6b6b" cx="40" cy="40" r="40"/><rect fill="white" x="25" y="35" width="30" height="10" rx="5"/><circle fill="white" cx="30" cy="55" r="3"/><circle fill="white" cx="40" cy="55" r="3"/><circle fill="white" cx="50" cy="55" r="3"/></svg>') center/cover;
+            background: linear-gradient(45deg, #FF4500, #FF6347);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
         }
 
         .right .floating-image:nth-child(3) {
@@ -115,7 +141,9 @@
             right: 10px;
             width: 100px;
             height: 75px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 75"><rect fill="%234facfe" width="100" height="75" rx="10"/><circle fill="white" cx="25" cy="25" r="6"/><circle fill="white" cx="50" cy="25" r="6"/><circle fill="white" cx="75" cy="25" r="6"/><rect fill="white" x="15" y="45" width="70" height="8" rx="4"/></svg>') center/cover;
+            background: linear-gradient(45deg, #1E90FF, #87CEEB);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
         }
 
         .right .floating-image:nth-child(4) {
@@ -123,7 +151,9 @@
             right: 20px;
             width: 75px;
             height: 90px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 90"><rect fill="%23667eea" width="75" height="90" rx="10"/><circle fill="white" cx="37.5" cy="30" r="10"/><rect fill="white" x="20" y="50" width="35" height="25" rx="5"/></svg>') center/cover;
+            background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
         }
 
         .right .floating-image:nth-child(5) {
@@ -131,7 +161,9 @@
             right: 30px;
             width: 65px;
             height: 65px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 65"><circle fill="%23f093fb" cx="32.5" cy="32.5" r="32.5"/><path fill="white" d="M20 32.5 L25 37.5 L45 17.5" stroke="white" stroke-width="2" fill="none"/></svg>') center/cover;
+            background: linear-gradient(45deg, #ADFF2F, #7FFF00);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(173, 255, 47, 0.3);
         }
 
         /* Animation for floating effect */
@@ -156,6 +188,40 @@
             z-index: 1;
         }
 
+        /* Animated sections */
+        .animate-on-scroll {
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-on-scroll.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .animate-scale {
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-scale.animate {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .animate-slide-up {
+            transform: translateY(80px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-slide-up.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
         /* Header */
         header {
             background: rgba(255, 255, 255, 0.95);
@@ -177,7 +243,7 @@
         .logo {
             font-size: 2rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #4dd0e1, #81c784);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -205,21 +271,52 @@
             padding: 120px 0 80px;
             text-align: center;
             color: white;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.9), rgba(129, 199, 132, 0.9));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="70" cy="80" r="2.5" fill="rgba(255,255,255,0.04)"/></svg>');
+            animation: float-bg 20s linear infinite;
+        }
+
+        @keyframes float-bg {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(3.5rem, 8vw, 6rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            color: white;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
             margin-bottom: 2rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            opacity: 0.9;
         }
 
         .cta-buttons {
@@ -242,48 +339,91 @@
         }
 
         .btn-primary {
-            background: #ff6b6b;
+            background: linear-gradient(45deg, #4dd0e1, #81c784);
             color: white;
+            box-shadow: 0 10px 30px rgba(77, 208, 225, 0.3);
         }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 2px solid white;
+            backdrop-filter: blur(10px);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 15px 40px rgba(77, 208, 225, 0.4);
         }
 
         /* Features Section */
         .features {
             padding: 80px 0;
-            background: white;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="70" cy="80" r="2.5" fill="rgba(255,255,255,0.04)"/></svg>');
+            animation: float-bg 20s linear infinite;
+            pointer-events: none;
         }
 
         .features h2 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 3rem;
-            color: #333;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .feature-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem 2.5rem;
             border-radius: 20px;
-            color: white;
+            border: none;
             text-align: center;
-            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            color: #333;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card.animate::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
@@ -291,15 +431,36 @@
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
+            color: #FF6B6B;
+        }
+
+        .feature-card p {
+            opacity: 0.7;
+            line-height: 1.6;
+            color: #555;
         }
 
         /* Venue Section */
         .venue-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #4dd0e1 0%, #81c784 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .venue-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="20" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="20" cy="60" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="70" r="2.5" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="80" r="1.5" fill="rgba(255,255,255,0.04)"/></svg>');
+            animation: float-bg 25s linear infinite reverse;
+            pointer-events: none;
         }
 
         .venue-grid {
@@ -310,8 +471,22 @@
         }
 
         .venue-content h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .venue-content,
+        .venue-image {
+            position: relative;
+            z-index: 2;
+        }
+
+        .features .container,
+        .events-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         .venue-benefits {
@@ -323,15 +498,95 @@
             padding: 0.5rem 0;
             position: relative;
             padding-left: 2rem;
+            font-size: 1.1rem;
         }
 
         .venue-benefits li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #00f2fe;
+            color: #fff;
             font-weight: bold;
             font-size: 1.2rem;
+        }
+
+        .venue-image {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .venue-image h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .venue-image p {
+            font-size: 1.2rem;
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .events-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="15" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="15" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="35" cy="55" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="85" cy="75" r="2.5" fill="rgba(255,255,255,0.04)"/><circle cx="25" cy="85" r="1.5" fill="rgba(255,255,255,0.05)"/><circle cx="65" cy="35" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
+            animation: float-bg 22s linear infinite;
+            pointer-events: none;
+        }
+
+        .events-section h2 {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-date {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: bold;
         }
 
         /* Modal Styles */
@@ -396,40 +651,7 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #667eea;
-        }
-
-        /* Events Section */
-        .events-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .event-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-date {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-weight: bold;
+            border-color: #4dd0e1;
         }
 
         /* Footer */
@@ -438,6 +660,16 @@
             color: white;
             text-align: center;
             padding: 2rem 0;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
         }
 
         /* Responsive */
@@ -463,19 +695,20 @@
             .side-images {
                 display: none;
             }
-        }
 
-        .success-message {
-            background: #4CAF50;
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: none;
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="scroll-indicator"></div>
+
     <header>
         <nav>
             <div class="logo">PonSphaera</div>
@@ -483,7 +716,6 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#venues">For Venues</a></li>
                 <li><a href="#events">Events</a></li>
-                <li><a href="#about">About</a></li>
             </ul>
         </nav>
     </header>
@@ -508,40 +740,42 @@
     <main>
         <section id="home" class="hero">
             <div class="container">
-                <h1>PonSphaera</h1>
-                <p>Miami's premier sober morning club bringing health, wellness, and community to venues across the city</p>
-                <div class="cta-buttons">
-                    <button class="btn btn-primary" onclick="openModal('venueModal')">Book Your Venue</button>
-                    <a href="https://www.sweatpals.com/event/ponsphaeras-morning-club-independence-day-weekend-afterparty-edition" target="_blank" class="btn btn-secondary">Get Tickets</a>
+                <div class="hero-content animate-on-scroll">
+                    <h1>PonSphaera</h1>
+                    <p>Miami's premier sober morning club bringing health, wellness, and community to venues across the city</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="openModal('venueModal')">Book Your Venue</button>
+                        <a href="https://www.sweatpals.com/event/ponsphaeras-morning-club-independence-day-weekend-afterparty-edition" target="_blank" class="btn btn-secondary">Get Tickets</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="features">
             <div class="container">
-                <h2>What We Bring</h2>
+                <h2 class="animate-on-scroll">What We Bring</h2>
                 <div class="features-grid">
-                    <div class="feature-card">
+                    <div class="feature-card animate-slide-up">
                         <h3>🏓 Ping Pong Tables</h3>
                         <p>Professional tournament-grade tables for competitive fun and social connection</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card animate-slide-up">
                         <h3>💆 Wellness Services</h3>
                         <p>Chiropractors, massages, and B12 shots for complete body wellness</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card animate-slide-up">
                         <h3>🧘 Yoga & Fitness</h3>
                         <p>Sunrise yoga sessions and partnerships with Miami's top run clubs</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card animate-slide-up">
                         <h3>🌿 Natural Wellness</h3>
                         <p>Kratom and other natural wellness products for holistic health</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card animate-slide-up">
                         <h3>👥 Community</h3>
                         <p>A thriving network of health-conscious individuals seeking connection</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card animate-slide-up">
                         <h3>📢 Marketing Power</h3>
                         <p>Extensive social media reach and event promotion capabilities</p>
                     </div>
@@ -552,7 +786,7 @@
         <section id="venues" class="venue-section">
             <div class="container">
                 <div class="venue-grid">
-                    <div class="venue-content">
+                    <div class="venue-content animate-scale">
                         <h2>Transform Your Venue</h2>
                         <p>Partner with PonSphaera to unlock a new revenue stream and showcase your commitment to health and wellness.</p>
                         <ul class="venue-benefits">
@@ -567,11 +801,9 @@
                         </ul>
                         <button class="btn btn-primary" onclick="openModal('venueModal')">Partner With Us</button>
                     </div>
-                    <div class="venue-image">
-                        <div style="background: rgba(255,255,255,0.2); padding: 3rem; border-radius: 20px; text-align: center;">
-                            <h3 style="font-size: 2rem; margin-bottom: 1rem;">Join 50+ Miami Venues</h3>
-                            <p style="font-size: 1.2rem;">Hotels • Clubs • Rooftops • Apartments • Event Spaces</p>
-                        </div>
+                    <div class="venue-image animate-on-scroll">
+                        <h3>Join 50+ Miami Venues</h3>
+                        <p>Hotels • Clubs • Rooftops • Apartments • Event Spaces</p>
                     </div>
                 </div>
             </div>
@@ -579,9 +811,9 @@
 
         <section id="events" class="events-section">
             <div class="container">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Upcoming Events</h2>
+                <h2 class="animate-on-scroll">Upcoming Events</h2>
                 <div class="events-grid" id="eventsGrid">
-                    <div class="event-card">
+                    <div class="event-card animate-slide-up">
                         <div class="event-date">SAT, JUL 5 • 10:00 AM - 2:00 PM</div>
                         <h3>Independence Day Weekend Afterparty</h3>
                         <p>Free Kratom with the purchase of a ticket</p>
@@ -589,7 +821,7 @@
                         <p><strong>Price:</strong> $10</p>
                         <a href="https://www.sweatpals.com/event/ponsphaeras-morning-club-independence-day-weekend-afterparty-edition" target="_blank" class="btn btn-secondary">Get Tickets</a>
                     </div>
-                    <div class="event-card">
+                    <div class="event-card animate-slide-up">
                         <div class="event-date">THU, JUL 24</div>
                         <h3>TBD at Brickell city Centre</h3>
                         <p>TBD at Brickell city Centre</p>
@@ -597,7 +829,7 @@
                         <p><strong>Price:</strong> $20</p>
                         <a href="https://www.sweatpals.com/event/ponsphaeras-morning-club-independence-day-weekend-afterparty-edition" target="_blank" class="btn btn-secondary">Get Tickets</a>
                     </div>
-                    <div class="event-card">
+                    <div class="event-card animate-slide-up">
                         <div class="event-date">FRI, AUG 8</div>
                         <h3>TBD at Miami Beach</h3>
                         <p>This one is going to be a BLAST - stay tuned</p>
@@ -759,6 +991,116 @@
     <script>
         let currentEventPrice = 0;
 
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        // Sequential animation for all elements
+        let animationQueue = [];
+        let currentIndex = 0;
+
+        const sequentialObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    if (!animationQueue.includes(element)) {
+                        animationQueue.push(element);
+                    }
+                    processAnimationQueue();
+                }
+            });
+        }, observerOptions);
+
+        function processAnimationQueue() {
+            if (currentIndex < animationQueue.length) {
+                const element = animationQueue[currentIndex];
+                
+                // Special handling for different element types
+                if (element.classList.contains('features')) {
+                    // Animate features section with staggered cards
+                    element.querySelector('h2').classList.add('animate');
+                    const cards = element.querySelectorAll('.feature-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, index * 200);
+                    });
+                } else if (element.classList.contains('events-section')) {
+                    // Animate events section with staggered cards
+                    element.querySelector('h2').classList.add('animate');
+                    const cards = element.querySelectorAll('.event-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, index * 250);
+                    });
+                } else {
+                    // Regular animation for other elements
+                    element.classList.add('animate');
+                }
+                
+                currentIndex++;
+                
+                // Process next element after a delay
+                setTimeout(() => {
+                    processAnimationQueue();
+                }, 600);
+            }
+        }
+
+        // Observe all animatable elements in order
+        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .events-section').forEach(el => {
+            sequentialObserver.observe(el);
+        });
+
+        // Separate observer for individual slide-up elements that should animate when parent triggers
+        const slideUpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Don't observe individual cards, let the parent section handle them
+        document.querySelectorAll('.animate-slide-up').forEach(el => {
+            // Only observe if it's not a feature-card or event-card (those are handled by parent)
+            if (!el.classList.contains('feature-card') && !el.classList.contains('event-card')) {
+                slideUpObserver.observe(el);
+            }
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            document.querySelector('.scroll-indicator').style.width = scrollPercent + '%';
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const floatingElements = document.querySelectorAll('.floating-image');
+            
+            floatingElements.forEach((element, index) => {
+                const speed = 0.3 + (index * 0.1);
+                const yPos = scrolled * speed;
+                element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.05}deg)`;
+            });
+        });
+
+        // Trigger initial hero animation
+        setTimeout(() => {
+            document.querySelector('.hero-content').classList.add('animate');
+        }, 500);
+
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -855,4 +1197,3 @@
     </script>
 </body>
 </html>
-                  
