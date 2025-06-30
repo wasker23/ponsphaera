@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3F41CRDZBW');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PonSphaera - Miami's Premier Morning Club</title>
     <link rel="icon" type="image/png" href="ponsphaera-logo.png">
     <link rel="apple-touch-icon" href="ponsphaera-logo.png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3F41CRDZBW');
+    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * {
@@ -277,12 +278,14 @@
             color: #667eea;
         }
 
-        /* Hero Section */
+        /* Hero Section with Background Image */
         .hero {
             padding: 120px 0 80px;
             text-align: center;
             color: white;
-            background: linear-gradient(135deg, rgba(77, 208, 225, 0.9), rgba(129, 199, 132, 0.9));
+            background: 
+                linear-gradient(135deg, rgba(77, 208, 225, 0.85), rgba(129, 199, 132, 0.85)),
+                url('ponsphaera-event-3.jpg') center/cover;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -494,12 +497,6 @@
             z-index: 2;
         }
 
-        .features .container,
-        .events-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
         .venue-benefits {
             list-style: none;
             margin-bottom: 2rem;
@@ -528,18 +525,121 @@
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
         }
 
         .venue-image h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
+            color: white;
         }
 
         .venue-image p {
             font-size: 1.2rem;
+            color: white;
+            opacity: 0.9;
         }
 
-        /* Events Section */
+        /* Community Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="30" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="30" cy="65" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="75" r="2.5" fill="rgba(255,255,255,0.04)"/><circle cx="45" cy="85" r="1.5" fill="rgba(255,255,255,0.05)"/></svg>');
+            animation: float-bg 18s linear infinite;
+            pointer-events: none;
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            transform: translateY(60px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #4dd0e1;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
         .events-section {
             padding: 80px 0;
             background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
@@ -757,6 +857,58 @@
                     <div class="cta-buttons">
                         <button class="btn btn-primary" onclick="openModal('venueModal')">Book Your Venue</button>
                         <a href="#events" class="btn btn-secondary">Get Tickets</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Our Community</h2>
+                <p class="gallery-subtitle animate-on-scroll">Real moments from our Miami wellness adventures</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="ponsphaera-event-1.jpg" alt="Beach ping pong fun in Miami">
+                        <div class="gallery-overlay">
+                            <h3>Beach Vibes</h3>
+                            <p>Ping pong meets Miami sunshine - the perfect morning combination!</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ponsphaera-event-2.jpg" alt="Indoor community ping pong tournament">
+                        <div class="gallery-overlay">
+                            <h3>Tournament Ready</h3>
+                            <p>Competitive fun with our amazing community members</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ponsphaera-event-3.jpg" alt="Large group wellness event">
+                        <div class="gallery-overlay">
+                            <h3>Community Strong</h3>
+                            <p>Building connections through wellness and fun activities</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ponsphaera-event-4.jpg" alt="Evening venue event">
+                        <div class="gallery-overlay">
+                            <h3>Venue Partners</h3>
+                            <p>Bringing the PonSphaera experience to Miami's best spots</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ponsphaera-event-5.jpg" alt="Friends enjoying wellness activities">
+                        <div class="gallery-overlay">
+                            <h3>Friendship Goals</h3>
+                            <p>Making lasting connections in our sober morning community</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ponsphaera-event-1.jpg" alt="More beach ping pong action">
+                        <div class="gallery-overlay">
+                            <h3>Pure Joy</h3>
+                            <p>The smiles say it all - this is what wellness looks like</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1028,6 +1180,16 @@
                             card.classList.add('animate');
                         }, index * 200);
                     });
+                } else if (element.classList.contains('gallery-section')) {
+                    // Animate gallery section with staggered images
+                    element.querySelector('h2').classList.add('animate');
+                    element.querySelector('.gallery-subtitle').classList.add('animate');
+                    const items = element.querySelectorAll('.gallery-item');
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate');
+                        }, index * 150);
+                    });
                 } else if (element.classList.contains('events-section')) {
                     // Animate events section with staggered cards
                     element.querySelector('h2').classList.add('animate');
@@ -1052,7 +1214,7 @@
         }
 
         // Observe all animatable elements in order
-        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .events-section').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .gallery-section, .events-section').forEach(el => {
             sequentialObserver.observe(el);
         });
 
