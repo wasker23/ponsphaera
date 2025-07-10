@@ -377,6 +377,18 @@
             transform: translateY(-3px);
         }
 
+        .btn-text-signup {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-text-signup:hover {
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            transform: translateY(-3px);
+        }
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
@@ -869,6 +881,7 @@
                     <div class="cta-buttons">
                         <button class="btn btn-primary" onclick="openModal('venueModal')">Book Your Venue</button>
                         <a href="#events" class="btn btn-secondary">Get Tickets</a>
+                        <a href="#text-signup" class="btn btn-text-signup">Get Event Updates</a>
                         <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram">Check us out on Instagram</a>
                     </div>
                 </div>
@@ -974,6 +987,17 @@
                         <h3>Join 50+ Miami Venues</h3>
                         <p>Hotels • Clubs • Rooftops • Apartments • Event Spaces</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="text-signup" class="text-signup-section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Stay in the Loop</h2>
+                <p class="text-signup-subtitle animate-on-scroll">Get exclusive event updates, early access to tickets, and wellness tips delivered straight to your phone!</p>
+                
+                <div class="form-container animate-scale">
+                    <iframe src="https://formstax.co/730f9d23" title="Text to Consent Form"></iframe>
                 </div>
             </div>
         </section>
@@ -1196,6 +1220,13 @@
                             item.classList.add('animate');
                         }, index * 150);
                     });
+                } else if (element.classList.contains('text-signup-section')) {
+                    // Animate text signup section
+                    element.querySelector('h2').classList.add('animate');
+                    element.querySelector('.text-signup-subtitle').classList.add('animate');
+                    setTimeout(() => {
+                        element.querySelector('.form-container').classList.add('animate');
+                    }, 300);
                 } else if (element.classList.contains('events-section')) {
                     // Animate events section with staggered cards
                     element.querySelector('h2').classList.add('animate');
@@ -1220,7 +1251,7 @@
         }
 
         // Observe all animatable elements in order
-        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .gallery-section, .events-section').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .gallery-section, .text-signup-section, .events-section').forEach(el => {
             sequentialObserver.observe(el);
         });
 
