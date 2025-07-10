@@ -881,7 +881,7 @@
                     <div class="cta-buttons">
                         <button class="btn btn-primary" onclick="openModal('venueModal')">Book Your Venue</button>
                         <a href="#events" class="btn btn-secondary">Get Tickets</a>
-                        <a href="#text-signup" class="btn btn-text-signup">Get Event Updates</a>
+                        <button class="btn btn-text-signup" onclick="openModal('smsModal')">Get Event Updates</button>
                         <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram">Check us out on Instagram</a>
                     </div>
                 </div>
@@ -991,17 +991,6 @@
             </div>
         </section>
 
-        <section id="text-signup" class="text-signup-section">
-            <div class="container">
-                <h2 class="animate-on-scroll">Stay in the Loop</h2>
-                <p class="text-signup-subtitle animate-on-scroll">Get exclusive event updates, early access to tickets, and wellness tips delivered straight to your phone!</p>
-                
-                <div class="form-container animate-scale">
-                    <iframe src="https://formstax.co/730f9d23" title="Text to Consent Form"></iframe>
-                </div>
-            </div>
-        </section>
-
         <section id="events" class="events-section">
             <div class="container">
                 <h2 class="animate-on-scroll">Upcoming Events</h2>
@@ -1077,6 +1066,16 @@
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Venue Request</button>
             </form>
+        </div>
+    </div>
+
+    <!-- SMS Signup Modal -->
+    <div id="smsModal" class="modal">
+        <div class="modal-content" style="max-width: 1000px; max-height: 90vh;">
+            <span class="close" onclick="closeModal('smsModal')">&times;</span>
+            <h2 style="margin-bottom: 2rem; color: #333; text-align: center;">Stay in the Loop</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #666;">Get exclusive event updates, early access to tickets, and wellness tips delivered straight to your phone!</p>
+            <iframe src="https://formstax.co/730f9d23" style="width: 100%; height: 700px; border: none; border-radius: 10px;" title="Text to Consent Form"></iframe>
         </div>
     </div>
 
@@ -1220,13 +1219,6 @@
                             item.classList.add('animate');
                         }, index * 150);
                     });
-                } else if (element.classList.contains('text-signup-section')) {
-                    // Animate text signup section
-                    element.querySelector('h2').classList.add('animate');
-                    element.querySelector('.text-signup-subtitle').classList.add('animate');
-                    setTimeout(() => {
-                        element.querySelector('.form-container').classList.add('animate');
-                    }, 300);
                 } else if (element.classList.contains('events-section')) {
                     // Animate events section with staggered cards
                     element.querySelector('h2').classList.add('animate');
@@ -1251,7 +1243,7 @@
         }
 
         // Observe all animatable elements in order
-        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .gallery-section, .text-signup-section, .events-section').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .gallery-section, .events-section').forEach(el => {
             sequentialObserver.observe(el);
         });
 
