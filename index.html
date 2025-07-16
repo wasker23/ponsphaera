@@ -879,7 +879,7 @@
                     <h1>PonSphaera</h1>
                     <p>Miami's premier sober morning club bringing health, wellness, and community to venues across the city</p>
                     <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="openModal('venueModal')">Book Your Venue</button>
+                        <button class="btn btn-primary" onclick="openModal('givingModal')">Nominate an Organization</button>
                         <a href="#events" class="btn btn-secondary">Get Tickets</a>
                         <button class="btn btn-text-signup" onclick="openModal('smsModal')">Get Event Updates</button>
                         <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram">Check us out on Instagram</a>
@@ -969,23 +969,23 @@
             <div class="container">
                 <div class="venue-grid">
                     <div class="venue-content animate-scale">
-                        <h2>Transform Your Venue</h2>
-                        <p>Partner with PonSphaera to unlock a new revenue stream and showcase your commitment to health and wellness.</p>
+                        <h2>We Give Back</h2>
+                        <p>Every month, PonSphaera partners with a Miami organization making a positive impact in our community. We donate a portion of our proceeds and provide free wellness events to support their mission.</p>
                         <ul class="venue-benefits">
-                            <li>We bring the crowd - guaranteed attendance</li>
-                            <li>All equipment provided by us</li>
-                            <li>Professional event management</li>
-                            <li>Social media promotion and coverage</li>
-                            <li>Attract health-conscious clientele</li>
-                            <li>Diversify beyond nightlife</li>
-                            <li>Build community reputation</li>
-                            <li>Minimal venue requirements</li>
+                            <li>Monthly charitable partnerships with local organizations</li>
+                            <li>Donation of event proceeds to support good causes</li>
+                            <li>Free wellness events for organization members</li>
+                            <li>Community outreach and volunteer opportunities</li>
+                            <li>Social media promotion for partner organizations</li>
+                            <li>Building stronger, healthier Miami communities</li>
+                            <li>Connecting wellness with social responsibility</li>
+                            <li>Creating lasting positive impact together</li>
                         </ul>
-                        <button class="btn btn-primary" onclick="openModal('venueModal')">Partner With Us</button>
+                        <button class="btn btn-primary" onclick="openModal('givingModal')">Nominate an Organization</button>
                     </div>
                     <div class="venue-image animate-on-scroll">
-                        <h3>Join 50+ Miami Venues</h3>
-                        <p>Hotels • Clubs • Rooftops • Apartments • Event Spaces</p>
+                        <h3>Making Miami Better</h3>
+                        <p>Together Through Wellness & Community</p>
                     </div>
                 </div>
             </div>
@@ -1066,6 +1066,34 @@
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Venue Request</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Organization Nomination Modal -->
+    <div id="givingModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <span class="close" onclick="closeModal('givingModal')">&times;</span>
+            <h2 style="margin-bottom: 2rem; color: #333; text-align: center;">Nominate an Organization</h2>
+            <div style="text-align: center; padding: 2rem;">
+                <div style="background: linear-gradient(135deg, #FF6B6B, #4ECDC4); color: white; padding: 2rem; border-radius: 20px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">🤝 Help Us Give Back</h3>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Know a Miami organization making a difference? Nominate them to be our monthly charity partner!</p>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.2); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">We partner with organizations focused on:</p>
+                        <p style="font-size: 1rem;">• Community wellness & health<br>• Youth development & education<br>• Environmental sustainability<br>• Social justice & equality<br>• Mental health awareness</p>
+                    </div>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdc3F3locWzi94tf0cvedywsrwFCPKcltpJgPZaeIl7Tn2Euw/viewform" target="_blank" class="btn" style="background: white; color: #FF6B6B; font-weight: bold; text-decoration: none; padding: 1rem 2rem; border-radius: 30px; display: inline-block; margin-bottom: 1rem;">Submit Nomination</a>
+                    
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Together, we can make Miami a healthier, more connected community!</p>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; color: #555;">
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>What partner organizations receive:</strong></p>
+                    <p style="font-size: 0.9rem;">• Monthly donation from our event proceeds<br>• Free wellness events for their community<br>• Social media promotion and awareness<br>• Volunteer opportunities for our members</p>
+                </div>
+            </div>
         </div>
     </div>
 
