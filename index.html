@@ -1471,6 +1471,10 @@
                             content_category: 'tickets',
                             currency: 'USD'
                         });
+                        
+                        fbq('track', 'InitiateCheckout', {
+                            value: 1,
+                        });
                     }
                 }
                 
@@ -1481,6 +1485,19 @@
                             content_name: 'Event Ticket Purchase',
                             content_category: 'tickets',
                             currency: 'USD'
+                        });
+                        
+                        fbq('track', 'InitiateCheckout', {
+                            value: 1,
+                        });
+                    }
+                }
+                
+                // Track "Get Tickets" button clicks
+                if (e.target.textContent === 'Get Tickets' || e.target.closest('.btn-secondary')) {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'InitiateCheckout', {
+                            value: 1,
                         });
                     }
                 }
