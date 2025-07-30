@@ -16,6 +16,24 @@
       gtag('config', 'G-3F41CRDZBW');
     </script>
     
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '781141444370323');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * {
@@ -1363,6 +1381,14 @@
         function submitVenueForm(event) {
             event.preventDefault();
             
+            // Track form submission with Meta Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Venue Booking Form',
+                    content_category: 'venue_booking'
+                });
+            }
+            
             // Get form data
             const formData = {
                 venue_name: document.getElementById('venueName').value,
@@ -1385,6 +1411,14 @@
                         document.getElementById('venueSuccess').style.display = 'block';
                         document.getElementById('venueForm').style.display = 'none';
                         
+                        // Track successful form submission
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'SubmitApplication', {
+                                content_name: 'Venue Booking',
+                                content_category: 'venue_booking'
+                            });
+                        }
+                        
                         setTimeout(() => {
                             closeModal('venueModal');
                             document.getElementById('venueForm').style.display = 'block';
@@ -1395,34 +1429,3 @@
                     alert('Failed to send message. Error details logged to console. Please try again or contact us directly at ponsphaera@gmail.com');
                 });
         }
-
-        // Initialize EmailJS when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize EmailJS with your public key
-            emailjs.init('TGLrnV_j8p9iQJaXe');
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target.classList.contains('modal')) {
-                    e.target.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-
-            // Smooth scrolling for navigation
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
