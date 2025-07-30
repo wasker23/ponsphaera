@@ -28,6 +28,7 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '781141444370323');
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
@@ -1459,6 +1460,31 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize EmailJS with your public key
             emailjs.init('TGLrnV_j8p9iQJaXe');
+            
+            // Track clicks on ticket purchase buttons
+            document.addEventListener('click', function(e) {
+                // Track SweatPals widget clicks
+                if (e.target.closest('.sweatpals-widget') || e.target.textContent.includes('Buy') || e.target.textContent.includes('Ticket')) {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'AddToCart', {
+                            content_name: 'Event Ticket',
+                            content_category: 'tickets',
+                            currency: 'USD'
+                        });
+                    }
+                }
+                
+                // Track Square payment link clicks
+                if (e.target.href && e.target.href.includes('square.link')) {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'AddToCart', {
+                            content_name: 'Event Ticket Purchase',
+                            content_category: 'tickets',
+                            currency: 'USD'
+                        });
+                    }
+                }
+            });
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {
