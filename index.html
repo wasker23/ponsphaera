@@ -430,14 +430,16 @@
             font-weight: 900 !important;
             text-transform: uppercase;
             letter-spacing: 1px;
-            animation: pulse-glow 2s infinite;
+            animation: pulse-glow 2s infinite, hero-text-glow 2s ease-in-out infinite alternate;
             border: 3px solid #fff;
             box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5) !important;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .btn-tickets-hero:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 20px 60px rgba(77, 208, 225, 0.7) !important;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
 
         @keyframes pulse-glow {
@@ -446,6 +448,15 @@
             }
             50% { 
                 box-shadow: 0 15px 50px rgba(77, 208, 225, 0.8);
+            }
+        }
+
+        @keyframes hero-text-glow {
+            from { 
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            to { 
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(77, 208, 225, 0.4);
             }
         }
 
@@ -490,7 +501,7 @@
         /* Features Section */
         .features {
             padding: 80px 0;
-            background: linear-gradient(135deg, #4dd0e1 0%, #81c784 100%);
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
             color: white;
             position: relative;
             overflow: hidden;
@@ -656,7 +667,7 @@
         /* Community Gallery Section */
         .gallery-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+            background: linear-gradient(135deg, #4dd0e1 0%, #81c784 100%);
             color: white;
             position: relative;
             overflow: hidden;
@@ -1099,6 +1110,42 @@
             </div>
         </section>
 
+        <section class="features">
+            <div class="container">
+                <h2 class="animate-on-scroll">What We Bring</h2>
+                <div class="features-grid">
+                    <div class="feature-card animate-slide-up">
+                        <h3>🧊 Cold Plunges</h3>
+                        <p>Invigorating ice baths to boost recovery, mental clarity, and overall wellness</p>
+                    </div>
+                    <div class="feature-card animate-slide-up">
+                        <h3>🏓 Ping Pong Tables</h3>
+                        <p>Professional tournament-grade tables for competitive fun and social connection</p>
+                    </div>
+                    <div class="feature-card animate-slide-up">
+                        <h3>💆 Wellness Services</h3>
+                        <p>Chiropractors, massages, and B12 shots for complete body wellness</p>
+                    </div>
+                    <div class="feature-card animate-slide-up">
+                        <h3>🧘 Yoga & Fitness</h3>
+                        <p>Sunrise yoga sessions and partnerships with Miami's top run clubs</p>
+                    </div>
+                    <div class="feature-card animate-slide-up">
+                        <h3>🌿 Natural Wellness</h3>
+                        <p>Kratom and other natural wellness products for holistic health</p>
+                    </div>
+                    <div class="feature-card animate-slide-up">
+                        <h3>👥 Community</h3>
+                        <p>A thriving network of health-conscious individuals seeking connection</p>
+                    </div>
+                    <div class="feature-card animate-slide-up">
+                        <h3>📢 Marketing Power</h3>
+                        <p>Extensive social media reach and event promotion capabilities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="gallery-section">
             <div class="container">
                 <h2 class="animate-on-scroll">Our Community</h2>
@@ -1144,43 +1191,31 @@
             </div>
         </section>
 
-        <section class="features">
+        <section id="venues" class="venue-section">
             <div class="container">
-                <h2 class="animate-on-scroll">What We Bring</h2>
-                <div class="features-grid">
-                    <div class="feature-card animate-slide-up">
-                        <h3>🧊 Cold Plunges</h3>
-                        <p>Invigorating ice baths to boost recovery, mental clarity, and overall wellness</p>
+                <div class="venue-grid">
+                    <div class="venue-content animate-scale">
+                        <h2>We Give Back</h2>
+                        <p>Every month, PonSphaera partners with a Miami organization making a positive impact in our community. We donate a portion of our proceeds and provide free wellness events to support their mission.</p>
+                        <ul class="venue-benefits">
+                            <li>Monthly charitable partnerships with local organizations</li>
+                            <li>Donation of event proceeds to support good causes</li>
+                            <li>Free wellness events for organization members</li>
+                            <li>Community outreach and volunteer opportunities</li>
+                            <li>Social media promotion for partner organizations</li>
+                            <li>Building stronger, healthier Miami communities</li>
+                            <li>Connecting wellness with social responsibility</li>
+                            <li>Creating lasting positive impact together</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="openModal('givingModal')">Nominate an Organization</button>
                     </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>🏓 Ping Pong Tables</h3>
-                        <p>Professional tournament-grade tables for competitive fun and social connection</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>💆 Wellness Services</h3>
-                        <p>Chiropractors, massages, and B12 shots for complete body wellness</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>🧘 Yoga & Fitness</h3>
-                        <p>Sunrise yoga sessions and partnerships with Miami's top run clubs</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>🌿 Natural Wellness</h3>
-                        <p>Kratom and other natural wellness products for holistic health</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>👥 Community</h3>
-                        <p>A thriving network of health-conscious individuals seeking connection</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>📢 Marketing Power</h3>
-                        <p>Extensive social media reach and event promotion capabilities</p>
+                    <div class="venue-image animate-on-scroll">
+                        <h3>Making Miami Better</h3>
+                        <p>Together Through Wellness & Community</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="venues" class="venue-section">
             <div class="container">
                 <div class="venue-grid">
                     <div class="venue-content animate-scale">
