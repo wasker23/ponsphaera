@@ -28,7 +28,13 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '781141444370323');
     fbq('track', 'PageView');
+    
+    // Debug logging
+    console.log('Meta Pixel loaded');
+    
+    // Fire ViewContent event
     fbq('track', 'ViewContent');
+    console.log('ViewContent event fired');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
@@ -417,6 +423,70 @@
             box-shadow: 0 15px 40px rgba(77, 208, 225, 0.4);
         }
 
+        /* Hero Tickets Button - Make it massive and obvious */
+        .btn-tickets-hero {
+            padding: 20px 40px !important;
+            font-size: 1.4rem !important;
+            font-weight: 900 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse-glow 2s infinite;
+            border: 3px solid #fff;
+            box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5) !important;
+        }
+
+        .btn-tickets-hero:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.7) !important;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5);
+            }
+            50% { 
+                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.8);
+            }
+        }
+
+        /* Make other buttons smaller */
+        .btn-secondary-small {
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .btn-instagram-small {
+            padding: 15px 25px;
+            font-size: 1rem;
+            background: linear-gradient(45deg, #E4405F, #F56040, #FCAF45);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 25px rgba(228, 64, 95, 0.3);
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .btn-instagram-small:hover {
+            box-shadow: 0 12px 35px rgba(228, 64, 95, 0.4);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Responsive tickets button */
+        @media (max-width: 768px) {
+            .btn-tickets-hero {
+                padding: 18px 30px !important;
+                font-size: 1.2rem !important;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
         /* Features Section */
         .features {
             padding: 80px 0;
@@ -718,6 +788,128 @@
             gap: 2rem;
         }
 
+        /* Ticket Purchase Section Styling */
+        .ticket-urgency-banner {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ticket-urgency-banner h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: ticket-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes ticket-glow {
+            from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+            to { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.5); }
+        }
+
+        .urgency-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .social-proof {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #4dd0e1;
+            font-style: italic;
+        }
+
+        .ticket-purchase-card {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: #333 !important;
+            border: 3px solid #4dd0e1;
+            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.3);
+            animation: card-highlight 3s ease-in-out infinite;
+        }
+
+        @keyframes card-highlight {
+            0%, 100% { border-color: #4dd0e1; }
+            50% { border-color: #FFD700; }
+        }
+
+        .ticket-header h3 {
+            font-size: 1.8rem;
+            color: #4dd0e1;
+            margin-bottom: 1rem;
+        }
+
+        .ticket-header .event-date {
+            background: #4dd0e1;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Floating Ticket Button */
+        .floating-ticket-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+        }
+
+        .floating-ticket-btn.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating-btn {
+            background: linear-gradient(45deg, #4dd0e1, #81c784);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(77, 208, 225, 0.4);
+            display: block;
+            text-align: center;
+            animation: float-pulse 2s infinite;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(77, 208, 225, 0.6);
+            color: white;
+            text-decoration: none;
+        }
+
+        @keyframes float-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @media (max-width: 768px) {
+            .floating-ticket-btn {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .floating-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+
         .event-card {
             background: rgba(255, 255, 255, 0.15);
             color: white;
@@ -895,12 +1087,13 @@
             <div class="container">
                 <div class="hero-content animate-on-scroll">
                     <h1>PonSphaera</h1>
-                    <p>Miami's premier sober morning club bringing health, wellness, and community to venues across the city</p>
+                    <p>Join Miami's wellness community at The Gates Hotel on <strong>August 9th</strong><br>
+                    Sober morning vibes • Ping pong • Wellness services • Networking</p>
                     <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="openModal('givingModal')">Nominate an Organization</button>
-                        <a href="#events" class="btn btn-secondary">Get Tickets</a>
+                        <a href="#events" class="btn btn-primary btn-tickets-hero">🎟️ GET TICKETS - AUG 9TH</a>
                         <button class="btn btn-text-signup" onclick="openModal('smsModal')">Get Event Updates</button>
-                        <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram">Check us out on Instagram</a>
+                        <button class="btn btn-secondary-small" onclick="openModal('givingModal')">Nominate an Organization</button>
+                        <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram-small">Follow Us</a>
                     </div>
                 </div>
             </div>
@@ -1011,9 +1204,18 @@
 
         <section id="events" class="events-section">
             <div class="container">
-                <h2 class="animate-on-scroll">Upcoming Events</h2>
+                <div class="ticket-urgency-banner">
+                    <h2 class="animate-on-scroll">🎟️ GET YOUR TICKETS NOW</h2>
+                    <p class="urgency-text">August 9th • The Gates Hotel • Limited Spots Available</p>
+                    <p class="social-proof">Join 200+ Miami wellness enthusiasts for our biggest event yet!</p>
+                </div>
                 <div class="events-grid" id="eventsGrid">
-                    <div class="event-card animate-slide-up" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 2rem; border-radius: 20px; color: white;">
+                    <div class="event-card animate-slide-up ticket-purchase-card">
+                        <div class="ticket-header">
+                            <h3>🌊 Community Collab at The Gates Hotel</h3>
+                            <div class="event-date">August 9th, 2025</div>
+                            <p style="margin: 1rem 0; font-size: 1.1rem; opacity: 0.9;">Morning wellness, ping pong, networking & more!</p>
+                        </div>
                         <!-- SweatPals widget begin -->
                         <script src="https://www.sweatpals.com/static/embed/event/checkout/script.js?priceMode=several&enableAutoEmbed=true&eventAlias=community-collab-grand-beach-hotel-ponsphaeras-morning-club&shortLocalInstance=2025-08-09&size=lg&colorHex=ffffff&buttonColorHex=ffffff&fontFamily=Poppins&priceTiersJson=%5B%224e92f4c5-d434-46b3-b9ee-743c77fe76e4%22%2C%2239fe2be5-e49d-497e-bb88-d0e4bbf8560e%22%2C%220bb25987-6ef7-42b8-85e4-abf61552363a%22%2C%22b2754fb7-421b-4584-b039-14a9494c25da%22%5D"></script>
                         <!-- SweatPals widget end -->
@@ -1022,6 +1224,13 @@
             </div>
         </section>
     </main>
+
+    <!-- Floating Ticket Button -->
+    <div class="floating-ticket-btn" id="floatingTicketBtn">
+        <a href="#events" class="floating-btn">
+            🎟️ GET TICKETS
+        </a>
+    </div>
 
     <!-- Venue Booking Modal -->
     <div id="venueModal" class="modal">
@@ -1323,13 +1532,27 @@
             }
         });
 
-        // Scroll progress indicator
+        // Scroll progress indicator and floating button
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset;
             const docHeight = document.body.scrollHeight - window.innerHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
             
             document.querySelector('.scroll-indicator').style.width = scrollPercent + '%';
+            
+            // Show floating ticket button after scrolling past hero section
+            const floatingBtn = document.getElementById('floatingTicketBtn');
+            const heroHeight = document.querySelector('.hero').offsetHeight;
+            const eventsSection = document.getElementById('events');
+            const eventsSectionTop = eventsSection.offsetTop;
+            const eventsSectionBottom = eventsSectionTop + eventsSection.offsetHeight;
+            
+            // Show button when past hero section but not in events section
+            if (scrollTop > heroHeight && (scrollTop < eventsSectionTop || scrollTop > eventsSectionBottom)) {
+                floatingBtn.classList.add('show');
+            } else {
+                floatingBtn.classList.remove('show');
+            }
         });
 
         // Parallax effect for floating elements
@@ -1494,7 +1717,9 @@
                 }
                 
                 // Track "Get Tickets" button clicks
-                if (e.target.textContent === 'Get Tickets' || e.target.closest('.btn-secondary')) {
+                if (e.target.textContent === 'Get Tickets' || e.target.closest('.btn-secondary') || 
+                    e.target.textContent.includes('GET TICKETS') || e.target.closest('.btn-tickets-hero') || 
+                    e.target.closest('.floating-btn')) {
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'InitiateCheckout', {
                             value: 1,
