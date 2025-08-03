@@ -430,33 +430,22 @@
             font-weight: 900 !important;
             text-transform: uppercase;
             letter-spacing: 1px;
-            animation: pulse-glow 2s infinite, hero-text-glow 2s ease-in-out infinite alternate;
+            animation: pulse-glow 2s ease-in-out infinite;
             border: 3px solid #fff;
-            box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5) !important;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5), 0 0 30px rgba(77, 208, 225, 0.8), 0 0 60px rgba(77, 208, 225, 0.4) !important;
         }
 
         .btn-tickets-hero:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.7) !important;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.7), 0 0 50px rgba(77, 208, 225, 1), 0 0 100px rgba(77, 208, 225, 0.6) !important;
         }
 
         @keyframes pulse-glow {
             0%, 100% { 
-                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5);
+                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5), 0 0 30px rgba(77, 208, 225, 0.8), 0 0 60px rgba(77, 208, 225, 0.4);
             }
             50% { 
-                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.8);
-            }
-        }
-
-        @keyframes hero-text-glow {
-            from { 
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            }
-            to { 
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(77, 208, 225, 0.4);
+                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.8), 0 0 50px rgba(77, 208, 225, 1), 0 0 100px rgba(77, 208, 225, 0.6);
             }
         }
 
