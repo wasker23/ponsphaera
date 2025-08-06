@@ -28,12 +28,10 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '781141444370323');
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
     
     // Debug logging
     console.log('Meta Pixel loaded');
-    
-    // Fire ViewContent event
-    fbq('track', 'ViewContent');
     console.log('ViewContent event fired');
     </script>
     <noscript><img height="1" width="1" style="display:none"
@@ -569,90 +567,6 @@
             color: #555;
         }
 
-        /* Venue Section */
-        .venue-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .venue-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="20" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="20" cy="60" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="70" r="2.5" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="80" r="1.5" fill="rgba(255,255,255,0.04)"/></svg>');
-            animation: float-bg 25s linear infinite reverse;
-            pointer-events: none;
-        }
-
-        .venue-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .venue-content h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 2rem;
-            font-weight: 700;
-            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .venue-content,
-        .venue-image {
-            position: relative;
-            z-index: 2;
-        }
-
-        .venue-benefits {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .venue-benefits li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .venue-benefits li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #fff;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .venue-image {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-
-        .venue-image h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .venue-image p {
-            font-size: 1.2rem;
-            color: white;
-            opacity: 0.9;
-        }
-
         /* Community Gallery Section */
         .gallery-section {
             padding: 80px 0;
@@ -753,6 +667,7 @@
             font-size: 0.9rem;
             opacity: 0.9;
         }
+
         .events-section {
             padding: 80px 0;
             background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
@@ -786,6 +701,31 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-date {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: bold;
         }
 
         /* Ticket Purchase Section Styling */
@@ -898,43 +838,6 @@
             50% { transform: scale(1.05); }
         }
 
-        @media (max-width: 768px) {
-            .floating-ticket-btn {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            .floating-btn {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-        }
-
-        .event-card {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-date {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
         /* Modal Styles */
         .modal {
             display: none;
@@ -1028,11 +931,6 @@
                 display: none;
             }
 
-            .venue-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1049,6 +947,16 @@
             .events-grid {
                 grid-template-columns: 1fr;
             }
+
+            .floating-ticket-btn {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .floating-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -1059,7 +967,6 @@
         <nav>
             <div class="logo">PonSphaera</div>
             <ul class="nav-links">
-                <li><a href="#venues">For Venues</a></li>
                 <li><a href="#events">Events</a></li>
             </ul>
         </nav>
@@ -1180,56 +1087,6 @@
             </div>
         </section>
 
-        <section id="venues" class="venue-section">
-            <div class="container">
-                <div class="venue-grid">
-                    <div class="venue-content animate-scale">
-                        <h2>We Give Back</h2>
-                        <p>Every month, PonSphaera partners with a Miami organization making a positive impact in our community. We donate a portion of our proceeds and provide free wellness events to support their mission.</p>
-                        <ul class="venue-benefits">
-                            <li>Monthly charitable partnerships with local organizations</li>
-                            <li>Donation of event proceeds to support good causes</li>
-                            <li>Free wellness events for organization members</li>
-                            <li>Community outreach and volunteer opportunities</li>
-                            <li>Social media promotion for partner organizations</li>
-                            <li>Building stronger, healthier Miami communities</li>
-                            <li>Connecting wellness with social responsibility</li>
-                            <li>Creating lasting positive impact together</li>
-                        </ul>
-                        <button class="btn btn-primary" onclick="openModal('givingModal')">Nominate an Organization</button>
-                    </div>
-                    <div class="venue-image animate-on-scroll">
-                        <h3>Making Miami Better</h3>
-                        <p>Together Through Wellness & Community</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-            <div class="container">
-                <div class="venue-grid">
-                    <div class="venue-content animate-scale">
-                        <h2>We Give Back</h2>
-                        <p>Every month, PonSphaera partners with a Miami organization making a positive impact in our community. We donate a portion of our proceeds and provide free wellness events to support their mission.</p>
-                        <ul class="venue-benefits">
-                            <li>Monthly charitable partnerships with local organizations</li>
-                            <li>Donation of event proceeds to support good causes</li>
-                            <li>Free wellness events for organization members</li>
-                            <li>Community outreach and volunteer opportunities</li>
-                            <li>Social media promotion for partner organizations</li>
-                            <li>Building stronger, healthier Miami communities</li>
-                            <li>Connecting wellness with social responsibility</li>
-                            <li>Creating lasting positive impact together</li>
-                        </ul>
-                        <button class="btn btn-primary" onclick="openModal('givingModal')">Nominate an Organization</button>
-                    </div>
-                    <div class="venue-image animate-on-scroll">
-                        <h3>Making Miami Better</h3>
-                        <p>Together Through Wellness & Community</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="events" class="events-section">
             <div class="container">
                 <div class="ticket-urgency-banner">
@@ -1258,89 +1115,6 @@
         <a href="#events" class="floating-btn">
             🎟️ GET TICKETS
         </a>
-    </div>
-
-    <!-- Venue Booking Modal -->
-    <div id="venueModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('venueModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: #333;">Book Your Venue</h2>
-            <div class="success-message" id="venueSuccess">
-                Thank you! We'll contact you within 24 hours to discuss your event.
-            </div>
-            <form id="venueForm" onsubmit="submitVenueForm(event)">
-                <div class="form-group">
-                    <label for="venueName">Venue Name *</label>
-                    <input type="text" id="venueName" name="venueName" required>
-                </div>
-                <div class="form-group">
-                    <label for="contactName">Contact Name *</label>
-                    <input type="text" id="contactName" name="contactName" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="venueType">Venue Type *</label>
-                    <select id="venueType" name="venueType" required>
-                        <option value="">Select venue type</option>
-                        <option value="hotel">Hotel</option>
-                        <option value="rooftop">Rooftop</option>
-                        <option value="club">Club/Lounge</option>
-                        <option value="apartment">Apartment Complex</option>
-                        <option value="event-space">Event Space</option>
-                        <option value="restaurant">Restaurant</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="capacity">Venue Capacity</label>
-                    <input type="number" id="capacity" name="capacity" placeholder="Approximate capacity">
-                </div>
-                <div class="form-group">
-                    <label for="preferredDate">Preferred Event Date</label>
-                    <input type="date" id="preferredDate" name="preferredDate">
-                </div>
-                <div class="form-group">
-                    <label for="message">Tell us about your venue and goals</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Describe your space, target audience, and what you hope to achieve..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Venue Request</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Organization Nomination Modal -->
-    <div id="givingModal" class="modal">
-        <div class="modal-content" style="max-width: 700px;">
-            <span class="close" onclick="closeModal('givingModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: #333; text-align: center;">Nominate an Organization</h2>
-            <div style="text-align: center; padding: 2rem;">
-                <div style="background: linear-gradient(135deg, #FF6B6B, #4ECDC4); color: white; padding: 2rem; border-radius: 20px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">🤝 Help Us Give Back</h3>
-                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Know a Miami organization making a difference? Nominate them to be our monthly charity partner!</p>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.2); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">We partner with organizations focused on:</p>
-                        <p style="font-size: 1rem;">• Community wellness & health<br>• Youth development & education<br>• Environmental sustainability<br>• Social justice & equality<br>• Mental health awareness</p>
-                    </div>
-                    
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdc3F3locWzi94tf0cvedywsrwFCPKcltpJgPZaeIl7Tn2Euw/viewform" target="_blank" class="btn" style="background: white; color: #FF6B6B; font-weight: bold; text-decoration: none; padding: 1rem 2rem; border-radius: 30px; display: inline-block; margin-bottom: 1rem;">Submit Nomination</a>
-                    
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Together, we can make Miami a healthier, more connected community!</p>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; color: #555;">
-                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>What partner organizations receive:</strong></p>
-                    <p style="font-size: 0.9rem;">• Monthly donation from our event proceeds<br>• Free wellness events for their community<br>• Social media promotion and awareness<br>• Volunteer opportunities for our members</p>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- SMS Signup Modal -->
@@ -1372,86 +1146,30 @@
         </div>
     </div>
 
-    <!-- Ticket Purchase Modal -->
-    <div id="ticketModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('ticketModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: #333;">Purchase Tickets</h2>
-            <div class="success-message" id="ticketSuccess">
-                Redirecting to secure Square checkout...
-            </div>
-            <div id="eventDetails" style="background: #f5f5f5; padding: 1rem; border-radius: 10px; margin-bottom: 2rem;">
-                <h3 id="selectedEvent">Event Name</h3>
-                <p id="eventPrice">$0</p>
-            </div>
-            
-            <!-- Customer Information Form -->
-            <form id="customerInfoForm" style="margin-bottom: 2rem;">
-                <h3 style="margin-bottom: 1rem; color: #333;">Your Information</h3>
-                <div class="form-group">
-                    <label for="attendeeName">Full Name *</label>
-                    <input type="text" id="attendeeName" name="attendeeName" required>
-                </div>
-                <div class="form-group">
-                    <label for="attendeeEmail">Email *</label>
-                    <input type="email" id="attendeeEmail" name="attendeeEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="attendeePhone">Phone Number *</label>
-                    <input type="tel" id="attendeePhone" name="attendeePhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="ticketQuantity">Number of Tickets *</label>
-                    <select id="ticketQuantity" name="ticketQuantity" required onchange="updateEventDisplay()">
-                        <option value="1">1 ticket</option>
-                        <option value="2">2 tickets</option>
-                        <option value="3">3 tickets</option>
-                        <option value="4">4 tickets</option>
-                        <option value="5">5+ tickets</option>
-                    </select>
-                </div>
-            </form>
-
-            <!-- Payment Section -->
-            <div style="text-align: center; padding: 2rem 0; border-top: 2px solid #f0f0f0;">
-                <h3 style="margin-bottom: 1.5rem; color: #333;">Secure Payment</h3>
-                <p style="margin-bottom: 1.5rem; color: #666;">Complete your ticket purchase through Square's secure checkout</p>
-                
-                <!-- Square Payment Embed -->
-                <div style="
-                  overflow: auto;
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: flex-end;
-                  align-items: center;
-                  width: 259px;
-                  background: #FFFFFF;
-                  border: 1px solid rgba(0, 0, 0, 0.1);
-                  box-shadow: -2px 10px 5px rgba(0, 0, 0, 0);
-                  border-radius: 10px;
-                  font-family: SQ Market, SQ Market, Helvetica, Arial, sans-serif;
-                  margin: 0 auto;
-                  ">
-                  <div style="padding: 20px;">
-                    <a target="_blank" href="https://square.link/u/yh2JNeGR?src=embed" style="
-                    display: inline-block;
-                    font-size: 18px;
-                    line-height: 48px;
-                    height: 48px;
-                    color: #ffffff;
-                    min-width: 212px;
-                    background-color: #006aff;
-                    text-align: center;
-                    box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
-                    border-radius: 6px;
-                    text-decoration: none;
-                  ">Buy now</a>
-                  </div>
+    <!-- Organization Nomination Modal -->
+    <div id="givingModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <span class="close" onclick="closeModal('givingModal')">&times;</span>
+            <h2 style="margin-bottom: 2rem; color: #333; text-align: center;">Nominate an Organization</h2>
+            <div style="text-align: center; padding: 2rem;">
+                <div style="background: linear-gradient(135deg, #FF6B6B, #4ECDC4); color: white; padding: 2rem; border-radius: 20px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">🤝 Help Us Give Back</h3>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Know a Miami organization making a difference? Nominate them to be our monthly charity partner!</p>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.2); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">We partner with organizations focused on:</p>
+                        <p style="font-size: 1rem;">• Community wellness & health<br>• Youth development & education<br>• Environmental sustainability<br>• Social justice & equality<br>• Mental health awareness</p>
+                    </div>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdc3F3locWzi94tf0cvedywsrwFCPKcltpJgPZaeIl7Tn2Euw/viewform" target="_blank" class="btn" style="background: white; color: #FF6B6B; font-weight: bold; text-decoration: none; padding: 1rem 2rem; border-radius: 30px; display: inline-block; margin-bottom: 1rem;">Submit Nomination</a>
+                    
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Together, we can make Miami a healthier, more connected community!</p>
                 </div>
                 
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">
-                    Powered by Square - Your payment information is secure and encrypted
-                </p>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; color: #555;">
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>What partner organizations receive:</strong></p>
+                    <p style="font-size: 0.9rem;">• Monthly donation from our event proceeds<br>• Free wellness events for their community<br>• Social media promotion and awareness<br>• Volunteer opportunities for our members</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1629,82 +1347,6 @@
             const successMsg = document.querySelector(`#${modalId} .success-message`);
             if (form) form.reset();
             if (successMsg) successMsg.style.display = 'none';
-        }
-
-        function openTicketModal(eventName, price) {
-            // Track ticket modal opening with Meta Pixel
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'InitiateCheckout', {
-                    content_name: eventName,
-                    content_category: 'event_tickets',
-                    value: price,
-                    currency: 'USD'
-                });
-            }
-            
-            currentEventPrice = price;
-            document.getElementById('selectedEvent').textContent = eventName;
-            document.getElementById('eventPrice').textContent = `${price} per ticket`;
-            updateEventDisplay();
-            openModal('ticketModal');
-        }
-
-        function updateEventDisplay() {
-            const quantity = parseInt(document.getElementById('ticketQuantity').value) || 1;
-            const total = currentEventPrice * quantity;
-            document.getElementById('eventPrice').textContent = `${currentEventPrice} per ticket (${quantity} ticket${quantity > 1 ? 's' : ''} = ${total})`;
-        }
-
-        function submitVenueForm(event) {
-            event.preventDefault();
-            
-            // Track form submission with Meta Pixel
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead', {
-                    content_name: 'Venue Booking Form',
-                    content_category: 'venue_booking'
-                });
-            }
-            
-            // Get form data
-            const formData = {
-                venue_name: document.getElementById('venueName').value,
-                contact_name: document.getElementById('contactName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                venue_type: document.getElementById('venueType').value,
-                capacity: document.getElementById('capacity').value,
-                preferred_date: document.getElementById('preferredDate').value,
-                message: document.getElementById('message').value
-            };
-
-            console.log('Sending form data:', formData);
-
-            // Send email using EmailJS
-            emailjs.send('service_k66uxhk', 'template_9cfypfs', formData)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    if (response.status === 200) {
-                        document.getElementById('venueSuccess').style.display = 'block';
-                        document.getElementById('venueForm').style.display = 'none';
-                        
-                        // Track successful form submission
-                        if (typeof fbq !== 'undefined') {
-                            fbq('track', 'SubmitApplication', {
-                                content_name: 'Venue Booking',
-                                content_category: 'venue_booking'
-                            });
-                        }
-                        
-                        setTimeout(() => {
-                            closeModal('venueModal');
-                            document.getElementById('venueForm').style.display = 'block';
-                        }, 3000);
-                    }
-                }, function(error) {
-                    console.log('DETAILED ERROR:', error);
-                    alert('Failed to send message. Error details logged to console. Please try again or contact us directly at ponsphaera@gmail.com');
-                });
         }
 
         // Initialize EmailJS when DOM is loaded
