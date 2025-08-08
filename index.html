@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PonSphaera - Miami's Premier Morning Club</title>
+    <title>PonSphaera - Sober Morning Club Miami | Wellness Events & Community</title>
+    <meta name="description" content="Join Miami's premier sober morning club at The Gates Hotel. Cold plunges, ping pong, wellness services & community networking. Get tickets for August 9th!">
+    <meta name="keywords" content="sober morning club Miami, wellness events Miami, cold plunge Miami, ping pong community, sober social events, The Gates Hotel events">
     <link rel="icon" type="image/png" href="ponsphaera-logo.png">
     <link rel="apple-touch-icon" href="ponsphaera-logo.png">
     
@@ -14,6 +16,15 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-3F41CRDZBW');
+    </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JF1V4M0F1V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JF1V4M0F1V');
     </script>
     
     <!-- Meta Pixel Code -->
@@ -567,6 +578,127 @@
             color: #555;
         }
 
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="70" cy="20" r="2" fill="rgba(255,255,255,0.06)"/><circle cx="30" cy="70" r="1" fill="rgba(255,255,255,0.04)"/></svg>');
+            animation: float-bg 25s linear infinite;
+            pointer-events: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .highlight-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+
+        .highlight-item p {
+            font-size: 1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .safety-note {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .safety-note p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-card p {
+            font-size: 1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         /* Community Gallery Section */
         .gallery-section {
             padding: 80px 0;
@@ -764,6 +896,40 @@
             opacity: 0.9;
             color: #4dd0e1;
             font-style: italic;
+        }
+
+        .event-details-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .event-time, .event-location {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .event-time h4, .event-location h4 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .event-time p, .event-location p {
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .event-details-preview {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
         .ticket-purchase-card {
@@ -967,6 +1133,7 @@
         <nav>
             <div class="logo">PonSphaera</div>
             <ul class="nav-links">
+                <li><a href="#about">About</a></li>
                 <li><a href="#events">Events</a></li>
             </ul>
         </nav>
@@ -1028,7 +1195,7 @@
                     </div>
                     <div class="feature-card animate-slide-up">
                         <h3>🌿 Natural Wellness</h3>
-                        <p>Kratom and other natural wellness products for holistic health</p>
+                        <p>Holistic wellness products including kratom (responsibly sourced & optional)</p>
                     </div>
                     <div class="feature-card animate-slide-up">
                         <h3>👥 Community</h3>
@@ -1037,6 +1204,55 @@
                     <div class="feature-card animate-slide-up">
                         <h3>📢 Marketing Power</h3>
                         <p>Extensive social media reach and event promotion capabilities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content animate-scale">
+                        <h2>About PonSphaera</h2>
+                        <p>Founded in Miami, PonSphaera is revolutionizing the social wellness scene with sober morning experiences that energize, connect, and inspire.</p>
+                        
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <h4>🌅 Morning-Focused</h4>
+                                <p>We believe the best connections happen when minds are clear and energy is high</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h4>🤝 Community-Driven</h4>
+                                <p>Building authentic relationships through shared wellness experiences</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h4>💪 Holistic Wellness</h4>
+                                <p>Combining physical activities, mental clarity, and social connection</p>
+                            </div>
+                        </div>
+                        
+                        <div class="safety-note">
+                            <p><strong>Safety First:</strong> All wellness services and natural products are optional and provided by licensed professionals. We prioritize education and responsible use.</p>
+                        </div>
+                    </div>
+                    <div class="about-stats animate-on-scroll">
+                        <div class="stat-card">
+                            <h3>500+</h3>
+                            <p>Community Members</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>50+</h3>
+                            <p>Events Hosted</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>10+</h3>
+                            <p>Venue Partners</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>$25K+</h3>
+                            <p>Donated to Charity</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1094,6 +1310,7 @@
                     <p class="urgency-text">August 9th • The Gates Hotel • Limited Spots Available</p>
                     <p class="social-proof">Join 200+ Miami wellness enthusiasts for our biggest event yet!</p>
                 </div>
+                
                 <div class="events-grid" id="eventsGrid">
                     <div class="event-card animate-slide-up ticket-purchase-card">
                         <div class="ticket-header">
