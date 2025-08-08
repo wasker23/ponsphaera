@@ -1571,11 +1571,26 @@
             // Initialize EmailJS with your public key
             emailjs.init('TGLrnV_j8p9iQJaXe');
             
-            // Track all button clicks with detailed logging
+            // Track button clicks (prevent duplicate events with flags)
+            let eventTracker = {
+                lastEvent: null,
+                lastTime: 0
+            };
+            
             document.addEventListener('click', function(e) {
-                console.log('Button clicked:', e.target);
-                console.log('Button text:', e.target.textContent);
-                console.log('Button classes:', e.target.className);
+                const now = Date.now();
+                const eventKey = e.target.textContent + e.target.className;
+                
+                // Prevent duplicate events within 1 second
+                if (eventKey === eventTracker.lastEvent && now - eventTracker.lastTime < 1000) {
+                    console.log('Duplicate event prevented');
+                    return;
+                }
+                
+                eventTracker.lastEvent = eventKey;
+                eventTracker.lastTime = now;
+                
+                console.log('Button clicked:', e.target.textContent);
                 
                 // Track main GET TICKETS button clicks
                 if (e.target.classList.contains('btn-tickets-hero') || 
@@ -1589,6 +1604,7 @@
                         });
                         console.log('InitiateCheckout event sent');
                     }
+                    return; // Exit to prevent multiple events
                 }
                 
                 // Track floating ticket button
@@ -1603,46 +1619,42 @@
                         });
                         console.log('InitiateCheckout event sent');
                     }
+                    return;
                 }
                 
-                // Track SweatPals widget interactions (look for any button with "Buy", "Purchase", "Ticket" text)
+                // Track SweatPals widget interactions
                 if (e.target.textContent && 
                     (e.target.textContent.toLowerCase().includes('buy') ||
                      e.target.textContent.toLowerCase().includes('purchase') ||
                      e.target.textContent.toLowerCase().includes('ticket') ||
                      e.target.textContent.toLowerCase().includes('register'))) {
-                    console.log('Ticket purchase button clicked - firing AddToCart');
+                    console.log('Ticket purchase button clicked - firing Purchase');
                     if (typeof fbq !== 'undefined') {
-                        fbq('track', 'AddToCart', {
-                            content_name: 'Event Ticket',
-                            content_category: 'tickets',
-                            value: 1
-                        });
                         fbq('track', 'Purchase', {
                             content_name: 'Event Ticket',
                             content_category: 'tickets',
                             value: 1
                         });
-                        console.log('AddToCart and Purchase events sent');
+                        console.log('Purchase event sent');
                     }
+                    return;
                 }
                 
                 // Track SMS signup button
-                if (e.target.classList.contains('btn-text-signup') ||
-                    e.target.textContent.includes('Get Event Updates')) {
+                if (e.target.classList.contains('btn-text-signup')) {
                     console.log('SMS signup button clicked - firing Lead');
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'Lead', {
-                            content_name: 'SMS Signup Button',
+                            content_name: 'SMS Signup',
                             content_category: 'email_signup'
                         });
                         console.log('Lead event sent');
                     }
+                    return;
                 }
                 
                 // Track Instagram follow button
-                if (e.target.classList.contains('btn-instagram-small') ||
-                    e.target.textContent.includes('Follow Us')) {
+                if (e.target.classList.contains('btn-instagram-small')) {
                     console.log('Instagram button clicked - firing Lead');
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'Lead', {
@@ -1651,11 +1663,11 @@
                         });
                         console.log('Lead event sent');
                     }
+                    return;
                 }
                 
                 // Track nominate organization button
-                if (e.target.classList.contains('btn-secondary-small') ||
-                    e.target.textContent.includes('Nominate an Organization')) {
+                if (e.target.classList.contains('btn-secondary-small')) {
                     console.log('Nominate button clicked - firing Lead');
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'Lead', {
@@ -1664,24 +1676,9 @@
                         });
                         console.log('Lead event sent');
                     }
+                    return;
                 }
             });
-            
-            // Also track when SweatPals iframe loads (additional tracking)
-            setTimeout(function() {
-                const iframes = document.querySelectorAll('iframe');
-                iframes.forEach(function(iframe) {
-                    if (iframe.src && iframe.src.includes('sweatpals')) {
-                        console.log('SweatPals widget loaded - firing ViewContent');
-                        if (typeof fbq !== 'undefined') {
-                            fbq('track', 'ViewContent', {
-                                content_name: 'SweatPals Widget Loaded',
-                                content_category: 'ticket_widget'
-                            });
-                        }
-                    }
-                });
-            }, 3000);
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {
