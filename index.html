@@ -1571,49 +1571,117 @@
             // Initialize EmailJS with your public key
             emailjs.init('TGLrnV_j8p9iQJaXe');
             
-            // Track clicks on ticket purchase buttons
+            // Track all button clicks with detailed logging
             document.addEventListener('click', function(e) {
-                // Track SweatPals widget clicks
-                if (e.target.closest('.sweatpals-widget') || e.target.textContent.includes('Buy') || e.target.textContent.includes('Ticket')) {
+                console.log('Button clicked:', e.target);
+                console.log('Button text:', e.target.textContent);
+                console.log('Button classes:', e.target.className);
+                
+                // Track main GET TICKETS button clicks
+                if (e.target.classList.contains('btn-tickets-hero') || 
+                    e.target.textContent.includes('GET TICKETS')) {
+                    console.log('GET TICKETS button clicked - firing InitiateCheckout');
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'InitiateCheckout', {
+                            content_name: 'Main Ticket Button',
+                            content_category: 'tickets',
+                            value: 1
+                        });
+                        console.log('InitiateCheckout event sent');
+                    }
+                }
+                
+                // Track floating ticket button
+                if (e.target.classList.contains('floating-btn') ||
+                    e.target.closest('.floating-ticket-btn')) {
+                    console.log('Floating ticket button clicked - firing InitiateCheckout');
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'InitiateCheckout', {
+                            content_name: 'Floating Ticket Button',
+                            content_category: 'tickets',
+                            value: 1
+                        });
+                        console.log('InitiateCheckout event sent');
+                    }
+                }
+                
+                // Track SweatPals widget interactions (look for any button with "Buy", "Purchase", "Ticket" text)
+                if (e.target.textContent && 
+                    (e.target.textContent.toLowerCase().includes('buy') ||
+                     e.target.textContent.toLowerCase().includes('purchase') ||
+                     e.target.textContent.toLowerCase().includes('ticket') ||
+                     e.target.textContent.toLowerCase().includes('register'))) {
+                    console.log('Ticket purchase button clicked - firing AddToCart');
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'AddToCart', {
                             content_name: 'Event Ticket',
                             content_category: 'tickets',
-                            currency: 'USD'
+                            value: 1
                         });
-                        
-                        fbq('track', 'InitiateCheckout', {
-                            value: 1,
-                        });
-                    }
-                }
-                
-                // Track Square payment link clicks
-                if (e.target.href && e.target.href.includes('square.link')) {
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'AddToCart', {
-                            content_name: 'Event Ticket Purchase',
+                        fbq('track', 'Purchase', {
+                            content_name: 'Event Ticket',
                             content_category: 'tickets',
-                            currency: 'USD'
+                            value: 1
                         });
-                        
-                        fbq('track', 'InitiateCheckout', {
-                            value: 1,
-                        });
+                        console.log('AddToCart and Purchase events sent');
                     }
                 }
                 
-                // Track "Get Tickets" button clicks
-                if (e.target.textContent === 'Get Tickets' || e.target.closest('.btn-secondary') || 
-                    e.target.textContent.includes('GET TICKETS') || e.target.closest('.btn-tickets-hero') || 
-                    e.target.closest('.floating-btn')) {
+                // Track SMS signup button
+                if (e.target.classList.contains('btn-text-signup') ||
+                    e.target.textContent.includes('Get Event Updates')) {
+                    console.log('SMS signup button clicked - firing Lead');
                     if (typeof fbq !== 'undefined') {
-                        fbq('track', 'InitiateCheckout', {
-                            value: 1,
+                        fbq('track', 'Lead', {
+                            content_name: 'SMS Signup Button',
+                            content_category: 'email_signup'
                         });
+                        console.log('Lead event sent');
+                    }
+                }
+                
+                // Track Instagram follow button
+                if (e.target.classList.contains('btn-instagram-small') ||
+                    e.target.textContent.includes('Follow Us')) {
+                    console.log('Instagram button clicked - firing Lead');
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_name: 'Instagram Follow',
+                            content_category: 'social_follow'
+                        });
+                        console.log('Lead event sent');
+                    }
+                }
+                
+                // Track nominate organization button
+                if (e.target.classList.contains('btn-secondary-small') ||
+                    e.target.textContent.includes('Nominate an Organization')) {
+                    console.log('Nominate button clicked - firing Lead');
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_name: 'Organization Nomination',
+                            content_category: 'charity_nomination'
+                        });
+                        console.log('Lead event sent');
                     }
                 }
             });
+            
+            // Also track when SweatPals iframe loads (additional tracking)
+            setTimeout(function() {
+                const iframes = document.querySelectorAll('iframe');
+                iframes.forEach(function(iframe) {
+                    if (iframe.src && iframe.src.includes('sweatpals')) {
+                        console.log('SweatPals widget loaded - firing ViewContent');
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'ViewContent', {
+                                content_name: 'SweatPals Widget Loaded',
+                                content_category: 'ticket_widget'
+                            });
+                        }
+                    }
+                });
+            }, 3000);
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {
