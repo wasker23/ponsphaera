@@ -516,7 +516,7 @@
             text-align: center;
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 3rem;
-            color: white;
+            color: #FFD700;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -529,16 +529,16 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem 2.5rem;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
             border: none;
             text-align: center;
             position: relative;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            color: #333;
-            backdrop-filter: blur(10px);
+            color: white;
         }
 
         .feature-card::before {
@@ -548,7 +548,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
             transform: scaleX(0);
             transition: transform 0.5s ease;
         }
@@ -562,15 +562,21 @@
         }
 
         .feature-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #FF6B6B;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #4dd0e1;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+            text-stroke: 1px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
         }
 
         .feature-card p {
-            opacity: 0.7;
+            opacity: 0.9;
             line-height: 1.6;
-            color: #555;
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin: 0;
         }
 
         /* About Section */
@@ -606,6 +612,7 @@
             margin-bottom: 2rem;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFD700;
         }
 
         .about-content p {
@@ -613,6 +620,7 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             line-height: 1.7;
+            color: #FFFFFF;
         }
 
         .about-highlights {
@@ -627,18 +635,41 @@
             padding: 1.5rem;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .highlight-item.animate::before {
+            transform: scaleX(1);
         }
 
         .highlight-item h4 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #4dd0e1;
+            color: #FFFFFF;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+            text-stroke: 1px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
         }
 
         .highlight-item p {
             font-size: 1rem;
             margin: 0;
             opacity: 0.9;
+            color: #FFFFFF;
         }
 
         .safety-note {
@@ -652,6 +683,7 @@
             margin: 0;
             font-size: 0.9rem;
             opacity: 0.9;
+            color: #FFFFFF;
         }
 
         .about-stats {
@@ -667,6 +699,24 @@
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .stat-card.animate::before {
+            transform: scaleX(1);
         }
 
         .stat-card h3 {
@@ -674,13 +724,16 @@
             font-weight: 900;
             color: #4dd0e1;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(77, 208, 225, 0.3);
+            text-shadow: 0 0 10px rgba(77, 208, 225, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.5);
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+            text-stroke: 1px rgba(0, 0, 0, 0.3);
         }
 
         .stat-card p {
             font-size: 1rem;
             margin: 0;
             opacity: 0.9;
+            color: #FFFFFF;
         }
 
         @media (max-width: 768px) {
@@ -719,7 +772,7 @@
             text-align: center;
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            color: white;
+            color: #FFD700;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -752,9 +805,26 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            z-index: 10;
+        }
+
         .gallery-item.animate {
             transform: translateY(0);
             opacity: 1;
+        }
+
+        .gallery-item.animate::before {
+            transform: scaleX(1);
         }
 
         .gallery-item img {
@@ -787,7 +857,7 @@
         .gallery-overlay h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #4dd0e1;
+            color: #FFFFFF;
         }
 
         .gallery-overlay p {
@@ -819,7 +889,7 @@
             text-align: center;
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 3rem;
-            color: white;
+            color: #FFD700;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -889,7 +959,7 @@
         .social-proof {
             font-size: 1.1rem;
             opacity: 0.9;
-            color: #4dd0e1;
+            color: #FFFFFF;
             font-style: italic;
         }
 
@@ -1273,7 +1343,7 @@
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="ponsphaera-event-3.jpg" alt="Large group wellness event">
+                        <img src="ponsphaera-event-3.jpg" alt="Large group wellness event" style="object-position: center center;">
                         <div class="gallery-overlay">
                             <h3>Community Strong</h3>
                             <p>Building connections through wellness and fun activities</p>
@@ -1431,6 +1501,23 @@
                             card.classList.add('animate');
                         }, index * 200);
                     });
+                } else if (element.classList.contains('about-section')) {
+                    // Animate about section with staggered cards
+                    element.querySelector('h2').classList.add('animate');
+                    const highlightItems = element.querySelectorAll('.highlight-item');
+                    const statCards = element.querySelectorAll('.stat-card');
+                    
+                    highlightItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate');
+                        }, index * 200);
+                    });
+                    
+                    statCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, (index + highlightItems.length) * 200);
+                    });
                 } else if (element.classList.contains('gallery-section')) {
                     // Animate gallery section with staggered images
                     element.querySelector('h2').classList.add('animate');
@@ -1465,7 +1552,7 @@
         }
 
         // Observe all animatable elements in order
-        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .gallery-section, .events-section').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .about-section, .gallery-section, .events-section').forEach(el => {
             sequentialObserver.observe(el);
         });
 
