@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>August 9th Event Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00807E 0%, #342758 50%, #512663 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .dashboard {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #00807E 0%, #512663 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .metrics-row {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .metric {
+            flex: 1;
+            padding: 20px 15px;
+            text-align: center;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .metric:last-child {
+            border-right: none;
+        }
+        
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.7em;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .metric-sub {
+            font-size: 0.75em;
+            color: #00807E;
+            font-weight: 800;
+            margin-top: 3px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
+        }
+        
+        .metric:nth-child(6) .metric-value {
+            font-size: 2.4em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #B8860B, #DAA520, #CD853F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.4));
+            margin-bottom: 8px;
+        }
+        
+        .metric:nth-child(6) .metric-label {
+            font-size: 0.75em;
+            color: #B8860B;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        
+        .metric:nth-child(6) .metric-sub {
+            font-size: 0.8em;
+            color: #CD853F;
+            font-weight: 800;
+            margin-top: 6px;
+            letter-spacing: 0.8px;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .chart-box {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 280px;
+        }
+        
+        .chart-title {
+            font-size: 1em;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 220px;
+        }
+        
+        .full-width-chart {
+            grid-column: 1 / -1;
+            min-height: 320px;
+        }
+        
+        .full-width-chart .chart-container {
+            height: 260px;
+        }
+        
+        .value-box {
+            background: linear-gradient(135deg, #00807E 0%, #512663 100%);
+            color: white;
+            padding: 25px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .value-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .value-amount {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .value-desc {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .metrics-row {
+                flex-wrap: wrap;
+            }
+            
+            .metric {
+                min-width: 50%;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <div class="header">
+            <h1>August 9th Event Analytics</h1>
+            <p>Marketing Performance & ROI Analysis</p>
+        </div>
+        
+        <!-- Metrics Row -->
+        <div class="metrics-row">
+            <div class="metric">
+                <div class="metric-value">37,732</div>
+                <div class="metric-label">TOTAL<br>IMPRESSIONS</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">29,347</div>
+                <div class="metric-label">UNIQUE REACH</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.70%</div>
+                <div class="metric-label">CLICK-THROUGH<br>RATE</div>
+                <div class="metric-sub">4x Industry Average</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">16.29%</div>
+                <div class="metric-label">ENGAGEMENT RATE</div>
+                <div class="metric-sub">5x Industry Average</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">$0.19</div>
+                <div class="metric-label">COST PER CLICK</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">64%</div>
+                <div class="metric-label">HIGH-ROLLER<br>DEMOGRAPHICS</div>
+                <div class="metric-sub">Affluent Males 35-64</div>
+            </div>
+        </div>
+        
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <!-- Platform Performance -->
+            <div class="chart-box">
+                <div class="chart-title">Platform Performance - Impressions</div>
+                <div class="chart-container">
+                    <canvas id="chart1"></canvas>
+                </div>
+            </div>
+            
+            <!-- Age Demographics -->
+            <div class="chart-box">
+                <div class="chart-title">Audience Demographics - Age Groups</div>
+                <div class="chart-container">
+                    <canvas id="chart2"></canvas>
+                </div>
+            </div>
+            
+            <!-- CTR Performance -->
+            <div class="chart-box">
+                <div class="chart-title">CTR Performance vs Industry</div>
+                <div class="chart-container">
+                    <canvas id="chart3"></canvas>
+                </div>
+            </div>
+            
+            <!-- Engagement Distribution -->
+            <div class="chart-box">
+                <div class="chart-title">Engagement Distribution</div>
+                <div class="chart-container">
+                    <canvas id="chart4"></canvas>
+                </div>
+            </div>
+            
+            <!-- Annual ROI Projection -->
+            <div class="chart-box full-width-chart">
+                <div class="chart-title">Annual Partnership ROI Projection</div>
+                <div class="chart-container">
+                    <canvas id="chart5"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Value Summary -->
+        <div class="value-box">
+            <div class="value-title">Total Value Delivered</div>
+            <div class="value-amount">$3,177 - $3,366</div>
+            <div class="value-desc">Marketing Value + Event Experience Investment</div>
+            <div class="value-desc"><strong>Conservative Revenue Potential: $4,500/month</strong></div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            console.log('Creating charts with PonSphaera colors...');
+            
+            // PonSphaera color palette: Teal to Purple
+            const colors = {
+                teal: '#00807E',
+                skobeloff: '#0B7078', 
+                blueSapphire: '#1A596E',
+                deepKoamaru: '#2B4063',
+                jacarta: '#342758',
+                imperial: '#512663',
+                amethyst: '#9969C7',
+                lenurple: '#B589D6'
+            };
+            
+            // 1. Platform Performance Doughnut
+            new Chart(document.getElementById('chart1'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Facebook', 'Instagram', 'Threads', 'Audience Network'],
+                    datasets: [{
+                        data: [34175, 2943, 584, 30],
+                        backgroundColor: [colors.teal, colors.blueSapphire, colors.jacarta, colors.imperial]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+            
+            // 2. Age Demographics Bar Chart
+            new Chart(document.getElementById('chart2'), {
+                type: 'bar',
+                data: {
+                    labels: ['25-34', '35-44', '45-54', '55-64', '65+'],
+                    datasets: [{
+                        data: [4400, 7340, 10270, 5280, 2057],
+                        backgroundColor: [colors.lenurple, colors.amethyst, colors.teal, colors.jacarta, colors.imperial]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Primary Audience: 17,610 Affluent Males 35-54'
+                        }
+                    },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+            
+            // 3. CTR Performance Bar Chart
+            new Chart(document.getElementById('chart3'), {
+                type: 'bar',
+                data: {
+                    labels: ['Your Campaign', 'Industry Average'],
+                    datasets: [{
+                        data: [3.70, 0.9],
+                        backgroundColor: [colors.teal, '#e5e7eb']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 4,
+                            ticks: { callback: function(value) { return value + '%'; } }
+                        }
+                    }
+                }
+            });
+            
+            // 4. Engagement Distribution Pie Chart
+            new Chart(document.getElementById('chart4'), {
+                type: 'pie',
+                data: {
+                    labels: ['Facebook', 'Instagram', 'Other'],
+                    datasets: [{
+                        data: [5579, 401, 165],
+                        backgroundColor: [colors.teal, colors.jacarta, colors.imperial]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+            
+            // 5. Annual ROI Line Chart
+            new Chart(document.getElementById('chart5'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [
+                        {
+                            label: 'Hotel Investment',
+                            data: [1500, 3000, 4500, 6000, 7500, 9000, 10500, 12000, 13500, 15000, 16500, 18000],
+                            borderColor: colors.imperial,
+                            borderWidth: 2,
+                            fill: false
+                        },
+                        {
+                            label: 'Revenue Potential',
+                            data: [4500, 9000, 13500, 18000, 22500, 27000, 31500, 36000, 40500, 45000, 49500, 54000],
+                            borderColor: colors.teal,
+                            borderWidth: 3,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Monthly Events: $1,500 investment → $4,500 revenue potential (3x ROI)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value >= 1000 ? (value/1000).toFixed(0) + 'K' : value);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            console.log('All PonSphaera-styled charts created successfully!');
+        }, 500);
+    </script>
+</body>
+</html>
