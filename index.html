@@ -1200,7 +1200,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#events">Events</a></li>
-                <li><a href="analytics.html">Analytics</a></li>
+                <li><a href="#" onclick="checkAnalyticsPassword()">Analytics</a></li>
             </ul>
         </nav>
     </header>
@@ -1651,6 +1651,16 @@
             const successMsg = document.querySelector(`#${modalId} .success-message`);
             if (form) form.reset();
             if (successMsg) successMsg.style.display = 'none';
+        }
+
+        // Analytics password protection
+        function checkAnalyticsPassword() {
+            const password = prompt("Enter password to access Analytics:");
+            if (password === "venues1234") {
+                window.location.href = "analytics.html";
+            } else if (password !== null) {
+                alert("Incorrect password. Access denied.");
+            }
         }
 
         // Initialize EmailJS when DOM is loaded
