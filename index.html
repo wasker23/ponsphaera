@@ -1200,7 +1200,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#events">Events</a></li>
-                <li><a href="#" onclick="checkAnalyticsPassword()">Analytics</a></li>
+                <li>        <a href="#" onclick="checkAnalyticsPassword(); gtag('event', 'click', { 'event_category': 'Navigation', 'event_label': 'Analytics Access' });">Analytics</a></li>
             </ul>
         </nav>
     </header>
@@ -1230,9 +1230,9 @@
                     <p style="font-size: 2.2rem; margin-bottom: 0.5rem; color: #4dd0e1; -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3); text-stroke: 1px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-weight: 700;">You don't want to miss this</p>
                     <p style="font-family: 'Poppins', 'Arial', sans-serif; font-size: 2rem; font-weight: bold; color: white; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); transform: rotate(-2deg); display: inline-block; background: linear-gradient(45deg, #FF6B6B, #4ECDC4); padding: 10px 20px; border-radius: 20px; position: relative; margin: 1rem 0;">Miami's #1 ping pong day club</p>
                     <div class="cta-buttons">
-                        <a href="#events" class="btn btn-primary btn-tickets-hero">📝 JOIN WAITLIST</a>
-                        <a href="sms:+18773490470?body=PONSPHAERA" class="btn btn-text-signup">Don't get notified</a>
-                        <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram-small">Follow Us</a>
+                        <a href="#events" class="btn btn-primary btn-tickets-hero" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Join Waitlist Hero' });">📝 JOIN WAITLIST</a>
+                        <a href="sms:+18773490470?body=PONSPHAERA" class="btn btn-text-signup" onclick="gtag('event', 'click', { 'event_category': 'SMS', 'event_label': 'Dont Get Notified' });">Don't get notified</a>
+                        <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram-small" onclick="gtag('event', 'click', { 'event_category': 'Social', 'event_label': 'Instagram Follow' });">Follow Us</a>
                     </div>
                 </div>
             </div>
@@ -1298,7 +1298,7 @@
                         </div>
                         
                         <div style="margin-top: 2rem;">
-                            <button class="btn btn-primary" onclick="openModal('givingModal')">Nominate an Organization</button>
+                            <button class="btn btn-primary" onclick="openModal('givingModal'); gtag('event', 'click', { 'event_category': 'Engagement', 'event_label': 'Nominate Organization' });">Nominate an Organization</button>
                         </div>
                     </div>
                     <div class="about-stats animate-on-scroll">
@@ -1399,7 +1399,7 @@
 
     <!-- Floating Ticket Button -->
     <div class="floating-ticket-btn" id="floatingTicketBtn">
-        <a href="#events" class="floating-btn">
+        <a href="#events" class="floating-btn" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Floating Ticket Button' });">
             🎟️ GET TICKETS
         </a>
     </div>
@@ -1655,11 +1655,17 @@
 
         // Analytics password protection
         function checkAnalyticsPassword() {
+            gtag('event', 'analytics_access_attempt', { 'event_category': 'Security', 'event_label': 'Password Prompt Shown' });
+            
             const password = prompt("Enter password to access Analytics:");
             if (password === "venues1234") {
+                gtag('event', 'analytics_access_granted', { 'event_category': 'Security', 'event_label': 'Correct Password' });
                 window.location.href = "analytics.html";
             } else if (password !== null) {
+                gtag('event', 'analytics_access_denied', { 'event_category': 'Security', 'event_label': 'Incorrect Password' });
                 alert("Incorrect password. Access denied.");
+            } else {
+                gtag('event', 'analytics_access_cancelled', { 'event_category': 'Security', 'event_label': 'Password Cancelled' });
             }
         }
 
