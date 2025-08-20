@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ponsphaera - Sober Morning Club Miami | Wellness Events & Community</title>
-    <meta name="description" content="Miami's #1 ping pong day club. Cold plunges, ping pong, wellness services & community networking. Join us for Shake the Pain Away!">
+    <meta name="description" content="Miami's #1 ping pong day club. Cold plunges, ping pong, wellness services & community networking. Join us for Shake the Pain Away - Ponsphaera!">
     <meta name="keywords" content="sober morning club Miami, wellness events Miami, cold plunge Miami, ping pong community, sober social events, The Gates Hotel events">
     <link rel="icon" type="image/png" href="ponsphaera-logo.png">
     <link rel="apple-touch-icon" href="ponsphaera-logo.png">
@@ -1152,13 +1152,49 @@
             display: none;
         }
 
-        /* SweatPals widget transparency */
+        /* SweatPals widget transparency and text color - AGGRESSIVE OVERRIDE */
         .sweatpals-widget,
         .sweatpals-widget *,
         [class*="sweatpals"],
-        [id*="sweatpals"] {
+        [id*="sweatpals"],
+        iframe[src*="sweatpals"],
+        iframe[src*="sweatpals"] *,
+        div[class*="embed"],
+        div[id*="embed"] {
             background: transparent !important;
             background-color: transparent !important;
+            color: white !important;
+        }
+
+        /* Force all text elements to white */
+        .sweatpals-widget .price,
+        .sweatpals-widget .description,
+        .sweatpals-widget .title,
+        .sweatpals-widget p,
+        .sweatpals-widget span,
+        .sweatpals-widget div,
+        .sweatpals-widget h1,
+        .sweatpals-widget h2,
+        .sweatpals-widget h3,
+        .sweatpals-widget h4,
+        .sweatpals-widget h5,
+        .sweatpals-widget h6,
+        .sweatpals-widget label,
+        .sweatpals-widget small,
+        .sweatpals-widget strong,
+        .sweatpals-widget em {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+        }
+
+        /* Target any embedded content */
+        iframe * {
+            color: white !important;
+        }
+
+        /* Universal text override for SweatPals */
+        [src*="sweatpals"] * {
+            color: white !important;
         }
 
         /* Responsive */
@@ -1239,7 +1275,7 @@
                     <p style="font-size: 2.2rem; margin-bottom: 0.5rem; color: #4dd0e1; -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3); text-stroke: 1px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-weight: 700;">You don't want to miss this</p>
                     <p style="font-family: 'Poppins', 'Arial', sans-serif; font-size: 2rem; font-weight: bold; color: white; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); transform: rotate(-2deg); display: inline-block; background: linear-gradient(45deg, #FF6B6B, #4ECDC4); padding: 10px 20px; border-radius: 20px; position: relative; margin: 1rem 0;">Miami's #1 ping pong day club</p>
                     <div class="cta-buttons">
-                        <a href="#events" class="btn btn-primary btn-tickets-hero" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Join Waitlist Hero' });">📝 JOIN WAITLIST</a>
+                        <a href="https://www.sweatpals.com/event/shake-the-pain-away-ponsphaeras-morning-club" target="_blank" class="btn btn-primary btn-tickets-hero" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Join Waitlist Hero' });">📝 JOIN WAITLIST</a>
                         <a href="sms:+18773490470?body=PONSPHAERA" class="btn btn-text-signup" onclick="gtag('event', 'click', { 'event_category': 'SMS', 'event_label': 'Dont Get Notified' });">Don't get notified</a>
                         <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram-small" onclick="gtag('event', 'click', { 'event_category': 'Social', 'event_label': 'Instagram Follow' });">Follow Us</a>
                     </div>
@@ -1395,10 +1431,10 @@
                         <div class="ticket-header">
                             <h3>🌊 Shake the Pain Away - Ponsphaera</h3>
                             <div class="event-date">September 6th, 2025</div>
-                            <p style="margin: 1rem 0; font-size: 1.1rem; opacity: 0.9;">Morning wellness, ping pong, networking & more!</p>
+                            <p style="margin: 1rem 0; font-size: 1.1rem; opacity: 0.9; color: white;">Morning wellness, ping pong, networking & more!</p>
                         </div>
                         <!-- SweatPals widget begin -->
-                        <script src="https://www.sweatpals.com/static/embed/event/checkout/script.js?priceMode=several&enableAutoEmbed=true&eventAlias=shake-the-pain-away-ponsphaeras-morning-club&shortLocalInstance=2025-09-06&size=lg&colorHex=transparent&fontFamily=Poppins&priceTiersJson=%5B%22d87b870b-47ea-4313-9bbb-c979a17da41d%22%2C%222dd9191a-ec23-44fe-b797-0ec8c8dc449d%22%2C%22ac1b2e1c-5ccf-48df-8a01-4c4573b83e08%22%5D"></script>
+                        <script src="https://www.sweatpals.com/static/embed/event/checkout/script.js?priceMode=several&enableAutoEmbed=true&eventAlias=shake-the-pain-away-ponsphaeras-morning-club&shortLocalInstance=2025-09-06&size=lg&colorHex=FFFFFF&buttonColorHex=000000&textColorHex=FFFFFF&fontFamily=Poppins&backgroundColor=transparent&textColor=white&priceTiersJson=%5B%22d87b870b-47ea-4313-9bbb-c979a17da41d%22%2C%222dd9191a-ec23-44fe-b797-0ec8c8dc449d%22%2C%22ac1b2e1c-5ccf-48df-8a01-4c4573b83e08%22%5D"></script>
                         <!-- SweatPals widget end -->
                     </div>
                 </div>
@@ -1408,7 +1444,7 @@
 
     <!-- Floating Ticket Button -->
     <div class="floating-ticket-btn" id="floatingTicketBtn">
-        <a href="#events" class="floating-btn" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Floating Ticket Button' });">
+        <a href="https://www.sweatpals.com/event/shake-the-pain-away-ponsphaeras-morning-club" target="_blank" class="floating-btn" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Floating Ticket Button' });">
             🎟️ GET TICKETS
         </a>
     </div>
@@ -1813,6 +1849,27 @@
                     }
                 });
             });
+            
+            // Force SweatPals widget text to be white after it loads
+            setTimeout(function() {
+                const sweatpalsElements = document.querySelectorAll('[class*="sweatpals"], [id*="sweatpals"], iframe[src*="sweatpals"]');
+                sweatpalsElements.forEach(element => {
+                    element.style.color = 'white';
+                    element.style.backgroundColor = 'transparent';
+                    
+                    // If it's an iframe, try to style its contents (may not work due to CORS)
+                    if (element.tagName === 'IFRAME') {
+                        try {
+                            const iframeDoc = element.contentDocument || element.contentWindow.document;
+                            const style = iframeDoc.createElement('style');
+                            style.textContent = '* { color: white !important; background: transparent !important; }';
+                            iframeDoc.head.appendChild(style);
+                        } catch (e) {
+                            console.log('Cannot style iframe contents due to CORS restrictions');
+                        }
+                    }
+                });
+            }, 3000); // Wait 3 seconds for widget to load
         });
     </script>
 </body>
