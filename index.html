@@ -1449,6 +1449,32 @@
         </a>
     </div>
 
+    <!-- VIP Email Popup Modal -->
+    <div id="vipEmailModal" class="modal">
+        <div class="modal-content" style="max-width: 500px; background: linear-gradient(135deg, #00807E 0%, #512663 100%); color: white; border: none;">
+            <span class="close" onclick="closeModal('vipEmailModal')" style="color: white; font-size: 2.5rem;">&times;</span>
+            <div style="text-align: center; padding: 2rem 1rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem; color: #FFD700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">UNLOCK 70% OFF</h2>
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: white;">VIP MEMBERSHIP AT MIAMI'S #1 PING PONG DAY CLUB</h3>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #FFD700; font-weight: bold;">$600+ VALUE PER PERSON</p>
+                    <p style="font-size: 1rem; margin-bottom: 0.8rem;">Free medical scans • Teeth whitening</p>
+                    <p style="font-size: 1rem; margin-bottom: 0.8rem;">Massage therapy • Skip all lines</p>
+                    <p style="font-size: 1rem;">Bring a +1 • Exclusive perks</p>
+                </div>
+                
+                <form onsubmit="handleVipSignup(event)" style="margin-bottom: 1.5rem;">
+                    <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 15px; border: 2px solid #4dd0e1; border-radius: 10px; font-size: 1.1rem; margin-bottom: 1rem; background: white; color: #333;">
+                    
+                    <button type="submit" style="width: 100%; padding: 15px; background: #FFD700; color: #333; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">GET 70% OFF VIP</button>
+                </form>
+                
+                <p style="font-size: 0.9rem; opacity: 0.8;">Cancel anytime</p>
+            </div>
+        </div>
+    </div>
+
     <!-- SMS Signup Modal -->
     <div id="smsModal" class="modal">
         <div class="modal-content" style="max-width: 600px;">
@@ -1714,10 +1740,58 @@
             }
         }
 
+        // VIP Email Signup Handler
+        function handleVipSignup(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            // Track the conversion
+            gtag('event', 'vip_signup', { 
+                'event_category': 'Conversion', 
+                'event_label': 'VIP Email Signup',
+                'value': 1
+            });
+            
+            // Show success message
+            alert('🎉 Welcome to VIP! Check your email for your 10% off code.');
+            
+            // Close modal
+            closeModal('vipEmailModal');
+            
+            // Optional: Send email via EmailJS or your preferred service
+            // You can add email integration here
+        }
+
+        // Show VIP popup after 5 seconds - ONCE PER DAY
+        function showVipPopup() {
+            // Check if user has seen popup today
+            const today = new Date().toDateString();
+            const lastShown = localStorage.getItem('vipPopupLastShown');
+            
+            if (lastShown !== today) {
+                setTimeout(() => {
+                    document.getElementById('vipEmailModal').style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Track popup display
+                    gtag('event', 'vip_popup_shown', { 
+                        'event_category': 'Marketing', 
+                        'event_label': 'VIP Popup Displayed'
+                    });
+                    
+                    // Mark as shown for today
+                    localStorage.setItem('vipPopupLastShown', today);
+                }, 5000); // Show after 5 seconds
+            }
+        }
+
         // Initialize EmailJS when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize EmailJS with your public key
             emailjs.init('TGLrnV_j8p9iQJaXe');
+            
+            // Start VIP popup timer
+            showVipPopup();
             
             // Track button clicks (prevent duplicate events with flags)
             let eventTracker = {
