@@ -1752,37 +1752,52 @@
                 'value': 1
             });
             
-            // Show success message
-            alert('🎉 Welcome to VIP! Check your email for your 10% off code.');
+            // Send VIP welcome email via EmailJS
+            const templateParams = {
+                to_email: email,
+                to_name: 'VIP Member',
+                subject: 'WELCOME TO THE BEST PARTY OF YOUR LIFE, HERE\'S YOUR GIFT!',
+                message: `Welcome to the best party of your life, here's your gift!
+
+Here is your code: PONSPHAERAVIP
+
+Cancel anytime.
+
+Here is the link to our membership - we are excited to have you:
+https://www.sweatpals.com/host/Ponsphaera?getMembership=true&membershipTierId=04b6040c-63cd-42d8-8663-b0f8915a335f
+
+Welcome to Miami's #1 ping pong day club VIP community!
+
+Best,
+The Ponsphaera Team`
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('default_service', 'template_vip_signup', templateParams)
+                .then(function(response) {
+                    console.log('VIP email sent successfully:', response.status, response.text);
+                    alert('🎉 Welcome to VIP! Check your email for your 70% off code and membership link.');
+                }, function(error) {
+                    console.log('Email send failed:', error);
+                    alert('🎉 Welcome to VIP! Your code is: PONSPHAERAVIP');
+                });
             
             // Close modal
             closeModal('vipEmailModal');
-            
-            // Optional: Send email via EmailJS or your preferred service
-            // You can add email integration here
         }
 
-        // Show VIP popup after 5 seconds - ONCE PER DAY
+        // Show VIP popup after 5 seconds - TESTING MODE
         function showVipPopup() {
-            // Check if user has seen popup today
-            const today = new Date().toDateString();
-            const lastShown = localStorage.getItem('vipPopupLastShown');
-            
-            if (lastShown !== today) {
-                setTimeout(() => {
-                    document.getElementById('vipEmailModal').style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                    
-                    // Track popup display
-                    gtag('event', 'vip_popup_shown', { 
-                        'event_category': 'Marketing', 
-                        'event_label': 'VIP Popup Displayed'
-                    });
-                    
-                    // Mark as shown for today
-                    localStorage.setItem('vipPopupLastShown', today);
-                }, 5000); // Show after 5 seconds
-            }
+            setTimeout(() => {
+                document.getElementById('vipEmailModal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                // Track popup display
+                gtag('event', 'vip_popup_shown', { 
+                    'event_category': 'Marketing', 
+                    'event_label': 'VIP Popup Displayed'
+                });
+            }, 5000); // Show after 5 seconds
         }
 
         // Initialize EmailJS when DOM is loaded
