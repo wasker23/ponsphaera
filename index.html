@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PONSPHAERA | Premium Organic Beverages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hero {
+            position: relative;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('mango.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('strawberry.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .products {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2d3748;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 300px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-card:nth-child(2) .product-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .product-info {
+            padding: 30px;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .product-info p {
+            color: #718096;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .product-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .product-link:hover {
+            background: #5568d3;
+        }
+
+        .catering {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .catering-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .catering-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #2d3748;
+        }
+
+        .catering-info p {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .catering-types {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .catering-type {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .catering-type:hover {
+            background: #e9ecef;
+        }
+
+        .catering-icon {
+            font-size: 2rem;
+            margin-right: 20px;
+        }
+
+        .catering-type h4 {
+            color: #2d3748;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #5568d3;
+        }
+
+        .product-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .product-info ul li {
+            padding: 5px 0;
+        }
+
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .catering-content {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="slideshow">
+            <div class="slide slide1 active"></div>
+            <div class="slide slide2"></div>
+        </div>
+        <div class="hero-content">
+            <h1>PONSPHAERA</h1>
+            <p style="font-size: 1.5rem; margin-bottom: 15px; color: #4ade80; -webkit-text-stroke: 1px #22c55e; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Beverages Made from the Garden of Eden</p>
+            <p style="font-size: 1.1rem;">100% Organic Raw Ingredients | Gluten & Dairy Free</p>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        setInterval(nextSlide, 4000);
+    </script>
+
+    <div class="products">
+        <div class="container">
+            <h2 class="section-title">Our Signature Beverages</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🥭</div>
+                    <div class="product-info">
+                        <h3>Mango Blast - 1 Gal ½</h3>
+                        <p class="price" style="font-size: 1.5rem; color: #667eea; font-weight: bold; margin-bottom: 15px;">$35.00</p>
+                        <p>The best homemade juice, or your money back!</p>
+                        <ul style="text-align: left; margin: 15px 0; color: #718096;">
+                            <li>✓ Gluten & Dairy Free</li>
+                            <li>✓ Organic Raw Ingredients</li>
+                            <li style="margin-top: 8px;"><strong>Contains:</strong> Mango, Peach, Grapes, Himalayan Salt, Lemon</li>
+                        </ul>
+                        <a href="https://square.link/u/ofexfSzZ" target="_blank" class="product-link">Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🍓</div>
+                    <div class="product-info">
+                        <h3>Strawberry Blast - 1 Gal ½</h3>
+                        <p class="price" style="font-size: 1.5rem; color: #667eea; font-weight: bold; margin-bottom: 15px;">$35.00</p>
+                        <p>The best homemade strawberry lemon juice, or your money back!</p>
+                        <ul style="text-align: left; margin: 15px 0; color: #718096;">
+                            <li>✓ Gluten & Dairy Free</li>
+                            <li>✓ Organic Raw Ingredients</li>
+                            <li style="margin-top: 8px;"><strong>Contains:</strong> Strawberries, Blueberries, Himalayan Salt, Lemon, Pomegranate, Pure Vanilla Extract</li>
+                        </ul>
+                        <a href="https://square.link/u/1XlUYPK8" target="_blank" class="product-link">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="catering">
+        <div class="container">
+            <div class="catering-content">
+                <div class="catering-info">
+                    <h2>Catering Services</h2>
+                    <p>We provide premium beverage catering for events of all sizes. Let us bring our delicious drinks to your next gathering.</p>
+                    
+                    <div class="catering-types">
+                        <div class="catering-type">
+                            <div class="catering-icon">🎉</div>
+                            <div>
+                                <h4>Large Events</h4>
+                                <p>Conferences, festivals, and celebrations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="catering-type">
+                            <div class="catering-icon">⛪</div>
+                            <div>
+                                <h4>Churches</h4>
+                                <p>Services, gatherings, and community events</p>
+                            </div>
+                        </div>
+                        
+                        <div class="catering-type">
+                            <div class="catering-icon">🍽️</div>
+                            <div>
+                                <h4>Restaurants</h4>
+                                <p>Wholesale partnerships and bulk orders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 25px; color: #2d3748;">Get in Touch</h3>
+                    <p style="color: #718096; margin-bottom: 30px; font-size: 1.1rem;">Ready to place a bulk order or discuss catering for your event? Reach out to us directly:</p>
+                    
+                    <div style="display: grid; gap: 20px;">
+                        <a href="https://wa.me/17867748411" target="_blank" style="display: flex; align-items: center; padding: 20px; background: #25D366; color: white; text-decoration: none; border-radius: 10px; transition: background 0.3s ease;">
+                            <span style="font-size: 2.5rem; margin-right: 20px;">💬</span>
+                            <div style="text-align: left;">
+                                <h4 style="margin-bottom: 5px; font-size: 1.2rem;">WhatsApp</h4>
+                                <p style="margin: 0; opacity: 0.9;">Text us: (786) 774-8411</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://instagram.com/ponsphaera" target="_blank" style="display: flex; align-items: center; padding: 20px; background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; text-decoration: none; border-radius: 10px; transition: transform 0.3s ease;">
+                            <span style="font-size: 2.5rem; margin-right: 20px;">📱</span>
+                            <div style="text-align: left;">
+                                <h4 style="margin-bottom: 5px; font-size: 1.2rem;">Instagram</h4>
+                                <p style="margin: 0; opacity: 0.9;">DM us: @ponsphaera</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <p style="color: #718096; margin-top: 30px; font-size: 0.95rem; text-align: center;">We typically respond within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 PONSPHAERA | Beverages Made from the Garden of Eden | 100% Organic | Gluten & Dairy Free</p>
+    </div>
+</body>
+</html>
