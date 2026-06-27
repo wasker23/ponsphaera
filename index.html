@@ -44,7 +44,6 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     overflow-x: hidden;
   }
 
-  /* ---------- HERO ---------- */
   .hero{
     height: 100vh;
     width: 100%;
@@ -84,14 +83,6 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     50% { filter: drop-shadow(0 0 10px rgba(57,255,140,0.65)) drop-shadow(0 0 38px rgba(43,217,255,0.55)); }
   }
 
-  .hero-sub{
-    margin-top: 22px;
-    font-size: 15px;
-    color: var(--ink-soft);
-    letter-spacing: 0.08em;
-    text-align: center;
-  }
-
   .scroll-cue{
     position: absolute;
     bottom: 38px;
@@ -118,13 +109,13 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     100% { transform: scaleY(0.3); opacity: 0.3; }
   }
 
-  /* ---------- EVENTS SECTION ---------- */
   .events{
     background: var(--navy);
     padding: 100px 24px 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
 
   .events-heading{
@@ -181,8 +172,14 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     display: block;
   }
 
-  .follow-btn{
+  .action-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
     margin-top: 32px;
+  }
+
+  .follow-btn{
     display: inline-block;
     padding: 14px 36px;
     border-radius: 999px;
@@ -200,6 +197,35 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   .follow-btn:hover{
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(43,217,255,0.35);
+  }
+
+  .cart-btn{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 0 rgba(43,217,255,0);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .cart-btn:hover{
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 28px rgba(43,217,255,0.35);
+  }
+
+  .cart-btn svg{
+    width: 24px;
+    height: 24px;
+    stroke: var(--navy);
+    fill: none;
+    stroke-width: 2;
   }
 
   .footer-note{
@@ -236,7 +262,17 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
       <img src="flyer.png" alt="Event flyer" class="flyer-img">
     </div>
 
-    <a href="https://www.instagram.com/ponsphaera/?hl=en" target="_blank" rel="noopener noreferrer" class="follow-btn">Follow Us</a>
+    <div class="action-row">
+      <a href="https://www.instagram.com/ponsphaera/?hl=en" target="_blank" rel="noopener noreferrer" class="follow-btn">Follow Us</a>
+
+      <a href="checkout.html" class="cart-btn" aria-label="Checkout">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+      </a>
+    </div>
 
     <div class="footer-note">More events drop soon — stay tuned.</div>
   </section>
