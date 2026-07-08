@@ -99,24 +99,49 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     color: var(--ink-soft);
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
+    animation: fadeInUp 1.5s ease forwards;
+    opacity: 0;
   }
 
-  .scroll-cue .line{
-    width: 1px;
-    height: 34px;
-    background: linear-gradient(to bottom, var(--green), var(--blue));
-    animation: drop 1.8s ease-in-out infinite;
+  @keyframes fadeInUp{
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes drop{
-    0% { transform: scaleY(0.3); opacity: 0.3; }
-    50% { transform: scaleY(1); opacity: 1; }
-    100% { transform: scaleY(0.3); opacity: 0.3; }
+  .scroll-cue span{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .scroll-cue .chevrons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .scroll-cue .chevrons svg{
+    width: 22px;
+    height: 22px;
+    stroke: none;
+  }
+
+  .scroll-cue .chevrons svg:nth-child(1){ opacity: 0.3; animation: pulse-cue 1.4s ease-in-out infinite 0s; }
+  .scroll-cue .chevrons svg:nth-child(2){ opacity: 0.6; animation: pulse-cue 1.4s ease-in-out infinite 0.2s; }
+  .scroll-cue .chevrons svg:nth-child(3){ opacity: 1;   animation: pulse-cue 1.4s ease-in-out infinite 0.4s; }
+
+  @keyframes pulse-cue{
+    0%, 100% { opacity: 0.15; transform: translateY(-3px); }
+    50% { opacity: 1; transform: translateY(3px); }
   }
 
   .events{
@@ -361,7 +386,20 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     <div class="party-text">JOIN THE LIFESTYLE</div>
     <div class="scroll-cue">
       <span>Scroll</span>
-      <div class="line"></div>
+      <div class="chevrons">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6 9 12 15 18 9" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#39ff8c"/><stop offset="100%" stop-color="#2bd9ff"/></linearGradient></defs>
+        </svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6 9 12 15 18 9" stroke="url(#g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#39ff8c"/><stop offset="100%" stop-color="#2bd9ff"/></linearGradient></defs>
+        </svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6 9 12 15 18 9" stroke="url(#g3)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#39ff8c"/><stop offset="100%" stop-color="#2bd9ff"/></linearGradient></defs>
+        </svg>
+      </div>
     </div>
   </section>
 
