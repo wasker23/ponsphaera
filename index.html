@@ -248,6 +248,137 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   @media (max-width: 540px){
     .flyer-frame{ max-width: 100%; }
   }
+
+  /* ---------- RECAPS ---------- */
+  .recaps{
+    background: #060f1f;
+    padding: 100px 24px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recaps-heading{
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .recaps-eyebrow{
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .recaps-title{
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: #ffffff;
+    letter-spacing: 0.01em;
+  }
+
+  .recaps-title span{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .video-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .video-wrap{
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    background: #0d2143;
+    border: 1px solid rgba(57,255,140,0.18);
+    position: relative;
+  }
+
+  .video-wrap::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--blue));
+    z-index: 2;
+  }
+
+  .video-wrap video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 600px){
+    .video-grid{ grid-template-columns: 1fr; max-width: 360px; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background: var(--bg);
+    padding: 100px 24px 120px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-inner{
+    max-width: 680px;
+    width: 100%;
+  }
+
+  .about-eyebrow{
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .about-title{
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    margin-bottom: 40px;
+  }
+
+  .about-title span{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .about-body p{
+    font-size: 17px;
+    line-height: 1.8;
+    color: #3a4452;
+    margin-bottom: 22px;
+  }
+
+  .about-closing{
+    margin-top: 36px !important;
+    font-size: 18px !important;
+    color: var(--navy) !important;
+    font-weight: 500;
+  }
+
+  .about-closing strong{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
@@ -284,6 +415,44 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="footer-note">More events drop soon — stay tuned.</div>
+  </section>
+
+  <!-- RECAP VIDEOS -->
+  <section class="recaps">
+    <div class="recaps-heading">
+      <div class="recaps-eyebrow">Recap</div>
+      <div class="recaps-title">You Had To <span>Be There</span></div>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-wrap">
+        <video autoplay muted loop playsinline>
+          <source src="recap1.mp4" type="video/mp4">
+          <source src="recap1.mov" type="video/quicktime">
+        </video>
+      </div>
+      <div class="video-wrap">
+        <video autoplay muted loop playsinline>
+          <source src="recap2.mp4" type="video/mp4">
+          <source src="recap2.mov" type="video/quicktime">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="about-inner">
+      <div class="about-eyebrow">About Us</div>
+      <div class="about-title">Join the <span>Lifestyle</span></div>
+      <div class="about-body">
+        <p>Ponsphaera is more than an event company—it's a lifestyle built around bringing people together through unforgettable experiences.</p>
+        <p>We believe the best connections happen in real life. Whether you're meeting new people at a brunch, challenging someone to a game, dancing at a festival, finding balance at a wellness event, or losing yourself in the energy of a rave, every Ponsphaera event is designed to create moments that turn strangers into friends and experiences into memories.</p>
+        <p>Our mission is to build a community where social connection, entertainment, health, music, fitness, and culture all come together under one lifestyle. No matter your interests, there's a place for you.</p>
+        <p>From brunches and day parties to wellness activations, music festivals, nightlife, sporting events, networking experiences, and everything in between, Ponsphaera is where people come to connect, explore, and live life to the fullest.</p>
+        <p class="about-closing">This isn't just another event. It's a lifestyle.<br><strong>Join the Lifestyle.</strong></p>
+      </div>
+    </div>
   </section>
 
 </body>
