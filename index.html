@@ -3,6 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Event Schema — Auto-pulled from Eventbrite -->
+<script>
+  (async function() {
+    try {
+      const token = '5N5X4PRA3EDHLG43PFSY';
+      const res = await fetch(`https://www.eventbriteapi.com/v3/users/me/events/?status=live&expand=venue&order_by=start_asc&token=${token}`);
+      const data = await res.json();
+      const events = data.events;
+      if (!events || events.length === 0) return;
+
+      const event = events[0];
+      const venue = event.venue;
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": event.name?.text || '',
+        "description": event.description?.text || '',
+        "startDate": event.start?.utc || '',
+        "endDate": event.end?.utc || '',
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": venue ? {
+          "@type": "Place",
+          "name": venue.name || '',
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": venue.address?.address_1 || '',
+            "addressLocality": venue.address?.city || '',
+            "addressRegion": venue.address?.region || '',
+            "postalCode": venue.address?.postal_code || '',
+            "addressCountry": venue.address?.country || ''
+          }
+        } : {},
+        "image": "https://ponsphaera.com/flyer.png",
+        "url": "https://ponsphaera.com",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://posh.vip/g/ponsphaera",
+          "availability": "https://schema.org/InStock"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Ponsphaera",
+          "url": "https://ponsphaera.com"
+        }
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(schema);
+      document.head.appendChild(script);
+
+    } catch(e) {
+      console.log('Schema load error:', e);
+    }
+  })();
+</script>
+<!-- End Google Event Schema -->
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Ponsphaera — Lifestyle</title>
 
