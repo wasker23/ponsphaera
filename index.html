@@ -223,43 +223,42 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   }
 
   /* ---------- VIDEO BANNER ---------- */
-  .video-banner{
-    width: 100%;
-    height: 420px;
-    position: relative;
+  .events-bg-video{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     overflow: hidden;
-    margin-bottom: 60px;
   }
 
-  .video-banner video{
+  .events-bg-video video{
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .video-banner-overlay{
+  .events-video-overlay{
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(10,24,48,0.3) 0%,
-      rgba(10,24,48,0.1) 50%,
-      rgba(10,24,48,0.6) 100%
-    );
-  }
-
-  @media (max-width: 600px){
-    .video-banner{ height: 240px; }
+    background: rgba(10,24,48,0.72);
   }
 
   .events{
     background: var(--navy);
-    padding: 0 24px 120px;
+    padding: 100px 24px 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    overflow: hidden;
+  }
+
+  .events-heading,
+  .flyer-frame,
+  .action-row,
+  .footer-note{
+    position: relative;
+    z-index: 1;
   }
 
   .events-heading{
@@ -491,12 +490,12 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
 <body>
 
   <section class="events">
-    <div class="video-banner">
+    <div class="events-bg-video">
       <video autoplay muted loop playsinline>
         <source src="hero.mp4" type="video/mp4">
         <source src="hero.mov" type="video/quicktime">
       </video>
-      <div class="video-banner-overlay"></div>
+      <div class="events-video-overlay"></div>
     </div>
 
     <div class="events-heading">
