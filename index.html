@@ -3,7 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Event Schema — Auto-pulled from Eventbrite -->
+<!-- Video Autoplay Mobile Fix -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(function(video) {
+      video.muted = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function() {
+          document.addEventListener('touchstart', function() {
+            video.play();
+          }, { once: true });
+        });
+      }
+    });
+  });
+</script>
+<!-- End Video Autoplay Mobile Fix -->
 <script>
   (async function() {
     try {
@@ -491,8 +511,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
 
   <section class="events">
     <div class="events-bg-video">
-      <video autoplay muted loop playsinline>
-        <source src="hero.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline webkit-playsinline>
         <source src="hero.mov" type="video/quicktime">
       </video>
       <div class="events-video-overlay"></div>
@@ -548,7 +567,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   <div style="background:#060f1f;">
   <section class="lifestyle">
     <div class="video-wrap">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline webkit-playsinline>
         <source src="recap1.mp4" type="video/mp4">
         <source src="recap1.mov" type="video/quicktime">
       </video>
@@ -567,7 +586,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="video-wrap">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline webkit-playsinline>
         <source src="recap2.mp4" type="video/mp4">
         <source src="recap2.mov" type="video/quicktime">
       </video>
