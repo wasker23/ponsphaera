@@ -165,28 +165,19 @@
   }
 
   .photo-grid{
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
     width: 100%;
-    min-height: 2400px;
   }
 
   .photo-item{
-    position: absolute;
-    width: 260px;
     border-radius: 12px;
     overflow: hidden;
     background: #0d2143;
     border: 1px solid rgba(57,255,140,0.12);
     cursor: pointer;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s;
-    z-index: 1;
-  }
-
-  .photo-item:hover{
-    transform: scale(1.08) rotate(0deg) !important;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.6);
-    z-index: 10;
+    position: relative;
   }
 
   .photo-item::before{
@@ -200,26 +191,32 @@
 
   .photo-item img{
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
+    aspect-ratio: 1 / 1;
+    loading: lazy;
   }
 
   .photo-item .overlay{
     position: absolute;
     inset: 0;
     background: rgba(10,24,48,0);
-    transition: background 0.3s ease;
+    transition: background 0.2s ease;
     z-index: 1;
   }
 
   .photo-item:hover .overlay{
-    background: rgba(10,24,48,0.2);
+    background: rgba(10,24,48,0.25);
   }
 
   @media (max-width: 700px){
-    .photo-item{ width: 160px; }
-    .photo-grid{ min-height: 3200px; }
+    .photo-grid{ grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .nav{ padding: 16px 20px; }
+  }
+
+  @media (max-width: 420px){
+    .photo-grid{ grid-template-columns: 1fr; }
   }
 
   /* ---------- EMPTY STATE ---------- */
@@ -352,51 +349,51 @@
 
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="1.jpg" alt="Ponsphaera event photo">
+        <img src="1.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="2.jpg" alt="Ponsphaera event photo">
+        <img src="2.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="3.jpg" alt="Ponsphaera event photo">
+        <img src="3.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="4.jpg" alt="Ponsphaera event photo">
+        <img src="4.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="5.jpg" alt="Ponsphaera event photo">
+        <img src="5.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="10.jpg" alt="Ponsphaera event photo">
+        <img src="10.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="14.jpg" alt="Ponsphaera event photo">
+        <img src="14.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="15.jpg" alt="Ponsphaera event photo">
+        <img src="15.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="17.jpg" alt="Ponsphaera event photo">
+        <img src="17.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="18.jpg" alt="Ponsphaera event photo">
+        <img src="18.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="19.jpg" alt="Ponsphaera event photo">
+        <img src="19.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <div class="overlay"></div>
-        <img src="20.jpg" alt="Ponsphaera event photo">
+        <img src="20.jpg" alt="Ponsphaera event photo" loading="lazy">
       </div>
 
     </div>
@@ -414,44 +411,6 @@
   <div class="footer">© Ponsphaera — Join the Lifestyle</div>
 
   <script>
-    const isMobile = window.innerWidth <= 700;
-
-    function scatterPhotos() {
-      const grid = document.getElementById('photoGrid');
-      const items = grid.querySelectorAll('.photo-item');
-      const gridWidth = grid.offsetWidth;
-      const mobile = window.innerWidth <= 700;
-      const photoWidth = mobile ? 130 : 260;
-      const maxRot = mobile ? 5 : 7;
-      const cols = mobile ? 2 : 3;
-      const rowHeight = mobile ? 180 : 300;
-      const padding = mobile ? 8 : 20;
-      const colWidth = (gridWidth - padding * (cols + 1)) / cols;
-      const totalRows = Math.ceil(items.length / cols);
-
-      grid.style.minHeight = (totalRows * rowHeight + (mobile ? 150 : 200)) + 'px';
-
-      items.forEach(function(item, i) {
-        item.style.width = photoWidth + 'px';
-        const col = i % cols;
-        const row = Math.floor(i / cols);
-        const baseX = padding + col * (colWidth + padding);
-        const baseY = row * rowHeight + padding;
-        const randX = baseX + (Math.random() * (colWidth - photoWidth) * 0.6);
-        const randY = baseY + (Math.random() * (mobile ? 30 : 60));
-        const randRot = (Math.random() * maxRot * 2) - maxRot;
-        const clampedX = Math.max(padding, Math.min(randX, gridWidth - photoWidth - padding));
-
-        item.style.left = clampedX + 'px';
-        item.style.top = randY + 'px';
-        item.style.transform = 'rotate(' + randRot + 'deg)';
-      });
-    }
-
-    window.addEventListener('load', scatterPhotos);
-    window.addEventListener('resize', scatterPhotos);
-
-    // Lightbox — works for both click and touch
     function openLightbox(el) {
       const img = el.querySelector('img');
       document.getElementById('lightboxImg').src = img.src;
@@ -463,24 +422,6 @@
       document.getElementById('lightbox').classList.remove('active');
       document.body.style.overflow = '';
     }
-
-    // Tap to straighten on mobile, then tap again to open
-    document.querySelectorAll('.photo-item').forEach(function(item) {
-      let tapped = false;
-      item.addEventListener('touchend', function(e) {
-        if (!tapped) {
-          e.preventDefault();
-          item.style.transform = 'rotate(0deg) scale(1.05)';
-          item.style.zIndex = 10;
-          tapped = true;
-          setTimeout(function() {
-            tapped = false;
-          }, 2000);
-        } else {
-          openLightbox(item);
-        }
-      });
-    });
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeLightbox();
