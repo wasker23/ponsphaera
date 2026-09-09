@@ -1,1965 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ponsphaera - Sober Morning Club Miami | Wellness Events & Community</title>
-    <meta name="description" content="Miami's #1 ping pong day club. Cold plunges, ping pong, wellness services & community networking. Join us for Shake the Pain Away - Ponsphaera!">
-    <meta name="keywords" content="sober morning club Miami, wellness events Miami, cold plunge Miami, ping pong community, sober social events, The Gates Hotel events">
-    <link rel="icon" type="image/png" href="ponsphaera-logo.png">
-    <link rel="apple-touch-icon" href="ponsphaera-logo.png">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3F41CRDZBW');
-    </script>
-    
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '781141444370323');
-    fbq('track', 'PageView');
-    fbq('track', 'ViewContent');
-    
-    // Debug logging
-    console.log('Meta Pixel loaded');
-    console.log('ViewContent event fired');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #00807E 0%, #342758 50%, #512663 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* Scroll Progress Indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(to right, #4dd0e1, #81c784);
-            z-index: 1001;
-            transition: width 0.3s ease;
-        }
-
-        /* Side decorative images */
-        .side-images {
-            position: fixed;
-            top: 0;
-            height: 100vh;
-            width: 150px;
-            z-index: -1;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .side-images.left {
-            left: 0;
-        }
-
-        .side-images.right {
-            right: 0;
-        }
-
-        .floating-image {
-            position: absolute;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .floating-image:hover {
-            transform: scale(1.05);
-        }
-
-        /* Left side images */
-        .left .floating-image:nth-child(1) {
-            top: 10%;
-            left: 20px;
-            width: 100px;
-            height: 80px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .left .floating-image:nth-child(2) {
-            top: 25%;
-            left: 10px;
-            width: 80px;
-            height: 100px;
-            background: linear-gradient(45deg, #00CED1, #20B2AA);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 206, 209, 0.3);
-        }
-
-        .left .floating-image:nth-child(3) {
-            top: 45%;
-            left: 30px;
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(45deg, #FF69B4, #FF1493);
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
-        }
-
-        .left .floating-image:nth-child(4) {
-            top: 65%;
-            left: 15px;
-            width: 85px;
-            height: 75px;
-            background: linear-gradient(45deg, #32CD32, #98FB98);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(50, 205, 50, 0.3);
-        }
-
-        .left .floating-image:nth-child(5) {
-            top: 80%;
-            left: 25px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #FF6347, #FFA07A);
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(255, 99, 71, 0.3);
-        }
-
-        /* Right side images */
-        .right .floating-image:nth-child(1) {
-            top: 15%;
-            right: 15px;
-            width: 95px;
-            height: 85px;
-            background: linear-gradient(45deg, #9370DB, #BA55D3);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(147, 112, 219, 0.3);
-        }
-
-        .right .floating-image:nth-child(2) {
-            top: 30%;
-            right: 25px;
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #FF4500, #FF6347);
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
-        }
-
-        .right .floating-image:nth-child(3) {
-            top: 50%;
-            right: 10px;
-            width: 100px;
-            height: 75px;
-            background: linear-gradient(45deg, #1E90FF, #87CEEB);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
-        }
-
-        .right .floating-image:nth-child(4) {
-            top: 70%;
-            right: 20px;
-            width: 75px;
-            height: 90px;
-            background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
-        }
-
-        .right .floating-image:nth-child(5) {
-            top: 85%;
-            right: 30px;
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(45deg, #ADFF2F, #7FFF00);
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(173, 255, 47, 0.3);
-        }
-
-        /* Animation for floating effect */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .floating-image:nth-child(odd) {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-image:nth-child(even) {
-            animation: float 6s ease-in-out infinite reverse;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Animated sections */
-        .animate-on-scroll {
-            transform: translateY(50px);
-            opacity: 0;
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .animate-on-scroll.animate {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .animate-scale {
-            transform: scale(0.8);
-            opacity: 0;
-            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .animate-scale.animate {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        .animate-slide-up {
-            transform: translateY(80px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .animate-slide-up.animate {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #4dd0e1, #81c784);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        /* Hero Section with Background Image */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            color: white;
-            background: 
-                linear-gradient(135deg, rgba(0, 128, 126, 0.85), rgba(52, 39, 88, 0.85), rgba(81, 38, 99, 0.85)),
-                url('ponsphaera-event-3.jpg') center/cover;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="70" cy="80" r="2.5" fill="rgba(255,255,255,0.04)"/></svg>');
-            animation: float-bg 20s linear infinite;
-        }
-
-        @keyframes float-bg {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100px) rotate(360deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 8vw, 6rem);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: 700;
-            color: #FFD700;
-        }
-
-        .hero p {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #4dd0e1, #81c784);
-            color: white;
-            box-shadow: 0 10px 30px rgba(77, 208, 225, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-instagram {
-            background: linear-gradient(45deg, #E4405F, #F56040, #FCAF45);
-            color: white;
-            border: none;
-            box-shadow: 0 10px 30px rgba(228, 64, 95, 0.3);
-        }
-
-        .btn-instagram:hover {
-            box-shadow: 0 15px 40px rgba(228, 64, 95, 0.4);
-            transform: translateY(-3px);
-        }
-
-        .btn-text-signup {
-            background: linear-gradient(45deg, #25D366, #128C7E);
-            color: white;
-            border: none;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-text-signup:hover {
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
-            transform: translateY(-3px);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 15px 40px rgba(77, 208, 225, 0.4);
-        }
-
-        /* Hero Tickets Button - Make it massive and obvious */
-        .btn-tickets-hero {
-            padding: 20px 40px !important;
-            font-size: 1.4rem !important;
-            font-weight: 900 !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: pulse-glow 2s ease-in-out infinite;
-            border: 3px solid #fff;
-            box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5), 0 0 30px rgba(77, 208, 225, 0.8), 0 0 60px rgba(77, 208, 225, 0.4) !important;
-        }
-
-        .btn-tickets-hero:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.7), 0 0 50px rgba(77, 208, 225, 1), 0 0 100px rgba(77, 208, 225, 0.6) !important;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { 
-                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.5), 0 0 30px rgba(77, 208, 225, 0.8), 0 0 60px rgba(77, 208, 225, 0.4);
-            }
-            50% { 
-                box-shadow: 0 15px 50px rgba(77, 208, 225, 0.8), 0 0 50px rgba(77, 208, 225, 1), 0 0 100px rgba(77, 208, 225, 0.6);
-            }
-        }
-
-        /* Make other buttons smaller */
-        .btn-secondary-small {
-            padding: 12px 20px;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .btn-instagram-small {
-            padding: 15px 25px;
-            font-size: 1rem;
-            background: linear-gradient(45deg, #E4405F, #F56040, #FCAF45);
-            color: white;
-            border: none;
-            box-shadow: 0 8px 25px rgba(228, 64, 95, 0.3);
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .btn-instagram-small:hover {
-            box-shadow: 0 12px 35px rgba(228, 64, 95, 0.4);
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        /* Responsive tickets button */
-        @media (max-width: 768px) {
-            .btn-tickets-hero {
-                padding: 18px 30px !important;
-                font-size: 1.2rem !important;
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #00807E 0%, #342758 50%, #512663 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="70" cy="80" r="2.5" fill="rgba(255,255,255,0.04)"/></svg>');
-            animation: float-bg 20s linear infinite;
-            pointer-events: none;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 3rem;
-            color: #FFD700;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: none;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            color: white;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-        }
-
-        .feature-card.animate::before {
-            transform: scaleX(1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #4dd0e1;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
-            text-stroke: 1px rgba(0, 0, 0, 0.3);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-            color: #FFFFFF;
-            font-size: 1rem;
-            margin: 0;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #00807E 0%, #342758 50%, #512663 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="70" cy="20" r="2" fill="rgba(255,255,255,0.06)"/><circle cx="30" cy="70" r="1" fill="rgba(255,255,255,0.04)"/></svg>');
-            animation: float-bg 25s linear infinite;
-            pointer-events: none;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-content h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 2rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: #FFD700;
-        }
-
-        .about-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            line-height: 1.7;
-            color: #FFFFFF;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .highlight-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .highlight-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-        }
-
-        .highlight-item.animate::before {
-            transform: scaleX(1);
-        }
-
-        .highlight-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #4dd0e1;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
-            text-stroke: 1px rgba(0, 0, 0, 0.3);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-weight: 700;
-        }
-
-        .highlight-item p {
-            font-size: 1rem;
-            margin: 0;
-            opacity: 0.9;
-            color: #FFFFFF;
-        }
-
-        .safety-note {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid #4dd0e1;
-        }
-
-        .safety-note p {
-            margin: 0;
-            font-size: 0.9rem;
-            opacity: 0.9;
-            color: #FFFFFF;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 2rem 1rem;
-            border-radius: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-        }
-
-        .stat-card.animate::before {
-            transform: scaleX(1);
-        }
-
-        .stat-card h3 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #4dd0e1;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(77, 208, 225, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.5);
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
-            text-stroke: 1px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-card p {
-            font-size: 1rem;
-            margin: 0;
-            opacity: 0.9;
-            color: #FFFFFF;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .about-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* Community Gallery Section */
-        .gallery-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #00807E 0%, #342758 50%, #512663 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="30" r="2" fill="rgba(255,255,255,0.08)"/><circle cx="30" cy="65" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="75" r="2.5" fill="rgba(255,255,255,0.04)"/><circle cx="45" cy="85" r="1.5" fill="rgba(255,255,255,0.05)"/></svg>');
-            animation: float-bg 18s linear infinite;
-            pointer-events: none;
-        }
-
-        .gallery-section h2 {
-            text-align: center;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            color: #FFD700;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .gallery-subtitle {
-            text-align: center;
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            transform: translateY(60px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #4dd0e1, #4ECDC4);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-            z-index: 10;
-        }
-
-        .gallery-item.animate {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .gallery-item.animate::before {
-            transform: scaleX(1);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 2rem 1.5rem 1.5rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        .gallery-overlay h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #FFFFFF;
-        }
-
-        .gallery-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .events-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #00807E 0%, #342758 50%, #512663 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .events-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="15" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="15" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="35" cy="55" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="85" cy="75" r="2.5" fill="rgba(255,255,255,0.04)"/><circle cx="25" cy="85" r="1.5" fill="rgba(255,255,255,0.05)"/><circle cx="65" cy="35" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
-            animation: float-bg 22s linear infinite;
-            pointer-events: none;
-        }
-
-        .events-section h2 {
-            text-align: center;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 3rem;
-            color: #FFD700;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .event-card {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-date {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        /* Ticket Purchase Section Styling */
-        .ticket-urgency-banner {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .ticket-urgency-banner h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 1rem;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: ticket-glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes ticket-glow {
-            from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
-            to { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.5); }
-        }
-
-        .urgency-text {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .social-proof {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            color: #FFFFFF;
-            font-style: italic;
-        }
-
-        .event-details-preview {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-            text-align: left;
-        }
-
-        .event-time, .event-location {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .event-time h4, .event-location h4 {
-            color: #FFD700;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .event-time p, .event-location p {
-            margin: 0;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        @media (max-width: 768px) {
-            .event-details-preview {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        .ticket-purchase-card {
-            background: transparent !important;
-            color: white !important;
-            border: 3px solid #4dd0e1;
-            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.3);
-            animation: card-highlight 3s ease-in-out infinite;
-        }
-
-        @keyframes card-highlight {
-            0%, 100% { border-color: #4dd0e1; }
-            50% { border-color: #FFD700; }
-        }
-
-        .ticket-header h3 {
-            font-size: 1.8rem;
-            color: #FFD700;
-            margin-bottom: 1rem;
-        }
-
-        .ticket-header .event-date {
-            background: #4dd0e1;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        /* Floating Ticket Button */
-        .floating-ticket-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: all 0.3s ease;
-        }
-
-        .floating-ticket-btn.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .floating-btn {
-            background: linear-gradient(45deg, #4dd0e1, #81c784);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 8px 25px rgba(77, 208, 225, 0.4);
-            display: block;
-            text-align: center;
-            animation: float-pulse 2s infinite;
-        }
-
-        .floating-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(77, 208, 225, 0.6);
-            color: white;
-            text-decoration: none;
-        }
-
-        @keyframes float-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-        }
-
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 20px;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .close:hover {
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #4dd0e1;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Success Message */
-        .success-message {
-            background: #4CAF50;
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        /* SweatPals widget transparency and text color - AGGRESSIVE OVERRIDE */
-        .sweatpals-widget,
-        .sweatpals-widget *,
-        [class*="sweatpals"],
-        [id*="sweatpals"],
-        iframe[src*="sweatpals"],
-        iframe[src*="sweatpals"] *,
-        div[class*="embed"],
-        div[id*="embed"] {
-            background: transparent !important;
-            background-color: transparent !important;
-            color: white !important;
-        }
-
-        /* Force all text elements to white */
-        .sweatpals-widget .price,
-        .sweatpals-widget .description,
-        .sweatpals-widget .title,
-        .sweatpals-widget p,
-        .sweatpals-widget span,
-        .sweatpals-widget div,
-        .sweatpals-widget h1,
-        .sweatpals-widget h2,
-        .sweatpals-widget h3,
-        .sweatpals-widget h4,
-        .sweatpals-widget h5,
-        .sweatpals-widget h6,
-        .sweatpals-widget label,
-        .sweatpals-widget small,
-        .sweatpals-widget strong,
-        .sweatpals-widget em {
-            color: white !important;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
-        }
-
-        /* Target any embedded content */
-        iframe * {
-            color: white !important;
-        }
-
-        /* Universal text override for SweatPals */
-        [src*="sweatpals"] * {
-            color: white !important;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .side-images {
-                display: none;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .floating-ticket-btn {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            .floating-btn {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Video Autoplay Mobile Fix -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(function(video) {
+      video.muted = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function() {
+          document.addEventListener('touchstart', function() {
+            video.play();
+          }, { once: true });
+        });
+      }
+    });
+  });
+</script>
+<!-- End Video Autoplay Mobile Fix -->
+<script>
+  (async function() {
+    try {
+      const token = '5N5X4PRA3EDHLG43PFSY';
+      const res = await fetch(`https://www.eventbriteapi.com/v3/users/me/events/?status=live&expand=venue&order_by=start_asc&token=${token}`);
+      const data = await res.json();
+      const events = data.events;
+      if (!events || events.length === 0) return;
+
+      const event = events[0];
+      const venue = event.venue;
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": event.name?.text || '',
+        "description": event.description?.text || '',
+        "startDate": event.start?.utc || '',
+        "endDate": event.end?.utc || '',
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": venue ? {
+          "@type": "Place",
+          "name": venue.name || '',
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": venue.address?.address_1 || '',
+            "addressLocality": venue.address?.city || '',
+            "addressRegion": venue.address?.region || '',
+            "postalCode": venue.address?.postal_code || '',
+            "addressCountry": venue.address?.country || ''
+          }
+        } : {},
+        "image": "https://ponsphaera.com/flyer.png",
+        "url": "https://ponsphaera.com",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://posh.vip/g/ponsphaera",
+          "availability": "https://schema.org/InStock"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Ponsphaera",
+          "url": "https://ponsphaera.com"
+        }
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(schema);
+      document.head.appendChild(script);
+
+    } catch(e) {
+      console.log('Schema load error:', e);
+    }
+  })();
+</script>
+<!-- End Google Event Schema -->
+
+<!-- Video Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Ponsphaera Past Event Recap",
+  "description": "See you in Miami's favorite pool party destination",
+  "thumbnailUrl": "https://ponsphaera.com/recap1.mp4",
+  "contentUrl": "https://ponsphaera.com/recap1.mp4",
+  "embedUrl": "https://ponsphaera.com/recap1.mp4",
+  "uploadDate": "2026-07-22",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ponsphaera",
+    "url": "https://ponsphaera.com"
+  }
+}
+</script>
+<!-- End Video Schema -->
+
+<!-- Hero Video Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Brickell Pool Party Train",
+  "description": "Join Miami's top sensations to pool party in Brickell",
+  "thumbnailUrl": "https://ponsphaera.com/hero.mp4",
+  "contentUrl": "https://ponsphaera.com/hero.mp4",
+  "embedUrl": "https://ponsphaera.com/hero.mp4",
+  "uploadDate": "2026-07-22",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ponsphaera",
+    "url": "https://ponsphaera.com"
+  }
+}
+</script>
+<!-- End Hero Video Schema -->
+<meta name="facebook-domain-verification" content="4t0ml9boeev3kv8cebz15ek0a2xhln" />
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Ponsphaera — Lifestyle</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="The premier lifestyle experience bringing you events: brunches, socials, wellness, raves, and festivals. Join the Lifestyle.">
+<meta name="keywords" content="Miami events, Miami day party, Miami lifestyle, Miami brunch, Miami wellness, Miami nightlife, Ponsphaera, Miami ping pong, Miami pool party, day parties, festivals, raves, brunches, socials, wellness, Miami pool parties, Brickell pool party, Miami rooftop pool party, Miami pool party 2026, pool party Miami, Miami summer pool party, Novotel pool party Miami">
+<meta name="author" content="Ponsphaera">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (how your link looks when shared on social media) -->
+<meta property="og:title" content="Ponsphaera — Join the Lifestyle">
+<meta property="og:description" content="The premier lifestyle experience bringing you events: brunches, socials, wellness, raves, and festivals. Join the Lifestyle.">
+<meta property="og:image" content="flyer.png">
+<meta property="og:url" content="https://ponsphaera.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ponsphaera — Join the Lifestyle">
+<meta name="twitter:description" content="The premier lifestyle experience bringing you events: brunches, socials, wellness, raves, and festivals. Join the Lifestyle.">
+<meta name="twitter:image" content="flyer.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3F41CRDZBW');
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '781141444370323');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+  :root{
+    --bg: #ffffff;
+    --green: #39ff8c;
+    --blue: #2bd9ff;
+    --navy: #0a1830;
+    --gold: #d9b34a;
+    --ink-soft: #5a6472;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  .hero{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--bg);
+  }
+
+  .hero-eyebrow{
+    font-size: 13px;
+    letter-spacing: 0.35em;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .party-text{
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 7vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-align: center;
+    background: linear-gradient(100deg, var(--green) 0%, var(--green) 40%, var(--blue) 60%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 6px rgba(57,255,140,0.45)) drop-shadow(0 0 26px rgba(43,217,255,0.35));
+    animation: flicker 4.5s ease-in-out infinite;
+    user-select: none;
+  }
+
+  @keyframes flicker{
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(57,255,140,0.45)) drop-shadow(0 0 26px rgba(43,217,255,0.35)); }
+    50% { filter: drop-shadow(0 0 10px rgba(57,255,140,0.65)) drop-shadow(0 0 38px rgba(43,217,255,0.55)); }
+  }
+
+  .scroll-cue{
+    position: absolute;
+    bottom: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink-soft);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    animation: fadeInUp 1.5s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp{
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-cue span{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .scroll-cue .chevrons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .scroll-cue .chevrons svg{
+    width: 22px;
+    height: 22px;
+    stroke: none;
+  }
+
+  .scroll-cue .chevrons svg:nth-child(1){ opacity: 0.3; animation: pulse-cue 1.4s ease-in-out infinite 0s; }
+  .scroll-cue .chevrons svg:nth-child(2){ opacity: 0.6; animation: pulse-cue 1.4s ease-in-out infinite 0.2s; }
+  .scroll-cue .chevrons svg:nth-child(3){ opacity: 1;   animation: pulse-cue 1.4s ease-in-out infinite 0.4s; }
+
+  @keyframes pulse-cue{
+    0%, 100% { opacity: 0.15; transform: translateY(-3px); }
+    50% { opacity: 1; transform: translateY(3px); }
+  }
+
+  /* ---------- VIDEO BANNER ---------- */
+  .events-bg-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .events-bg-video video{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .events-video-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10,24,48,0.72);
+    z-index: 1;
+  }
+
+  .events{
+    background: var(--navy);
+    padding: 100px 24px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+
+  .events-heading,
+  .flyer-frame,
+  .action-row,
+  .footer-note{
+    position: relative;
+    z-index: 2;
+  }
+
+  .events-heading{
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .events-eyebrow{
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .events-title{
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: #ffffff;
+    letter-spacing: 0.01em;
+  }
+
+  .events-title span{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .flyer-frame{
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background: #0d2143;
+    border: 1px solid rgba(57,255,140,0.18);
+  }
+
+  .flyer-frame::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--blue));
+    z-index: 2;
+  }
+
+  .flyer-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .action-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .follow-btn{
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--navy);
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 0 rgba(43,217,255,0);
+  }
+
+  .follow-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(43,217,255,0.35);
+  }
+
+  .cart-btn{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 0 rgba(43,217,255,0);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .cart-btn:hover{
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 28px rgba(43,217,255,0.35);
+  }
+
+  .cart-btn svg{
+    width: 24px;
+    height: 24px;
+    stroke: var(--navy);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .footer-note{
+    margin-top: 48px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 540px){
+    .flyer-frame{ max-width: 100%; }
+  }
+
+  /* ---------- LIFESTYLE COMBINED ---------- */
+  .lifestyle{
+    background: #060f1f;
+    padding: 100px 40px 120px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .video-wrap{
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    background: #0d2143;
+    border: 1px solid rgba(57,255,140,0.18);
+    position: relative;
+  }
+
+  .video-wrap::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--blue));
+    z-index: 2;
+  }
+
+  .video-wrap video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lifestyle-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .lifestyle-eyebrow{
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .lifestyle-title{
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: #ffffff;
+    letter-spacing: 0.01em;
+    margin-bottom: 32px;
+    line-height: 1.1;
+  }
+
+  .lifestyle-title span{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lifestyle-body p{
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .lifestyle-closing{
+    margin-top: 28px !important;
+    font-size: 16px !important;
+    color: #ffffff !important;
+    font-weight: 500;
+    text-align: center !important;
+  }
+
+  .lifestyle-closing strong{
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px){
+    .lifestyle{
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      padding: 80px 24px 100px;
+    }
+    .video-wrap{ max-width: 100%; }
+  }
+</style>
 </head>
 <body>
-    <div class="scroll-indicator"></div>
 
-    <header>
-        <nav>
-            <div class="logo">Ponsphaera</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#events">Events</a></li>
-                <li>        <a href="#" onclick="checkAnalyticsPassword(); gtag('event', 'click', { 'event_category': 'Navigation', 'event_label': 'Analytics Access' });">Analytics</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Side decorative images -->
-    <div class="side-images left">
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
-    </div>
-    
-    <div class="side-images right">
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
-        <div class="floating-image"></div>
+  <section class="events">
+    <div class="events-bg-video">
+      <video autoplay muted loop playsinline webkit-playsinline style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;">
+        <source src="hero.mp4" type="video/mp4">
+        <source src="hero.mov" type="video/quicktime">
+      </video>
+      <div class="events-video-overlay"></div>
     </div>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <div class="hero-content animate-on-scroll">
-                    <h1>Ponsphaera</h1>
-                    <p style="font-size: 2.2rem; margin-bottom: 0.5rem; color: #4dd0e1; -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3); text-stroke: 1px rgba(0, 0, 0, 0.3); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-weight: 700;">You don't want to miss this</p>
-                    <p style="font-family: 'Poppins', 'Arial', sans-serif; font-size: 2rem; font-weight: bold; color: white; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); transform: rotate(-2deg); display: inline-block; background: linear-gradient(45deg, #FF6B6B, #4ECDC4); padding: 10px 20px; border-radius: 20px; position: relative; margin: 1rem 0;">Miami's #1 ping pong day club</p>
-                    <div class="cta-buttons">
-                        <a href="https://www.sweatpals.com/event/shake-the-pain-away-ponsphaeras-morning-club" target="_blank" class="btn btn-primary btn-tickets-hero" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Join Waitlist Hero' });">📝 JOIN WAITLIST</a>
-                        <a href="sms:+18773490470?body=PONSPHAERA" class="btn btn-text-signup" onclick="gtag('event', 'click', { 'event_category': 'SMS', 'event_label': 'Dont Get Notified' });">Don't get notified</a>
-                        <a href="https://instagram.com/ponsphaera" target="_blank" class="btn btn-instagram-small" onclick="gtag('event', 'click', { 'event_category': 'Social', 'event_label': 'Instagram Follow' });">Follow Us</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <h2 class="animate-on-scroll">What We Bring</h2>
-                <div class="features-grid">
-                    <div class="feature-card animate-slide-up">
-                        <h3>🧊 Cold Plunges</h3>
-                        <p>Invigorating ice baths to boost recovery, mental clarity, and overall wellness</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>🏓 Ping Pong Tables</h3>
-                        <p>Professional tournament-grade tables for competitive fun and social connection</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>💆 Wellness Services</h3>
-                        <p>Chiropractors, massages, and B12 shots for complete body wellness</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>🧘 Yoga & Fitness</h3>
-                        <p>Sunrise yoga sessions and partnerships with Miami's top run clubs</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>🌿 Natural Wellness</h3>
-                        <p>Holistic wellness products including kratom (responsibly sourced & optional)</p>
-                    </div>
-                    <div class="feature-card animate-slide-up">
-                        <h3>👥 Community</h3>
-                        <p>A thriving network of health-conscious individuals seeking connection</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-content animate-scale">
-                        <h2>About Ponsphaera</h2>
-                        <p>Founded in Miami, Ponsphaera is revolutionizing the social wellness scene with sober morning experiences that energize, connect, and inspire.</p>
-                        
-                        <div class="about-highlights">
-                            <div class="highlight-item">
-                                <h4>🌅 Morning-Focused</h4>
-                                <p>We believe the best connections happen when minds are clear and energy is high</p>
-                            </div>
-                            <div class="highlight-item">
-                                <h4>🤝 Community-Driven</h4>
-                                <p>Building authentic relationships through shared wellness experiences</p>
-                            </div>
-                            <div class="highlight-item">
-                                <h4>💪 Holistic Wellness</h4>
-                                <p>Combining physical activities, mental clarity, and social connection</p>
-                            </div>
-                        </div>
-                        
-                        <div class="safety-note">
-                            <p><strong>Safety First:</strong> All wellness services and natural products are optional and provided by licensed professionals. We prioritize education and responsible use.</p>
-                        </div>
-                        
-                        <div style="margin-top: 2rem;">
-                            <button class="btn btn-primary" onclick="openModal('givingModal'); gtag('event', 'click', { 'event_category': 'Engagement', 'event_label': 'Nominate Organization' });">Nominate an Organization</button>
-                        </div>
-                    </div>
-                    <div class="about-stats animate-on-scroll">
-                        <div class="stat-card">
-                            <h3>500+</h3>
-                            <p>Community Members</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>50+</h3>
-                            <p>Events Hosted</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>10+</h3>
-                            <p>Venue Partners</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>$25K+</h3>
-                            <p>Donated to Charity</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="gallery-section">
-            <div class="container">
-                <h2 class="animate-on-scroll">Our Community</h2>
-                <p class="gallery-subtitle animate-on-scroll">Real moments from our Miami wellness adventures</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="ponsphaera-event-1.jpg" alt="Beach ping pong fun in Miami" style="object-position: center top;">
-                        <div class="gallery-overlay">
-                            <h3>Beach Vibes</h3>
-                            <p>Ping pong meets Miami sunshine - the perfect morning combination!</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="ponsphaera-event-2.jpg" alt="Indoor community ping pong tournament" style="object-position: center top;">
-                        <div class="gallery-overlay">
-                            <h3>Tournament Ready</h3>
-                            <p>Competitive fun with our amazing community members</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="ponsphaera-event-3.jpg" alt="Large group wellness event">
-                        <div class="gallery-overlay">
-                            <h3>Community Strong</h3>
-                            <p>Building connections through wellness and fun activities</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="ponsphaera-event-4.jpg" alt="Evening venue event">
-                        <div class="gallery-overlay">
-                            <h3>Venue Partners</h3>
-                            <p>Bringing the PonSphaera experience to Miami's best spots</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="ponsphaera-event-5.jpg" alt="Friends enjoying wellness activities">
-                        <div class="gallery-overlay">
-                            <h3>Friendship Goals</h3>
-                            <p>Making lasting connections in our sober morning community</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="ponsphaera-event-6.jpg" alt="Wellness service at Ponsphaera event" style="object-position: center top;">
-                        <div class="gallery-overlay">
-                            <h3>Wellness Focus</h3>
-                            <p>Professional wellness services bringing relaxation and recovery</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="events" class="events-section">
-            <div class="container">
-                <div class="ticket-urgency-banner">
-                    <h2 class="animate-on-scroll">🎟️ GET YOUR TICKETS NOW</h2>
-                </div>
-                
-                <div class="events-grid" id="eventsGrid">
-                    <div class="event-card animate-slide-up ticket-purchase-card">
-                        <div class="ticket-header">
-                            <h3>🌊 Shake the Pain Away - Ponsphaera</h3>
-                            <div class="event-date">September 6th, 2025</div>
-                            <p style="margin: 1rem 0; font-size: 1.1rem; opacity: 0.9; color: white;">Morning wellness, ping pong, networking & more!</p>
-                        </div>
-                        <!-- SweatPals widget begin -->
-                        <script src="https://www.sweatpals.com/static/embed/event/checkout/script.js?priceMode=several&enableAutoEmbed=true&eventAlias=shake-the-pain-away-ponsphaeras-morning-club&shortLocalInstance=2025-09-06&size=lg&colorHex=FFFFFF&buttonColorHex=000000&textColorHex=FFFFFF&fontFamily=Poppins&backgroundColor=transparent&textColor=white&priceTiersJson=%5B%22d87b870b-47ea-4313-9bbb-c979a17da41d%22%2C%222dd9191a-ec23-44fe-b797-0ec8c8dc449d%22%2C%22ac1b2e1c-5ccf-48df-8a01-4c4573b83e08%22%5D"></script>
-                        <!-- SweatPals widget end -->
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Floating Ticket Button -->
-    <div class="floating-ticket-btn" id="floatingTicketBtn">
-        <a href="https://www.sweatpals.com/event/shake-the-pain-away-ponsphaeras-morning-club" target="_blank" class="floating-btn" onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Floating Ticket Button' });">
-            🎟️ GET TICKETS
-        </a>
+    <div class="events-heading">
+      <div class="events-eyebrow">Upcoming</div>
+      <div class="events-title">What's <span>Next</span></div>
     </div>
 
-    <!-- VIP Email Popup Modal -->
-    <div id="vipEmailModal" class="modal">
-        <div class="modal-content" style="max-width: 500px; background: linear-gradient(135deg, #00807E 0%, #512663 100%); color: white; border: none;">
-            <span class="close" onclick="closeModal('vipEmailModal')" style="color: white; font-size: 2.5rem;">&times;</span>
-            <div style="text-align: center; padding: 2rem 1rem;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem; color: #FFD700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">UNLOCK 70% OFF</h2>
-                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: white;">VIP MEMBERSHIP AT MIAMI'S #1 PING PONG DAY CLUB</h3>
-                
-                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
-                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #FFD700; font-weight: bold;">$600+ VALUE PER PERSON</p>
-                    <p style="font-size: 1rem; margin-bottom: 0.8rem;">Free medical scans • Teeth whitening</p>
-                    <p style="font-size: 1rem; margin-bottom: 0.8rem;">Massage therapy • Skip all lines</p>
-                    <p style="font-size: 1rem;">Bring a +1 • Exclusive perks</p>
-                </div>
-                
-                <form onsubmit="handleVipSignup(event)" style="margin-bottom: 1.5rem;">
-                    <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 15px; border: 2px solid #4dd0e1; border-radius: 10px; font-size: 1.1rem; margin-bottom: 1rem; background: white; color: #333;">
-                    
-                    <button type="submit" style="width: 100%; padding: 15px; background: #FFD700; color: #333; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">GET 70% OFF VIP</button>
-                </form>
-                
-                <p style="font-size: 0.9rem; opacity: 0.8;">Cancel anytime</p>
-            </div>
-        </div>
+    <div class="flyer-frame">
+      <img src="flyer.png" alt="Event flyer" class="flyer-img">
     </div>
 
-    <!-- SMS Signup Modal -->
-    <div id="smsModal" class="modal">
-        <div class="modal-content" style="max-width: 600px;">
-            <span class="close" onclick="closeModal('smsModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: #333; text-align: center;">Stay in the Loop</h2>
-            <div style="text-align: center; padding: 2rem;">
-                <div style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 2rem; border-radius: 20px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">📱 Get Event Updates via Text</h3>
-                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Join our exclusive text community for early access to tickets, event updates, and wellness tips!</p>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.2); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
-                        <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem;">Send a text to:</p>
-                        <p style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">(877) 349-0470</p>
-                        <p style="font-size: 1.2rem; font-weight: bold;">Message: <span style="background: rgba(255, 255, 255, 0.3); padding: 0.2rem 0.5rem; border-radius: 5px;">PONSPHAERA</span></p>
-                    </div>
-                    
-                    <a href="sms:+18773490470?body=PONSPHAERA" class="btn" style="background: white; color: #25D366; font-weight: bold; text-decoration: none; padding: 1rem 2rem; border-radius: 30px; display: inline-block; margin-bottom: 1rem;">📱 Send Text Now</a>
-                    
-                    <p style="font-size: 0.9rem; opacity: 0.9;">You'll be automatically added to our VIP list and receive exclusive Ponsphaera updates!</p>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; color: #555;">
-                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>What you'll get:</strong></p>
-                    <p style="font-size: 0.9rem;">• Early access to event tickets<br>• Exclusive venue announcements<br>• Wellness tips and community updates<br>• Special offers and promotions</p>
-                </div>
-            </div>
-        </div>
+    <div class="action-row">
+      <a href="https://www.instagram.com/ponsphaera/?hl=en" target="_blank" rel="noopener noreferrer" class="follow-btn" onclick="fbq('track', 'Subscribe', {content_name: 'Follow Us Instagram'})">Follow Us</a>
+
+      <a href="https://posh.vip/g/ponsphaera" target="_blank" rel="noopener noreferrer" class="cart-btn" aria-label="Checkout" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Posh Checkout'})">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+      </a>
     </div>
 
-    <!-- Organization Nomination Modal -->
-    <div id="givingModal" class="modal">
-        <div class="modal-content" style="max-width: 700px;">
-            <span class="close" onclick="closeModal('givingModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: #333; text-align: center;">Nominate an Organization</h2>
-            <div style="text-align: center; padding: 2rem;">
-                <div style="background: linear-gradient(135deg, #FF6B6B, #4ECDC4); color: white; padding: 2rem; border-radius: 20px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">🤝 Help Us Give Back</h3>
-                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Know a Miami organization making a difference? Nominate them to be our monthly charity partner!</p>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.2); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">We partner with organizations focused on:</p>
-                        <p style="font-size: 1rem;">• Community wellness & health<br>• Youth development & education<br>• Environmental sustainability<br>• Social justice & equality<br>• Mental health awareness</p>
-                    </div>
-                    
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdc3F3locWzi94tf0cvedywsrwFCPKcltpJgPZaeIl7Tn2Euw/viewform" target="_blank" class="btn" style="background: white; color: #FF6B6B; font-weight: bold; text-decoration: none; padding: 1rem 2rem; border-radius: 30px; display: inline-block; margin-bottom: 1rem;">Submit Nomination</a>
-                    
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Together, we can make Miami a healthier, more connected community!</p>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; color: #555;">
-                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>What partner organizations receive:</strong></p>
-                    <p style="font-size: 0.9rem;">• Monthly donation from our event proceeds<br>• Free wellness events for their community<br>• Social media promotion and awareness<br>• Volunteer opportunities for our members</p>
-                </div>
-            </div>
-        </div>
+    <div class="footer-note">More events drop soon — stay tuned.</div>
+  </section>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Ponsphaera</div>
+    <div class="party-text">JOIN THE LIFESTYLE</div>
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="chevrons">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6 9 12 15 18 9" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#39ff8c"/><stop offset="100%" stop-color="#2bd9ff"/></linearGradient></defs>
+        </svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6 9 12 15 18 9" stroke="url(#g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#39ff8c"/><stop offset="100%" stop-color="#2bd9ff"/></linearGradient></defs>
+        </svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6 9 12 15 18 9" stroke="url(#g3)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#39ff8c"/><stop offset="100%" stop-color="#2bd9ff"/></linearGradient></defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE + RECAPS COMBINED -->
+  <div style="background:#060f1f;">
+  <section class="lifestyle">
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline webkit-playsinline>
+        <source src="recap1.mp4" type="video/mp4">
+        <source src="recap1.mov" type="video/quicktime">
+      </video>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ponsphaera. Bringing wellness and community to Miami, one morning at a time.</p>
-            <p>Contact: ponsphaera@gmail.com | Follow us @ponsphaera</p>
-        </div>
-    </footer>
+    <div class="lifestyle-center">
+      <div class="lifestyle-eyebrow">About Us</div>
+      <div class="lifestyle-title">Join the <span>Lifestyle</span></div>
+      <div class="lifestyle-body">
+        <p>Ponsphaera is more than an event company—it's a lifestyle built around bringing people together through unforgettable experiences.</p>
+        <p>We believe the best connections happen in real life. Whether you're meeting new people at a brunch, challenging someone to a game, dancing at a festival, finding balance at a wellness event, or losing yourself in the energy of a rave, every Ponsphaera event is designed to create moments that turn strangers into friends and experiences into memories.</p>
+        <p>Our mission is to build a community where social connection, entertainment, health, music, fitness, and culture all come together under one lifestyle. No matter your interests, there's a place for you.</p>
+        <p>From brunches and day parties to wellness activations, music festivals, nightlife, sporting events, networking experiences, and everything in between, Ponsphaera is where people come to connect, explore, and live life to the fullest.</p>
+        <p class="lifestyle-closing">This isn't just another event. It's a lifestyle.<br><strong>Join the Lifestyle.</strong></p>
+      </div>
+    </div>
 
-    <script>
-        let currentEventPrice = 0;
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline webkit-playsinline>
+        <source src="recap2.mp4" type="video/mp4">
+        <source src="recap2.mov" type="video/quicktime">
+      </video>
+    </div>
+  </section>
+  </div>
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        // Sequential animation for all elements
-        let animationQueue = [];
-        let currentIndex = 0;
-
-        const sequentialObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-                    if (!animationQueue.includes(element)) {
-                        animationQueue.push(element);
-                    }
-                    processAnimationQueue();
-                }
-            });
-        }, observerOptions);
-
-        function processAnimationQueue() {
-            if (currentIndex < animationQueue.length) {
-                const element = animationQueue[currentIndex];
-                
-                // Special handling for different element types
-                if (element.classList.contains('features')) {
-                    // Animate features section with staggered cards
-                    element.querySelector('h2').classList.add('animate');
-                    const cards = element.querySelectorAll('.feature-card');
-                    cards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('animate');
-                        }, index * 200);
-                    });
-                } else if (element.classList.contains('about-section')) {
-                    // Animate about section with staggered cards
-                    element.querySelector('h2').classList.add('animate');
-                    const highlightItems = element.querySelectorAll('.highlight-item');
-                    const statCards = element.querySelectorAll('.stat-card');
-                    
-                    highlightItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.add('animate');
-                        }, index * 200);
-                    });
-                    
-                    statCards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('animate');
-                        }, (index + highlightItems.length) * 200);
-                    });
-                } else if (element.classList.contains('gallery-section')) {
-                    // Animate gallery section with staggered images
-                    element.querySelector('h2').classList.add('animate');
-                    element.querySelector('.gallery-subtitle').classList.add('animate');
-                    const items = element.querySelectorAll('.gallery-item');
-                    items.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.add('animate');
-                        }, index * 150);
-                    });
-                } else if (element.classList.contains('events-section')) {
-                    // Animate events section with staggered cards
-                    element.querySelector('h2').classList.add('animate');
-                    const cards = element.querySelectorAll('.event-card');
-                    cards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('animate');
-                        }, index * 250);
-                    });
-                } else {
-                    // Regular animation for other elements
-                    element.classList.add('animate');
-                }
-                
-                currentIndex++;
-                
-                // Process next element after a delay
-                setTimeout(() => {
-                    processAnimationQueue();
-                }, 600);
-            }
-        }
-
-        // Observe all animatable elements in order
-        document.querySelectorAll('.animate-on-scroll, .animate-scale, .features, .about-section, .gallery-section, .events-section').forEach(el => {
-            sequentialObserver.observe(el);
-        });
-
-        // Separate observer for individual slide-up elements that should animate when parent triggers
-        const slideUpObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        // Don't observe individual cards, let the parent section handle them
-        document.querySelectorAll('.animate-slide-up').forEach(el => {
-            // Only observe if it's not a feature-card or event-card (those are handled by parent)
-            if (!el.classList.contains('feature-card') && !el.classList.contains('event-card')) {
-                slideUpObserver.observe(el);
-            }
-        });
-
-        // Scroll progress indicator and floating button
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            
-            document.querySelector('.scroll-indicator').style.width = scrollPercent + '%';
-            
-            // Show floating ticket button after scrolling past hero section
-            const floatingBtn = document.getElementById('floatingTicketBtn');
-            const heroHeight = document.querySelector('.hero').offsetHeight;
-            const eventsSection = document.getElementById('events');
-            const eventsSectionTop = eventsSection.offsetTop;
-            const eventsSectionBottom = eventsSectionTop + eventsSection.offsetHeight;
-            
-            // Show button when past hero section but not in events section
-            if (scrollTop > heroHeight && (scrollTop < eventsSectionTop || scrollTop > eventsSectionBottom)) {
-                floatingBtn.classList.add('show');
-            } else {
-                floatingBtn.classList.remove('show');
-            }
-        });
-
-        // Parallax effect for floating elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const floatingElements = document.querySelectorAll('.floating-image');
-            
-            floatingElements.forEach((element, index) => {
-                const speed = 0.3 + (index * 0.1);
-                const yPos = scrolled * speed;
-                element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.05}deg)`;
-            });
-        });
-
-        // Trigger initial hero animation
-        setTimeout(() => {
-            document.querySelector('.hero-content').classList.add('animate');
-        }, 500);
-
-        function openModal(modalId) {
-            // Track modal opening with Meta Pixel
-            if (typeof fbq !== 'undefined') {
-                if (modalId === 'givingModal') {
-                    fbq('track', 'Lead', {
-                        content_name: 'Organization Nomination Modal',
-                        content_category: 'charity_nomination'
-                    });
-                } else if (modalId === 'smsModal') {
-                    fbq('track', 'Lead', {
-                        content_name: 'SMS Signup Modal',
-                        content_category: 'sms_signup'
-                    });
-                }
-            }
-            
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
-            
-            // Reset forms and success messages
-            const form = document.querySelector(`#${modalId} form`);
-            const successMsg = document.querySelector(`#${modalId} .success-message`);
-            if (form) form.reset();
-            if (successMsg) successMsg.style.display = 'none';
-        }
-
-        // Analytics password protection
-        function checkAnalyticsPassword() {
-            gtag('event', 'analytics_access_attempt', { 'event_category': 'Security', 'event_label': 'Password Prompt Shown' });
-            
-            const password = prompt("Enter password to access Analytics:");
-            if (password === "venues1234") {
-                gtag('event', 'analytics_access_granted', { 'event_category': 'Security', 'event_label': 'Correct Password' });
-                window.location.href = "analytics.html";
-            } else if (password !== null) {
-                gtag('event', 'analytics_access_denied', { 'event_category': 'Security', 'event_label': 'Incorrect Password' });
-                alert("Incorrect password. Access denied.");
-            } else {
-                gtag('event', 'analytics_access_cancelled', { 'event_category': 'Security', 'event_label': 'Password Cancelled' });
-            }
-        }
-
-        // VIP Email Signup Handler
-        function handleVipSignup(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-            
-            // Track the conversion
-            gtag('event', 'vip_signup', { 
-                'event_category': 'Conversion', 
-                'event_label': 'VIP Email Signup',
-                'value': 1
-            });
-            
-            // Send VIP welcome email via EmailJS
-            const templateParams = {
-                to_email: email,
-                to_name: 'VIP Member',
-                subject: 'WELCOME TO THE BEST PARTY OF YOUR LIFE, HERE\'S YOUR GIFT!',
-                message: `Welcome to the best party of your life, here's your gift!
-
-Here is your code: PONSPHAERAVIP
-
-Cancel anytime.
-
-Here is the link to our membership - we are excited to have you:
-https://www.sweatpals.com/host/Ponsphaera?getMembership=true&membershipTierId=04b6040c-63cd-42d8-8663-b0f8915a335f
-
-Welcome to Miami's #1 ping pong day club VIP community!
-
-Best,
-The Ponsphaera Team`
-            };
-            
-            // Send email using EmailJS
-            emailjs.send('default_service', 'template_vip_signup', templateParams)
-                .then(function(response) {
-                    console.log('VIP email sent successfully:', response.status, response.text);
-                    alert('🎉 Welcome to VIP! Check your email for your 70% off code and membership link.');
-                }, function(error) {
-                    console.log('Email send failed:', error);
-                    alert('🎉 Welcome to VIP! Your code is: PONSPHAERAVIP');
-                });
-            
-            // Close modal
-            closeModal('vipEmailModal');
-        }
-
-        // Show VIP popup after 5 seconds - TESTING MODE
-        function showVipPopup() {
-            setTimeout(() => {
-                document.getElementById('vipEmailModal').style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                
-                // Track popup display
-                gtag('event', 'vip_popup_shown', { 
-                    'event_category': 'Marketing', 
-                    'event_label': 'VIP Popup Displayed'
-                });
-            }, 5000); // Show after 5 seconds
-        }
-
-        // Initialize EmailJS when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize EmailJS with your public key
-            emailjs.init('TGLrnV_j8p9iQJaXe');
-            
-            // Start VIP popup timer
-            showVipPopup();
-            
-            // Track button clicks (prevent duplicate events with flags)
-            let eventTracker = {
-                lastEvent: null,
-                lastTime: 0
-            };
-            
-            document.addEventListener('click', function(e) {
-                const now = Date.now();
-                const eventKey = e.target.textContent + e.target.className;
-                
-                // Prevent duplicate events within 1 second
-                if (eventKey === eventTracker.lastEvent && now - eventTracker.lastTime < 1000) {
-                    console.log('Duplicate event prevented');
-                    return;
-                }
-                
-                eventTracker.lastEvent = eventKey;
-                eventTracker.lastTime = now;
-                
-                console.log('Button clicked:', e.target.textContent);
-                
-                // Track main GET TICKETS button clicks
-                if (e.target.classList.contains('btn-tickets-hero') || 
-                    e.target.textContent.includes('GET TICKETS')) {
-                    console.log('GET TICKETS button clicked - firing InitiateCheckout');
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'InitiateCheckout', {
-                            content_name: 'Main Ticket Button',
-                            content_category: 'tickets',
-                            value: 1
-                        });
-                        console.log('InitiateCheckout event sent');
-                    }
-                    return; // Exit to prevent multiple events
-                }
-                
-                // Track floating ticket button
-                if (e.target.classList.contains('floating-btn') ||
-                    e.target.closest('.floating-ticket-btn')) {
-                    console.log('Floating ticket button clicked - firing InitiateCheckout');
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'InitiateCheckout', {
-                            content_name: 'Floating Ticket Button',
-                            content_category: 'tickets',
-                            value: 1
-                        });
-                        console.log('InitiateCheckout event sent');
-                    }
-                    return;
-                }
-                
-                // Track SweatPals widget interactions
-                if (e.target.textContent && 
-                    (e.target.textContent.toLowerCase().includes('buy') ||
-                     e.target.textContent.toLowerCase().includes('purchase') ||
-                     e.target.textContent.toLowerCase().includes('ticket') ||
-                     e.target.textContent.toLowerCase().includes('register'))) {
-                    console.log('Ticket purchase button clicked - firing Purchase');
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Purchase', {
-                            content_name: 'Event Ticket',
-                            content_category: 'tickets',
-                            value: 1
-                        });
-                        console.log('Purchase event sent');
-                    }
-                    return;
-                }
-                
-                // Track SMS signup button
-                if (e.target.classList.contains('btn-text-signup')) {
-                    console.log('SMS signup button clicked - firing Lead');
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead', {
-                            content_name: 'SMS Signup',
-                            content_category: 'email_signup'
-                        });
-                        console.log('Lead event sent');
-                    }
-                    return;
-                }
-                
-                // Track Instagram follow button
-                if (e.target.classList.contains('btn-instagram-small')) {
-                    console.log('Instagram button clicked - firing Lead');
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead', {
-                            content_name: 'Instagram Follow',
-                            content_category: 'social_follow'
-                        });
-                        console.log('Lead event sent');
-                    }
-                    return;
-                }
-                
-                // Track nominate organization button
-                if (e.target.classList.contains('btn-secondary-small')) {
-                    console.log('Nominate button clicked - firing Lead');
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead', {
-                            content_name: 'Organization Nomination',
-                            content_category: 'charity_nomination'
-                        });
-                        console.log('Lead event sent');
-                    }
-                    return;
-                }
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target.classList.contains('modal')) {
-                    e.target.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-
-            // Smooth scrolling for navigation
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-            
-            // Force SweatPals widget text to be white after it loads
-            setTimeout(function() {
-                const sweatpalsElements = document.querySelectorAll('[class*="sweatpals"], [id*="sweatpals"], iframe[src*="sweatpals"]');
-                sweatpalsElements.forEach(element => {
-                    element.style.color = 'white';
-                    element.style.backgroundColor = 'transparent';
-                    
-                    // If it's an iframe, try to style its contents (may not work due to CORS)
-                    if (element.tagName === 'IFRAME') {
-                        try {
-                            const iframeDoc = element.contentDocument || element.contentWindow.document;
-                            const style = iframeDoc.createElement('style');
-                            style.textContent = '* { color: white !important; background: transparent !important; }';
-                            iframeDoc.head.appendChild(style);
-                        } catch (e) {
-                            console.log('Cannot style iframe contents due to CORS restrictions');
-                        }
-                    }
-                });
-            }, 3000); // Wait 3 seconds for widget to load
-        });
-    </script>
 </body>
 </html>
