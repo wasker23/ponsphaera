@@ -119,19 +119,28 @@
   }
 
   .photo-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    position: relative;
+    width: 100%;
+    min-height: 2400px;
   }
 
   .photo-item{
-    position: relative;
-    aspect-ratio: 1 / 1;
+    position: absolute;
+    width: 260px;
     border-radius: 12px;
     overflow: hidden;
     background: #0d2143;
     border: 1px solid rgba(57,255,140,0.12);
     cursor: pointer;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s;
+    z-index: 1;
+  }
+
+  .photo-item:hover{
+    transform: scale(1.08) rotate(0deg) !important;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+    z-index: 10;
   }
 
   .photo-item::before{
@@ -145,14 +154,8 @@
 
   .photo-item img{
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .photo-item:hover img{
-    transform: scale(1.05);
   }
 
   .photo-item .overlay{
@@ -164,7 +167,13 @@
   }
 
   .photo-item:hover .overlay{
-    background: rgba(10,24,48,0.3);
+    background: rgba(10,24,48,0.2);
+  }
+
+  @media (max-width: 700px){
+    .photo-item{ width: 160px; }
+    .photo-grid{ min-height: 3200px; }
+    .nav{ padding: 16px 20px; }
   }
 
   /* ---------- EMPTY STATE ---------- */
@@ -269,12 +278,7 @@
   }
 
   @media (max-width: 700px){
-    .photo-grid{ grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .nav{ padding: 16px 20px; }
-  }
-
-  @media (max-width: 420px){
-    .photo-grid{ grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -396,6 +400,39 @@
   <div class="footer">© Ponsphaera — Join the Lifestyle</div>
 
   <script>
+    // Scatter photos randomly on load
+    function scatterPhotos() {
+      const grid = document.getElementById('photoGrid');
+      const items = grid.querySelectorAll('.photo-item');
+      const gridWidth = grid.offsetWidth;
+      const photoWidth = window.innerWidth <= 700 ? 160 : 260;
+      const cols = Math.floor(gridWidth / (photoWidth + 40));
+      const totalPhotos = items.length;
+      const rows = Math.ceil(totalPhotos / cols);
+      const rowHeight = 300;
+
+      grid.style.minHeight = (rows * rowHeight + 200) + 'px';
+
+      items.forEach(function(item, i) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const baseX = col * (gridWidth / cols);
+        const baseY = row * rowHeight;
+        const randX = baseX + (Math.random() * (gridWidth / cols - photoWidth - 20));
+        const randY = baseY + (Math.random() * 80);
+        const randRot = (Math.random() * 14) - 7;
+        const clampedX = Math.max(0, Math.min(randX, gridWidth - photoWidth - 10));
+
+        item.style.left = clampedX + 'px';
+        item.style.top = randY + 'px';
+        item.style.transform = 'rotate(' + randRot + 'deg)';
+      });
+    }
+
+    window.addEventListener('load', scatterPhotos);
+    window.addEventListener('resize', scatterPhotos);
+
+    // Lightbox
     function openLightbox(el) {
       const img = el.querySelector('img');
       document.getElementById('lightboxImg').src = img.src;
