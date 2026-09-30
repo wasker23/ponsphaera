@@ -197,6 +197,94 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     overflow-x: hidden;
   }
 
+  /* ── NAVBAR ── */
+  .site-nav{
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0;
+    right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: rgba(10,24,48,0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(57,255,140,0.12);
+  }
+
+  .site-nav-logo{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .site-nav-logo img{
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+
+  .logo-text-fallback{
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  @media (max-width: 480px){
+    .site-nav-logo img{ height: 28px; }
+    .logo-text-fallback{ font-size: 17px; }
+  }
+
+  .site-nav-links{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-link{
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover{ color: var(--green); }
+
+  .nav-btn{
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--navy);
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    padding: 9px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .nav-btn:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(43,217,255,0.35);
+  }
+
+  @media (max-width: 480px){
+    .site-nav{ padding: 14px 18px; }
+    .site-nav-logo{ font-size: 17px; }
+    .nav-link{ padding: 7px 12px; font-size: 10px; }
+    .nav-btn{ padding: 8px 14px; font-size: 10px; }
+  }
+
   .hero{
     height: 100vh;
     width: 100%;
@@ -360,7 +448,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
 
   .events{
     background: var(--navy);
-    padding: 100px 24px 120px;
+    padding: 130px 24px 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -628,6 +716,17 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
 </head>
 <body>
 
+  <nav class="site-nav">
+    <a href="/" class="site-nav-logo">
+      <img src="officiallogo.png" alt="Ponsphaera" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="logo-text-fallback" style="display:none">PONSPHAERA</span>
+    </a>
+    <div class="site-nav-links">
+      <a href="gallery" class="nav-link">Past Events</a>
+      <a href="inquiry" class="nav-btn">Inquiries</a>
+    </div>
+  </nav>
+
   <section class="events">
     <div class="events-bg-video">
       <video autoplay muted loop playsinline webkit-playsinline preload="metadata" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;">
@@ -647,8 +746,6 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="action-row">
-      <a href="gallery" class="follow-btn gallery-btn">Past Events</a>
-
       <a href="https://posh.vip/g/ponsphaera" target="_blank" rel="noopener noreferrer" class="follow-btn" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Posh Checkout'})">Next Event</a>
     </div>
 
