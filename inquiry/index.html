@@ -1,0 +1,372 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3F41CRDZBW');
+</script>
+
+<title>Inquiries — Ponsphaera</title>
+<meta name="description" content="Have a question about a Ponsphaera event? Send us a message and we'll get back to you.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ponsphaera">
+<link rel="icon" type="image/png" href="../favicon.png">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Inquiries — Ponsphaera">
+<meta property="og:description" content="Have a question about a Ponsphaera event? Send us a message.">
+<meta property="og:url" content="https://ponsphaera.com/inquiry">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap">
+
+<style>
+  :root{
+    --bg:      #0a1830;
+    --surface: #0d2143;
+    --border:  rgba(57,255,140,0.15);
+    --green:   #39ff8c;
+    --blue:    #2bd9ff;
+    --gold:    #d9b34a;
+    --fg:      #ffffff;
+    --fg-soft: rgba(255,255,255,0.55);
+    --grad:    linear-gradient(100deg, var(--green), var(--blue));
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after{ box-sizing: border-box; margin: 0; padding: 0; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── NAV ── */
+  .site-nav{
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0;
+    right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: rgba(10,24,48,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-nav-logo{
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: none;
+  }
+
+  .site-nav-links{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-link{
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: color 0.2s;
+  }
+  .nav-link:hover{ color: var(--green); }
+
+  .nav-back{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover{ color: var(--green); }
+  .nav-back svg{ width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; flex-shrink: 0; }
+
+  @media (max-width: 480px){
+    .site-nav{ padding: 14px 18px; }
+    .site-nav-logo{ font-size: 17px; }
+    .nav-link, .nav-back{ padding: 7px 12px; font-size: 10px; }
+  }
+
+  /* ── MAIN ── */
+  .page{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+  }
+
+  .eyebrow{
+    font-size: 11px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .page-title{
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    letter-spacing: 0.02em;
+    text-align: center;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+
+  .page-sub{
+    font-size: 15px;
+    color: var(--fg-soft);
+    text-align: center;
+    max-width: 420px;
+    line-height: 1.7;
+    margin-bottom: 52px;
+  }
+
+  /* ── FORM ── */
+  .form-card{
+    width: 100%;
+    max-width: 520px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-card::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--grad);
+  }
+
+  .field{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .field label{
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--fg-soft);
+  }
+
+  .field input,
+  .field textarea,
+  .field select{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(57,255,140,0.18);
+    border-radius: 10px;
+    padding: 13px 16px;
+    color: var(--fg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus{
+    border-color: var(--green);
+  }
+
+  .field select option{
+    background: var(--surface);
+    color: var(--fg);
+  }
+
+  .field textarea{
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+
+  .submit-btn{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 999px;
+    background: var(--grad);
+    color: #0a1830;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+  }
+
+  .submit-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(43,217,255,0.35);
+  }
+
+  .success-msg{
+    display: none;
+    text-align: center;
+    padding: 20px 0 8px;
+  }
+
+  .success-msg .check{
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  .success-msg p{
+    color: var(--green);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .success-msg span{
+    display: block;
+    font-size: 13px;
+    color: var(--fg-soft);
+    margin-top: 6px;
+  }
+
+  @media (max-width: 560px){
+    .form-card{ padding: 32px 22px; }
+  }
+
+  /* ── FOOTER ── */
+  .site-footer{
+    background: #060f1e;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-copy{
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.08em;
+  }
+</style>
+
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">PONSPHAERA</a>
+  <div class="site-nav-links">
+    <a href="../gallery" class="nav-link">Past Events</a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Home
+    </a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="eyebrow">Get in touch</div>
+  <h1 class="page-title">INQUIRIES</h1>
+  <p class="page-sub">Have a question about an upcoming event, partnership, or anything else? Drop us a message and we'll get back to you.</p>
+
+  <div class="form-card">
+    <div class="form-fields">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="topic">Topic</label>
+        <select id="topic">
+          <option value="" disabled selected>Select a topic</option>
+          <option value="General Question">General Question</option>
+          <option value="Event Info">Event Info</option>
+          <option value="Partnership / Sponsorship">Partnership / Sponsorship</option>
+          <option value="Vendor / Venue">Vendor / Venue</option>
+          <option value="Press / Media">Press / Media</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="What's on your mind?"></textarea>
+      </div>
+      <button class="submit-btn" onclick="sendInquiry()">Send Message</button>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <div class="check">✅</div>
+      <p>Message sent!</p>
+      <span>We'll get back to you at your email address.</span>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-copy">© 2026 Ponsphaera. All rights reserved.</p>
+</footer>
+
+<script>
+function sendInquiry() {
+  const name    = document.getElementById('name').value.trim();
+  const topic   = document.getElementById('topic').value;
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !topic || !message) {
+    alert('Please fill in all fields before sending.');
+    return;
+  }
+
+  const subject = encodeURIComponent('Ponsphaera Inquiry: ' + topic);
+  const body    = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Topic: ' + topic + '\n\n' +
+    'Message:\n' + message
+  );
+
+  window.location.href = 'mailto:ponsphaera@gmail.com?subject=' + subject + '&body=' + body;
+
+  // Show success state
+  document.querySelector('.form-fields').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+</script>
