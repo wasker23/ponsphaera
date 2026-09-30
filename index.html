@@ -215,18 +215,6 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   }
 
   .site-nav-logo{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-
-  .site-nav-logo img{
-    height: 52px;
-    width: auto;
-    display: block;
-  }
-
-  .logo-text-fallback{
     font-family: 'Anton', sans-serif;
     font-size: 20px;
     letter-spacing: 0.08em;
@@ -234,11 +222,11 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    text-decoration: none;
   }
 
   @media (max-width: 480px){
-    .site-nav-logo img{ height: 42px; }
-    .logo-text-fallback{ font-size: 17px; }
+    .site-nav-logo{ font-size: 17px; }
   }
 
   .site-nav-links{
@@ -717,10 +705,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
 <body>
 
   <nav class="site-nav">
-    <a href="/" class="site-nav-logo">
-      <img src="officiallogo.png" alt="Ponsphaera" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="logo-text-fallback" style="display:none">PONSPHAERA</span>
-    </a>
+    <a href="/" class="site-nav-logo">PONSPHAERA</a>
     <div class="site-nav-links">
       <a href="gallery" class="nav-link">Past Events</a>
       <a href="inquiry" class="nav-btn">Inquiries</a>
