@@ -25,8 +25,8 @@
 </script>
 <!-- End Video Autoplay Mobile Fix -->
 <script>
-  (async function() {
-    try {
+  window.addEventListener('load', async function() {
+  try {
       const token = '5N5X4PRA3EDHLG43PFSY';
       const res = await fetch(`https://www.eventbriteapi.com/v3/users/me/events/?status=live&expand=venue&order_by=start_asc&token=${token}`);
       const data = await res.json();
@@ -79,7 +79,7 @@
     } catch(e) {
       console.log('Schema load error:', e);
     }
-  })();
+  });
 </script>
 <!-- End Google Event Schema -->
 
@@ -125,7 +125,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://connect.facebook.net">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.google-analytics.com">
 <link rel="canonical" href="https://ponsphaera.com/">
+<!-- Preload LCP image -->
+<link rel="preload" as="image" href="flyer.png">
+<!-- Non-blocking fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap"></noscript>
 <meta name="facebook-domain-verification" content="4t0ml9boeev3kv8cebz15ek0a2xhln" />
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Ponsphaera — Lifestyle</title>
@@ -175,8 +182,6 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap');
-
   :root{
     --bg: #ffffff;
     --green: #39ff8c;
@@ -410,6 +415,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     z-index: 0;
     overflow: hidden;
   }
+
 
   .events-bg-video video{
     position: absolute;
@@ -714,7 +720,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
 
   <section class="events">
     <div class="events-bg-video">
-      <video autoplay muted loop playsinline webkit-playsinline preload="metadata" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;">
+      <video autoplay muted loop playsinline webkit-playsinline preload="none" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;">
         <source src="hero.mp4" type="video/mp4">
         <source src="hero.mov" type="video/quicktime">
       </video>
@@ -727,7 +733,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="flyer-frame">
-      <img src="flyer.png" alt="Event flyer" class="flyer-img">
+      <img src="flyer.png" alt="Event flyer" class="flyer-img" fetchpriority="high" loading="eager">
     </div>
 
     <div class="action-row">
@@ -763,9 +769,9 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   <div style="background:#060f1f;">
   <section class="lifestyle">
     <div class="video-wrap">
-      <video autoplay muted loop playsinline webkit-playsinline preload="none">
-        <source src="recap1.mp4" type="video/mp4">
-        <source src="recap1.mov" type="video/quicktime">
+      <video class="lazy-video" muted loop playsinline webkit-playsinline preload="none">
+        <source data-src="recap1.mp4" type="video/mp4">
+        <source data-src="recap1.mov" type="video/quicktime">
       </video>
     </div>
 
@@ -782,9 +788,9 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="video-wrap">
-      <video autoplay muted loop playsinline webkit-playsinline preload="none">
-        <source src="recap2.mp4" type="video/mp4">
-        <source src="recap2.mov" type="video/quicktime">
+      <video class="lazy-video" muted loop playsinline webkit-playsinline preload="none">
+        <source data-src="recap2.mp4" type="video/mp4">
+        <source data-src="recap2.mov" type="video/quicktime">
       </video>
     </div>
   </section>
@@ -801,6 +807,33 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </a>
     <div class="footer-copy">© Ponsphaera — Join the Lifestyle</div>
   </div>
+
+<script>
+  // Lazy-load recap videos only when scrolled into view
+  const lazyVideos = document.querySelectorAll('video.lazy-video');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          video.querySelectorAll('source[data-src]').forEach(function(s) {
+            s.src = s.dataset.src;
+          });
+          video.load();
+          video.play().catch(function(){});
+          obs.unobserve(video);
+        }
+      });
+    }, { rootMargin: '200px' });
+    lazyVideos.forEach(function(v) { obs.observe(v); });
+  } else {
+    // Fallback for old browsers
+    lazyVideos.forEach(function(v) {
+      v.querySelectorAll('source[data-src]').forEach(function(s) { s.src = s.dataset.src; });
+      v.load(); v.play().catch(function(){});
+    });
+  }
+</script>
 
 </body>
 </html>
