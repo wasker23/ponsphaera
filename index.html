@@ -839,5 +839,66 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   }
 </script>
 
+<!-- Bouncing orb -->
+<img id="bouncer" src="orb.png" alt="Ponsphaera orb"
+  style="position:fixed;width:90px;height:90px;object-fit:cover;border-radius:50%;
+         box-shadow:0 0 22px 6px rgba(57,255,140,0.6);cursor:pointer;z-index:999;
+         transition:box-shadow 0.1s;pointer-events:auto;">
+
+<script>
+(function(){
+  const el = document.getElementById('bouncer');
+  const SIZE = 90;
+  let x = Math.random() * (window.innerWidth  - SIZE);
+  let y = Math.random() * (window.innerHeight - SIZE);
+  let vx = (Math.random() > 0.5 ? 1 : -1) * (1.8 + Math.random() * 0.8);
+  let vy = (Math.random() > 0.5 ? 1 : -1) * (1.8 + Math.random() * 0.8);
+
+  const glows = [
+    '0 0 28px 8px rgba(57,255,140,0.85)',
+    '0 0 28px 8px rgba(43,217,255,0.85)',
+    '0 0 28px 8px rgba(0,255,200,0.85)',
+    '0 0 28px 8px rgba(57,255,140,0.7)',
+  ];
+  let glowIdx = 0;
+
+  function bounce(){
+    x += vx;
+    y += vy;
+
+    const maxX = window.innerWidth  - SIZE;
+    const maxY = window.innerHeight - SIZE;
+    let hit = false;
+
+    if(x <= 0)     { x = 0;    vx = Math.abs(vx); hit = true; }
+    if(x >= maxX)  { x = maxX; vx = -Math.abs(vx); hit = true; }
+    if(y <= 0)     { y = 0;    vy = Math.abs(vy); hit = true; }
+    if(y >= maxY)  { y = maxY; vy = -Math.abs(vy); hit = true; }
+
+    if(hit){
+      glowIdx = (glowIdx + 1) % glows.length;
+      el.style.boxShadow = glows[glowIdx];
+      el.style.transform = 'scale(1.15)';
+      setTimeout(function(){ el.style.transform = 'scale(1)'; }, 120);
+    }
+
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+    requestAnimationFrame(bounce);
+  }
+
+  el.style.left = x + 'px';
+  el.style.top  = y + 'px';
+  el.style.transition = 'transform 0.12s, box-shadow 0.15s';
+
+  // Click opens the ticket link
+  el.addEventListener('click', function(){
+    window.open('https://posh.vip/g/ponsphaera', '_blank');
+  });
+
+  requestAnimationFrame(bounce);
+})();
+</script>
+
 </body>
 </html>
