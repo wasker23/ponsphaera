@@ -147,8 +147,8 @@
 <!-- Open Graph (how your link looks when shared on social media) -->
 <meta property="og:title" content="Ponsphaera — Join the Lifestyle">
 <meta property="og:description" content="The premier lifestyle experience bringing you events: pool parties, brunches, socials, wellness, and more. Join the Lifestyle.">
-<meta property="og:image" content="https://ponsphaera.com/flyer.png">
-<meta property="og:image:secure_url" content="https://ponsphaera.com/flyer.png">
+<meta property="og:image" content="https://ponsphaera.com/nextevent">
+<meta property="og:image:secure_url" content="https://ponsphaera.com/nextevent">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1080">
 <meta property="og:image:height" content="1080">
@@ -160,7 +160,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ponsphaera — Join the Lifestyle">
 <meta name="twitter:description" content="The premier lifestyle experience bringing you events: pool parties, brunches, socials, wellness, and more. Join the Lifestyle.">
-<meta name="twitter:image" content="https://ponsphaera.com/flyer.png">
+<meta name="twitter:image" content="https://ponsphaera.com/nextevent">
 
 <!-- Structured Data: Organization + Location -->
 <script type="application/ld+json">
@@ -928,6 +928,37 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   });
 
   requestAnimationFrame(bounce);
+})();
+</script>
+
+<!-- Auto-update hero flyer from gallery upcoming events -->
+<script>
+(function () {
+  var flyerImg = document.querySelector('.flyer-img');
+  if (!flyerImg) return;
+
+  fetch('/gallery/index.html')
+    .then(function (r) { return r.text(); })
+    .then(function (html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var cards = Array.from(doc.querySelectorAll('.event-card[data-event-end]'));
+      var now = new Date();
+
+      var upcoming = cards
+        .filter(function (c) { return new Date(c.dataset.eventEnd) > now; })
+        .sort(function (a, b) { return new Date(a.dataset.eventEnd) - new Date(b.dataset.eventEnd); });
+
+      if (upcoming.length > 0) {
+        var img = upcoming[0].querySelector('.flyer-wrap img');
+        if (img) {
+          var src = img.getAttribute('src');
+          flyerImg.src = 'gallery/' + src;
+          flyerImg.alt = img.alt || 'Upcoming event flyer';
+        }
+      }
+    })
+    .catch(function () { /* keep fallback flyer.png on error */ });
 })();
 </script>
 
