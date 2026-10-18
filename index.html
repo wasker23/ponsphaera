@@ -129,7 +129,6 @@
 <link rel="preconnect" href="https://www.google-analytics.com">
 <link rel="canonical" href="https://ponsphaera.com/">
 <!-- Preload LCP image -->
-<link rel="preload" as="image" href="flyer.png">
 <!-- Non-blocking fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap"></noscript>
@@ -768,7 +767,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="flyer-frame">
-      <img src="flyer.png" alt="Event flyer" class="flyer-img" fetchpriority="high" loading="eager">
+      <img src="" alt="Upcoming event" class="flyer-img" fetchpriority="high" loading="eager">
     </div>
 
     <div class="action-row">
@@ -954,7 +953,8 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
         if (img) {
           var src = img.getAttribute('src');
           flyerImg.src = 'gallery/' + src;
-          flyerImg.alt = img.alt || 'Upcoming event flyer';
+          var eventName = upcoming[0].querySelector('.event-name');
+          flyerImg.alt = (eventName ? eventName.textContent.trim() : '') || img.alt || 'Upcoming event';
         }
       }
     })
