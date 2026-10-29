@@ -206,6 +206,23 @@
   gtag('js', new Date());
   gtag('config', 'AW-18544702172');
 </script>
+<!-- Google Ads Conversion: Outbound click -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18544702172/bPEZCKb3va4dENzl5opF',
+      'value': 1.0,
+      'currency': 'USD',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -780,7 +797,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="action-row">
-      <a href="https://posh.vip/g/ponsphaera" target="_blank" rel="noopener noreferrer" class="follow-btn" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Posh Checkout'})">Next Event</a>
+      <a href="https://posh.vip/g/ponsphaera" target="_blank" rel="noopener noreferrer" class="follow-btn" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Posh Checkout'}); return gtag_report_conversion('https://posh.vip/g/ponsphaera');">Next Event</a>
     </div>
 
     <div class="footer-note">More events drop soon — stay tuned.</div>
