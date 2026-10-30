@@ -1,12 +1,6 @@
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3F41CRDZBW');
-</script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Inquiries — Ponsphaera</title>
@@ -20,6 +14,24 @@
 <meta property="og:description" content="Have a question about a Ponsphaera event? Send us a message.">
 <meta property="og:url" content="https://ponsphaera.com/inquiry">
 <meta property="og:type" content="website">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3F41CRDZBW');
+  gtag('event', 'inquiry');
+</script>
+<!-- Google Ads tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18544702172"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18544702172');
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -299,6 +311,8 @@
     letter-spacing: 0.08em;
   }
 </style>
+</head>
+<body>
 
 <nav class="site-nav">
   <a href="/" class="site-nav-logo">PONSPHAERA</a>
@@ -378,3 +392,6 @@ function sendInquiry() {
   document.getElementById('successMsg').style.display = 'block';
 }
 </script>
+
+</body>
+</html>
