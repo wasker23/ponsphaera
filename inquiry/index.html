@@ -367,6 +367,22 @@
   <p class="footer-copy">© 2026 Ponsphaera. All rights reserved.</p>
 </footer>
 
+<!-- Event snippet for Inquiry page conversion -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18544702172/FWlbCKKiya4dENzl5opF',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
 <script>
 function sendInquiry() {
   const name    = document.getElementById('name').value.trim();
@@ -384,6 +400,9 @@ function sendInquiry() {
     'Topic: ' + topic + '\n\n' +
     'Message:\n' + message
   );
+
+  // Fire Google Ads conversion
+  gtag_report_conversion();
 
   window.location.href = 'mailto:ponsphaera@gmail.com?subject=' + subject + '&body=' + body;
 
