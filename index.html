@@ -331,11 +331,92 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     box-shadow: 0 6px 20px rgba(43,217,255,0.35);
   }
 
+  /* ── DROPDOWN ── */
+  .nav-dropdown{
+    position: relative;
+  }
+
+  .nav-dropdown-toggle{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .nav-dropdown-toggle:hover{ color: var(--green); }
+
+  .nav-dropdown-toggle svg{
+    width: 11px;
+    height: 11px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-dropdown.open .nav-dropdown-toggle svg{
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-menu{
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 160px;
+    background: rgba(10,24,48,0.97);
+    border: 1px solid rgba(57,255,140,0.18);
+    border-radius: 14px;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+    z-index: 300;
+  }
+
+  .nav-dropdown.open .nav-dropdown-menu{
+    display: block;
+  }
+
+  .nav-dropdown-menu a{
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 13px 20px;
+    transition: color 0.15s, background 0.15s;
+    border-bottom: 1px solid rgba(57,255,140,0.08);
+  }
+
+  .nav-dropdown-menu a:last-child{
+    border-bottom: none;
+  }
+
+  .nav-dropdown-menu a:hover{
+    color: var(--green);
+    background: rgba(57,255,140,0.06);
+  }
+
   @media (max-width: 480px){
     .site-nav{ padding: 14px 18px; }
     .site-nav-logo{ font-size: 17px; }
     .nav-link{ padding: 7px 12px; font-size: 10px; }
     .nav-btn{ padding: 8px 14px; font-size: 10px; }
+    .nav-dropdown-toggle{ padding: 7px 12px; font-size: 10px; }
   }
 
   .hero{
@@ -773,9 +854,18 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   <nav class="site-nav">
     <a href="/" class="site-nav-logo">PONSPHAERA</a>
     <div class="site-nav-links">
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSfQCsVibMc2sjD_ypHMBsIpQrc7cwnVo08TTv6Po4VraGjS6g/viewform?usp=dialog" class="nav-link" target="_blank" rel="noopener">Models</a>
-      <a href="gallery" class="nav-link">Events</a>
-      <a href="inquiry" class="nav-btn">Inquiries</a>
+      <a href="https://posh.vip/e/official-halloween-pool-party-edition-area-305-copy-2" class="nav-link" target="_blank" rel="noopener">ArtBasel Special</a>
+      <div class="nav-dropdown" id="navDropdown">
+        <button class="nav-dropdown-toggle" onclick="toggleDropdown()">
+          Menu
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="gallery">Events</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQCsVibMc2sjD_ypHMBsIpQrc7cwnVo08TTv6Po4VraGjS6g/viewform?usp=dialog" target="_blank" rel="noopener">Models</a>
+          <a href="inquiry">Inquiries</a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -987,6 +1077,19 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     })
     .catch(function () { /* keep fallback flyer.png on error */ });
 })();
+</script>
+
+<script>
+  function toggleDropdown() {
+    document.getElementById('navDropdown').classList.toggle('open');
+  }
+  // Close when clicking outside
+  document.addEventListener('click', function(e) {
+    var dropdown = document.getElementById('navDropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
 </script>
 
 </body>
