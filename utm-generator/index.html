@@ -422,7 +422,7 @@
 
     <div class="field-group">
       <label class="field-label">Your Website URL</label>
-      <input type="text" id="baseUrl" value="https://ponsphaera.com" placeholder="https://ponsphaera.com">
+      <input type="text" id="baseUrl" value="" placeholder="https://yourwebsite.com">
     </div>
 
     <div class="field-group">
@@ -595,7 +595,7 @@
   }
 
   function generate() {
-    const base = document.getElementById('baseUrl').value.trim() || 'https://ponsphaera.com';
+    const base = document.getElementById('baseUrl').value.trim() || 'https://yourwebsite.com';
     const rawEvent = document.getElementById('eventName').value.trim();
     const inp = document.getElementById('eventName');
 
