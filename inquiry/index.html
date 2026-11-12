@@ -41,7 +41,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3F41CRDZBW');
-  gtag('event', 'inquiry');
+  gtag('event', 'inquiry_page_view');
 </script>
 <!-- Google Ads tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18544702172"></script>
@@ -434,6 +434,9 @@ function sendInquiry() {
     'Topic: ' + topic + '\n\n' +
     'Message:\n' + message
   );
+
+  // Fire GA4 form submit event
+  gtag('event', 'inquiry_form_submit', { name: name, topic: topic });
 
   // Fire Google Ads conversion
   gtag_report_conversion();
