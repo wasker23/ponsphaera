@@ -281,6 +281,8 @@
   .icon-tt  { background: #010101; color: #fff; }
   .icon-em  { background: #34a853; color: #fff; }
   .icon-gg  { background: #4285f4; color: #fff; }
+  .icon-meta { background: linear-gradient(135deg,#0082fb,#00b2ff); color:#fff; }
+  .icon-gen  { background: var(--navy); color: var(--green); font-size:13px; }
 
   .link-info { flex: 1; min-width: 0; }
 
@@ -435,6 +437,46 @@
   <!-- RESULTS -->
   <div class="results" id="results">
 
+    <div class="platform-group-label">General</div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-gen">🔗</span>
+      <div class="link-info">
+        <div class="link-platform-name">Universal Link</div>
+        <div class="link-url" id="general"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'general')">Copy</button>
+    </div>
+
+    <div class="platform-group-label">Paid Ads</div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-meta">M</span>
+      <div class="link-info">
+        <div class="link-platform-name">Meta Ads (Facebook & Instagram)</div>
+        <div class="link-url" id="meta-ads"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'meta-ads')">Copy</button>
+    </div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-gg">G</span>
+      <div class="link-info">
+        <div class="link-platform-name">Google Ads</div>
+        <div class="link-url" id="gads"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'gads')">Copy</button>
+    </div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-tt">TT</span>
+      <div class="link-info">
+        <div class="link-platform-name">TikTok Ads</div>
+        <div class="link-url" id="tt-ads"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'tt-ads')">Copy</button>
+    </div>
+
     <div class="platform-group-label">Instagram</div>
 
     <div class="link-card">
@@ -567,6 +609,10 @@
 
     const ev = slugify(rawEvent);
 
+    links['general']  = buildURL(base,'direct',   'link',      ev);
+    links['meta-ads'] = buildURL(base,'facebook', 'cpc',      ev+'_metaads');
+    links['gads']     = buildURL(base,'google',   'cpc',      ev+'_googleads');
+    links['tt-ads']   = buildURL(base,'tiktok',   'cpc',      ev+'_tiktokads');
     links['ig-bio']   = buildURL(base,'instagram','social',    ev+'_bio');
     links['ig-story'] = buildURL(base,'instagram','story',     ev+'_story');
     links['ig-post']  = buildURL(base,'instagram','social',    ev+'_post');
@@ -575,7 +621,6 @@
     links['tt-bio']   = buildURL(base,'tiktok',   'social',   ev+'_bio');
     links['tt-video'] = buildURL(base,'tiktok',   'video',    ev+'_video');
     links['email']    = buildURL(base,'email',    'newsletter',ev+'_email');
-    links['gads']     = buildURL(base,'google',   'cpc',      ev);
 
     for (const [id,url] of Object.entries(links)) {
       const el = document.getElementById(id);
@@ -619,18 +664,23 @@
     const lines = [
       `UTM Links — ${ev}`,
       '',
+      '🔗 Universal Link:   ' + (links['general']  || ''),
+      '',
+      '— PAID ADS —',
+      '📣 Meta Ads:         ' + (links['meta-ads'] || ''),
+      '🔍 Google Ads:       ' + (links['gads']     || ''),
+      '🎵 TikTok Ads:       ' + (links['tt-ads']   || ''),
+      '',
+      '— ORGANIC SOCIAL —',
       '📸 Instagram Bio:    ' + (links['ig-bio']   || ''),
       '📸 Instagram Story:  ' + (links['ig-story'] || ''),
       '📸 Instagram Post:   ' + (links['ig-post']  || ''),
-      '',
       '👍 Facebook Post:    ' + (links['fb-post']  || ''),
       '👍 Facebook Event:   ' + (links['fb-event'] || ''),
-      '',
       '🎵 TikTok Bio:       ' + (links['tt-bio']   || ''),
       '🎵 TikTok Video:     ' + (links['tt-video'] || ''),
       '',
       '✉️  Email:            ' + (links['email']   || ''),
-      '🔍 Google Ads:       ' + (links['gads']     || ''),
     ].join('\n');
 
     navigator.clipboard.writeText(lines).then(() => {
