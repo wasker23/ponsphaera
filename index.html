@@ -868,17 +868,17 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   <nav class="site-nav">
     <a href="/" class="site-nav-logo">PONSPHAERA</a>
     <div class="site-nav-links">
-      <a href="https://posh.vip/e/official-halloween-pool-party-edition-area-305-copy-2" class="nav-link" target="_blank" rel="noopener">ArtBasel Special</a>
+      <a href="https://posh.vip/e/official-halloween-pool-party-edition-area-305-copy-2" class="nav-link" target="_blank" rel="noopener" onclick="gtag('event','nav_click',{link_text:'ArtBasel Special',link_url:'posh.vip'});">ArtBasel Special</a>
       <div class="nav-dropdown" id="navDropdown">
-        <button class="nav-dropdown-toggle" onclick="toggleDropdown()">
+        <button class="nav-dropdown-toggle" onclick="toggleDropdown(); gtag('event','nav_menu_open');">
           Menu
           <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="nav-dropdown-menu">
-          <a href="gallery">Events</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQCsVibMc2sjD_ypHMBsIpQrc7cwnVo08TTv6Po4VraGjS6g/viewform?usp=dialog" target="_blank" rel="noopener">Models</a>
-          <a href="inquiry">Inquiries</a>
-          <a href="utm-generator">Tools</a>
+          <a href="gallery" onclick="gtag('event','nav_click',{link_text:'Events',link_url:'gallery'});">Events</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQCsVibMc2sjD_ypHMBsIpQrc7cwnVo08TTv6Po4VraGjS6g/viewform?usp=dialog" target="_blank" rel="noopener" onclick="gtag('event','nav_click',{link_text:'Models',link_url:'google_form'});">Models</a>
+          <a href="inquiry" onclick="gtag('event','nav_click',{link_text:'Inquiries',link_url:'inquiry'});">Inquiries</a>
+          <a href="utm-generator" onclick="gtag('event','nav_click',{link_text:'Tools',link_url:'utm-generator'});">Tools</a>
         </div>
       </div>
     </div>
@@ -903,7 +903,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
     </div>
 
     <div class="action-row">
-      <a href="https://posh.vip/g/ponsphaera" target="_blank" rel="noopener noreferrer" class="follow-btn" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Posh Checkout'}); return gtagSendEvent('https://posh.vip/g/ponsphaera');">Next Event</a>
+      <a href="https://posh.vip/g/ponsphaera" target="_blank" rel="noopener noreferrer" class="follow-btn" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Posh Checkout'}); gtag('event','next_event_click',{link_url:'posh.vip/g/ponsphaera'}); return gtagSendEvent('https://posh.vip/g/ponsphaera');">Next Event</a>
     </div>
 
     <div class="footer-note">More events drop soon — stay tuned.</div>
@@ -963,7 +963,7 @@ src="https://www.facebook.com/tr?id=781141444370323&ev=PageView&noscript=1"
   </div>
 
   <div class="site-footer">
-    <a href="https://www.instagram.com/ponsphaera/?hl=en" target="_blank" rel="noopener noreferrer" class="footer-ig-link" onclick="fbq('track', 'Subscribe', {content_name: 'Follow Us Instagram'}); gtag('event', 'instagram_click');">
+    <a href="https://www.instagram.com/ponsphaera/?hl=en" target="_blank" rel="noopener noreferrer" class="footer-ig-link" onclick="fbq('track', 'Subscribe', {content_name: 'Follow Us Instagram'}); gtag('event', 'footer_instagram_click', {link_url:'instagram.com/ponsphaera'});">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
         <circle cx="12" cy="12" r="4"></circle>
