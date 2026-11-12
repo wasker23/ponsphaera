@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTM Link Generator — Ponsphaera</title>
+
+<!-- SEO -->
+<meta name="description" content="Free UTM link generator by Ponsphaera. Build trackable marketing links for Instagram, Facebook, TikTok, email and more in seconds.">
+<meta property="og:title" content="UTM Link Generator — Ponsphaera">
+<meta property="og:description" content="Build trackable links for every platform in seconds. Free tool by Ponsphaera.">
+<meta property="og:url" content="https://ponsphaera.com/utm-generator">
+<meta name="robots" content="index, follow">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3F41CRDZBW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3F41CRDZBW');
+</script>
+
+<style>
+  :root {
+    --bg:    #ffffff;
+    --green: #39ff8c;
+    --blue:  #2bd9ff;
+    --navy:  #0a1830;
+    --gold:  #d9b34a;
+    --ink:   #0a1830;
+    --ink-soft: #5a6472;
+    --surface: #f5f7fa;
+    --surface2: #edf0f5;
+    --border: rgba(10,24,48,0.10);
+    --border-accent: rgba(57,255,140,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,24,48,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(57,255,140,0.12);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: none;
+  }
+
+  .nav-back {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-back:hover { color: var(--green); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 64px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 50%, rgba(57,255,140,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(43,217,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: rgba(57,255,140,0.1);
+    border: 1px solid rgba(57,255,140,0.25);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 8vw, 60px);
+    letter-spacing: 0.03em;
+    line-height: 1.0;
+    background: linear-gradient(100deg, var(--green) 0%, var(--green) 40%, var(--blue) 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 8px rgba(57,255,140,0.3)) drop-shadow(0 0 24px rgba(43,217,255,0.2));
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 16px 80px;
+  }
+
+  /* ── INPUT CARD ── */
+  .input-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 32px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .field-group {
+    margin-bottom: 18px;
+  }
+
+  .field-group:last-of-type { margin-bottom: 0; }
+
+  .field-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 7px;
+    display: block;
+  }
+
+  .field-hint {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 7px;
+    display: block;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  input[type="text"]:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(57,255,140,0.12);
+  }
+
+  input[type="text"]::placeholder { color: #bfc5cf; }
+
+  .generate-btn {
+    width: 100%;
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    color: var(--navy);
+    border: none;
+    border-radius: 14px;
+    padding: 15px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+    box-shadow: 0 4px 18px rgba(43,217,255,0.25);
+  }
+
+  .generate-btn:hover {
+    opacity: 0.92;
+    box-shadow: 0 6px 24px rgba(43,217,255,0.4);
+  }
+
+  .generate-btn:active { transform: scale(0.99); }
+
+  /* ── RESULTS ── */
+  .results { display: none; flex-direction: column; gap: 10px; }
+  .results.visible { display: flex; }
+
+  .platform-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    margin-bottom: 2px;
+    padding-left: 2px;
+  }
+
+  .link-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .link-card:hover {
+    border-color: rgba(57,255,140,0.4);
+    box-shadow: 0 2px 12px rgba(57,255,140,0.08);
+  }
+
+  .platform-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+
+  .icon-ig  { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; }
+  .icon-fb  { background: #1877f2; color: #fff; }
+  .icon-tt  { background: #010101; color: #fff; }
+  .icon-em  { background: #34a853; color: #fff; }
+  .icon-gg  { background: #4285f4; color: #fff; }
+
+  .link-info { flex: 1; min-width: 0; }
+
+  .link-platform-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .link-url {
+    font-size: 11px;
+    color: var(--ink-soft);
+    word-break: break-all;
+    font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+    line-height: 1.5;
+  }
+
+  .copy-btn {
+    flex-shrink: 0;
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 9px;
+    padding: 7px 13px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .copy-btn:hover {
+    background: rgba(57,255,140,0.1);
+    border-color: var(--green);
+    color: #1a7a45;
+  }
+
+  .copy-btn.copied {
+    background: rgba(57,255,140,0.12);
+    border-color: var(--green);
+    color: #1a7a45;
+  }
+
+  .copy-all-btn {
+    width: 100%;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.15s;
+  }
+
+  .copy-all-btn:hover {
+    background: #0d2140;
+    box-shadow: 0 4px 16px rgba(10,24,48,0.2);
+  }
+
+  .copy-all-btn.copied {
+    background: linear-gradient(100deg, #1a7a45, #1a6b7a);
+  }
+
+  /* ── TIP BOX ── */
+  .tip {
+    background: rgba(10,24,48,0.04);
+    border: 1.5px solid var(--border);
+    border-left: 3px solid var(--green);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-top: 6px;
+  }
+
+  .tip strong { color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  footer a {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    background: linear-gradient(100deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: none;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 8px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .link-card { flex-wrap: wrap; }
+    .copy-btn { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">PONSPHAERA</a>
+  <a href="/" class="nav-back">Check Out Our Events →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Free Tool</div>
+  <h1>UTM LINK<br>GENERATOR</h1>
+  <p>Build trackable links for every platform in seconds. Know exactly where your traffic comes from.</p>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="input-card">
+    <div class="section-label">Setup Your Links</div>
+
+    <div class="field-group">
+      <label class="field-label">Your Website URL</label>
+      <input type="text" id="baseUrl" value="https://ponsphaera.com" placeholder="https://ponsphaera.com">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Event / Campaign Name</label>
+      <span class="field-hint">Keep it short, no spaces — e.g. artbasel2026, halloween, newyears2027</span>
+      <input type="text" id="eventName" placeholder="e.g. artbasel2026">
+    </div>
+
+    <button class="generate-btn" onclick="generate()">Generate All Links →</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+
+    <div class="platform-group-label">Instagram</div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-ig">IG</span>
+      <div class="link-info">
+        <div class="link-platform-name">Bio Link</div>
+        <div class="link-url" id="ig-bio"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'ig-bio')">Copy</button>
+    </div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-ig">IG</span>
+      <div class="link-info">
+        <div class="link-platform-name">Story / Link Sticker</div>
+        <div class="link-url" id="ig-story"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'ig-story')">Copy</button>
+    </div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-ig">IG</span>
+      <div class="link-info">
+        <div class="link-platform-name">Post Caption</div>
+        <div class="link-url" id="ig-post"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'ig-post')">Copy</button>
+    </div>
+
+    <div class="platform-group-label">Facebook</div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-fb">FB</span>
+      <div class="link-info">
+        <div class="link-platform-name">Post</div>
+        <div class="link-url" id="fb-post"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'fb-post')">Copy</button>
+    </div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-fb">FB</span>
+      <div class="link-info">
+        <div class="link-platform-name">Event Page</div>
+        <div class="link-url" id="fb-event"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'fb-event')">Copy</button>
+    </div>
+
+    <div class="platform-group-label">TikTok</div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-tt">TT</span>
+      <div class="link-info">
+        <div class="link-platform-name">Bio Link</div>
+        <div class="link-url" id="tt-bio"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'tt-bio')">Copy</button>
+    </div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-tt">TT</span>
+      <div class="link-info">
+        <div class="link-platform-name">Video Description</div>
+        <div class="link-url" id="tt-video"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'tt-video')">Copy</button>
+    </div>
+
+    <div class="platform-group-label">Other Channels</div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-em">✉</span>
+      <div class="link-info">
+        <div class="link-platform-name">Email / Newsletter</div>
+        <div class="link-url" id="email"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'email')">Copy</button>
+    </div>
+
+    <div class="link-card">
+      <span class="platform-icon icon-gg">G</span>
+      <div class="link-info">
+        <div class="link-platform-name">Google Ads (manual)</div>
+        <div class="link-url" id="gads"></div>
+      </div>
+      <button class="copy-btn" onclick="copy(this,'gads')">Copy</button>
+    </div>
+
+    <button class="copy-all-btn" id="copyAllBtn" onclick="copyAll()">📋 Copy All Links as Summary</button>
+
+    <div class="tip">
+      <strong>How to use these:</strong> Instagram bio → paste in your profile URL field. Stories → add as a link sticker. Facebook post / event → drop in the description. TikTok bio → paste directly or use a Linktree. All links report in GA4 under <strong>Acquisition → Traffic acquisition</strong> so you can see which platform drove the most visits to each event.
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/">PONSPHAERA</a>
+  <p>© 2026 Ponsphaera. Miami, FL.</p>
+</footer>
+
+<script>
+  const links = {};
+
+  function slugify(t) {
+    return t.toLowerCase().replace(/\s+/g,'').replace(/[^a-z0-9]/g,'');
+  }
+
+  function buildURL(base, source, medium, campaign) {
+    const b = base.trim().replace(/\/$/,'');
+    return `${b}?utm_source=${encodeURIComponent(source)}&utm_medium=${encodeURIComponent(medium)}&utm_campaign=${encodeURIComponent(campaign)}`;
+  }
+
+  function generate() {
+    const base = document.getElementById('baseUrl').value.trim() || 'https://ponsphaera.com';
+    const rawEvent = document.getElementById('eventName').value.trim();
+    const inp = document.getElementById('eventName');
+
+    if (!rawEvent) {
+      inp.focus();
+      inp.style.borderColor = '#ef4444';
+      inp.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.12)';
+      setTimeout(() => { inp.style.borderColor = ''; inp.style.boxShadow = ''; }, 1600);
+      return;
+    }
+
+    const ev = slugify(rawEvent);
+
+    links['ig-bio']   = buildURL(base,'instagram','social',    ev+'_bio');
+    links['ig-story'] = buildURL(base,'instagram','story',     ev+'_story');
+    links['ig-post']  = buildURL(base,'instagram','social',    ev+'_post');
+    links['fb-post']  = buildURL(base,'facebook', 'social',   ev+'_post');
+    links['fb-event'] = buildURL(base,'facebook', 'event',    ev+'_eventpage');
+    links['tt-bio']   = buildURL(base,'tiktok',   'social',   ev+'_bio');
+    links['tt-video'] = buildURL(base,'tiktok',   'video',    ev+'_video');
+    links['email']    = buildURL(base,'email',    'newsletter',ev+'_email');
+    links['gads']     = buildURL(base,'google',   'cpc',      ev);
+
+    for (const [id,url] of Object.entries(links)) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = url;
+    }
+
+    document.querySelectorAll('.copy-btn').forEach(b => {
+      b.classList.remove('copied'); b.textContent = 'Copy';
+    });
+    const cab = document.getElementById('copyAllBtn');
+    cab.classList.remove('copied');
+    cab.textContent = '📋 Copy All Links as Summary';
+
+    const r = document.getElementById('results');
+    r.classList.add('visible');
+    setTimeout(() => r.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+
+    // GA4 event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'utm_links_generated', { event_name: rawEvent });
+    }
+  }
+
+  function copy(btn, id) {
+    const url = links[id] || '';
+    if (!url) return;
+    navigator.clipboard.writeText(url).then(() => {
+      btn.textContent = '✓ Copied';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2200);
+    }).catch(() => {
+      const el = document.getElementById(id);
+      const r = document.createRange(); r.selectNodeContents(el);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  }
+
+  function copyAll() {
+    const btn = document.getElementById('copyAllBtn');
+    const ev = document.getElementById('eventName').value.trim();
+    const lines = [
+      `UTM Links — ${ev}`,
+      '',
+      '📸 Instagram Bio:    ' + (links['ig-bio']   || ''),
+      '📸 Instagram Story:  ' + (links['ig-story'] || ''),
+      '📸 Instagram Post:   ' + (links['ig-post']  || ''),
+      '',
+      '👍 Facebook Post:    ' + (links['fb-post']  || ''),
+      '👍 Facebook Event:   ' + (links['fb-event'] || ''),
+      '',
+      '🎵 TikTok Bio:       ' + (links['tt-bio']   || ''),
+      '🎵 TikTok Video:     ' + (links['tt-video'] || ''),
+      '',
+      '✉️  Email:            ' + (links['email']   || ''),
+      '🔍 Google Ads:       ' + (links['gads']     || ''),
+    ].join('\n');
+
+    navigator.clipboard.writeText(lines).then(() => {
+      btn.textContent = '✓ All Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '📋 Copy All Links as Summary'; btn.classList.remove('copied'); }, 2500);
+    });
+  }
+
+  document.getElementById('eventName').addEventListener('keydown', e => {
+    if (e.key === 'Enter') generate();
+  });
+</script>
+</body>
+</html>
